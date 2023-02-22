@@ -90,10 +90,10 @@ namespace TSW2_Controller.Properties {
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection ThrustIndex {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["SchubIndexe"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["ThrustIndex"]));
             }
             set {
-                this["SchubIndexe"] = value;
+                this["ThrustIndex"] = value;
             }
         }
         
@@ -103,10 +103,10 @@ namespace TSW2_Controller.Properties {
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection BrakeIndex {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["BremsIndexe"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["BrakeIndex"]));
             }
             set {
-                this["BremsIndexe"] = value;
+                this["BrakeIndex"] = value;
             }
         }
         
@@ -116,10 +116,10 @@ namespace TSW2_Controller.Properties {
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection Combined_ThrustIndex {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Kombihebel_SchubIndexe"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Combined_ThrustIndex"]));
             }
             set {
-                this["Kombihebel_SchubIndexe"] = value;
+                this["Combined_ThrustIndex"] = value;
             }
         }
         
@@ -129,10 +129,10 @@ namespace TSW2_Controller.Properties {
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection Combined_BrakeIndex {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Kombihebel_BremsIndexe"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Combined_BrakeIndex"]));
             }
             set {
-                this["Kombihebel_BremsIndexe"] = value;
+                this["Combined_BrakeIndex"] = value;
             }
         }
         
@@ -181,7 +181,7 @@ namespace TSW2_Controller.Properties {
   <string>oem7</string>
   <string>oem3</string>
 </ArrayOfString>")]
-        public global::System.Collections.Specialized.StringCollection Keybindings {
+        public global::System.Collections.Specialized.StringCollection Tastenbelegung {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Tastenbelegung"]));
             }
@@ -196,10 +196,10 @@ namespace TSW2_Controller.Properties {
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection BrakeIndex_EN {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["BremsIndexe_EN"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["BrakeIndex_EN"]));
             }
             set {
-                this["BremsIndexe_EN"] = value;
+                this["BrakeIndex_EN"] = value;
             }
         }
         
@@ -209,10 +209,10 @@ namespace TSW2_Controller.Properties {
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection ThrustIndex_EN {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["SchubIndexe_EN"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["ThrustIndex_EN"]));
             }
             set {
-                this["SchubIndexe_EN"] = value;
+                this["ThrustIndex_EN"] = value;
             }
         }
         
@@ -222,10 +222,10 @@ namespace TSW2_Controller.Properties {
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection BrakeIndex_DE {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["BremsIndexe_DE"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["BrakeIndex_DE"]));
             }
             set {
-                this["BremsIndexe_DE"] = value;
+                this["BrakeIndex_DE"] = value;
             }
         }
         
@@ -235,10 +235,10 @@ namespace TSW2_Controller.Properties {
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection ThrustIndex_DE {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["SchubIndexe_DE"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["ThrustIndex_DE"]));
             }
             set {
-                this["SchubIndexe_DE"] = value;
+                this["ThrustIndex_DE"] = value;
             }
         }
         
@@ -248,10 +248,10 @@ namespace TSW2_Controller.Properties {
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection Combined_BrakeIndex_EN {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Kombihebel_BremsIndexe_EN"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Combined_BrakeIndex_EN"]));
             }
             set {
-                this["Kombihebel_BremsIndexe_EN"] = value;
+                this["Combined_BrakeIndex_EN"] = value;
             }
         }
         
@@ -261,10 +261,10 @@ namespace TSW2_Controller.Properties {
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection Combined_ThrustIndex_EN {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Kombihebel_SchubIndexe_EN"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Combined_ThrustIndex_EN"]));
             }
             set {
-                this["Kombihebel_SchubIndexe_EN"] = value;
+                this["Combined_ThrustIndex_EN"] = value;
             }
         }
         
@@ -274,10 +274,10 @@ namespace TSW2_Controller.Properties {
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection Combined_BrakeIndex_DE {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Kombihebel_BremsIndexe_DE"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Combined_BrakeIndex_DE"]));
             }
             set {
-                this["Kombihebel_BremsIndexe_DE"] = value;
+                this["Combined_BrakeIndex_DE"] = value;
             }
         }
         
@@ -287,10 +287,10 @@ namespace TSW2_Controller.Properties {
             "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
         public global::System.Collections.Specialized.StringCollection Combined_ThrustIndex_DE {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Kombihebel_SchubIndexe_DE"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Combined_ThrustIndex_DE"]));
             }
             set {
-                this["Kombihebel_SchubIndexe_DE"] = value;
+                this["Combined_ThrustIndex_DE"] = value;
             }
         }
         
