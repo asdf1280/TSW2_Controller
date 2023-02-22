@@ -69,25 +69,25 @@ namespace TSW2_Controller {
         #region TrainConfig wechseln
         private void comboBox_TrainConfig_KeyUp(object sender, KeyEventArgs e) {
             if (comboBox_TrainConfig.Items.Contains(comboBox_TrainConfig.Text)) {
-                btn_trainconfigHinzufuegen.Enabled = false;
+                btn_addTrainConfig.Enabled = false;
                 changeConfig();
                 if (comboBox_TrainConfig.Text == "_Standard") {
-                    btn_trainconfigLoeschen.Enabled = false;
+                    btn_delTrainConfig.Enabled = false;
                     btn_export.Enabled = false;
 
-                    btn_trainconfigHinzufuegen.Enabled = false;
+                    btn_addTrainConfig.Enabled = false;
                 } else {
-                    btn_trainconfigLoeschen.Enabled = true;
+                    btn_delTrainConfig.Enabled = true;
                     btn_export.Enabled = true;
                 }
             } else if (comboBox_TrainConfig.Text == "") {
-                btn_trainconfigLoeschen.Enabled = false;
+                btn_delTrainConfig.Enabled = false;
                 btn_export.Enabled = false;
-                btn_trainconfigHinzufuegen.Enabled = false;
+                btn_addTrainConfig.Enabled = false;
             } else {
-                btn_trainconfigLoeschen.Enabled = false;
+                btn_delTrainConfig.Enabled = false;
                 btn_export.Enabled = false;
-                btn_trainconfigHinzufuegen.Enabled = true;
+                btn_addTrainConfig.Enabled = true;
             }
         }
 
@@ -99,15 +99,15 @@ namespace TSW2_Controller {
 
         private void comboBox_TrainConfig_SelectedIndexChanged(object sender, EventArgs e) {
             if (comboBox_TrainConfig.Text == "_Standard") {
-                btn_trainconfigLoeschen.Enabled = false;
+                btn_delTrainConfig.Enabled = false;
                 btn_export.Enabled = false;
-                btn_trainconfigHinzufuegen.Enabled = false;
+                btn_addTrainConfig.Enabled = false;
             } else {
-                btn_trainconfigLoeschen.Enabled = true;
+                btn_delTrainConfig.Enabled = true;
                 btn_export.Enabled = true;
-                btn_trainconfigHinzufuegen.Enabled = true;
+                btn_addTrainConfig.Enabled = true;
             }
-            btn_trainconfigHinzufuegen.Enabled = false;
+            btn_addTrainConfig.Enabled = false;
             changeConfig();
         }
 
@@ -224,7 +224,7 @@ namespace TSW2_Controller {
             //Wenn man im "Aktion" Feld eine Taste drückt finde passenden Namen zur Taste
             //PreviewKeyDown um auch tab-Taste zu erlauben
             ((TextBox)sender).Text = Keyboard.ConvertKeyToString(e.KeyCode);
-            btn_speichern.Select();
+            btn_save.Select();
         }
 
         private void txt_SuppressKeyPress_KeyDown(object sender, KeyEventArgs e) {

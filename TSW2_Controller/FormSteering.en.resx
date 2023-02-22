@@ -136,6 +136,9 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Select train</value>
   </data>
+  <data name="tabPage_Zugauswahl.Text" xml:space="preserve">
+    <value>Train</value>
+  </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 16</value>
   </data>
@@ -252,6 +255,9 @@
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Key</value>
+  </data>
+  <data name="tabPage_Tastenkombi_Erstellen.Text" xml:space="preserve">
+    <value>Key Presses</value>
   </data>
   <data name="btnT3_ZeitfaktorFinden.Text" xml:space="preserve">
     <value>Find time factor</value>
@@ -381,6 +387,9 @@
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Controller editor</value>
+  </data>
+  <data name="tabPage_Regler.Text" xml:space="preserve">
+    <value>Controller</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

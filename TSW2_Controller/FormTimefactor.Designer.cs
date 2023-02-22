@@ -180,7 +180,7 @@
             this.btn_start_longpress.UseVisualStyleBackColor = true;
             this.btn_start_longpress.Click += new System.EventHandler(this.btn_start_longpress_Click);
             // 
-            // FormZeitfaktor
+            // FormTimefactor
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -194,7 +194,7 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormZeitfaktor";
+            this.Name = "FormTimefactor";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Load += new System.EventHandler(this.FormZeitfaktor_Load);
             this.panel1.ResumeLayout(false);

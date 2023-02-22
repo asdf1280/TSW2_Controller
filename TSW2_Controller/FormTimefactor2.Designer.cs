@@ -66,7 +66,7 @@
             resources.ApplyResources(this.lbl_ERROR, "lbl_ERROR");
             this.lbl_ERROR.Name = "lbl_ERROR";
             // 
-            // FormZeitfaktor2
+            // FormTimefactor2
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -74,7 +74,7 @@
             this.Controls.Add(this.btn_start);
             this.Controls.Add(this.btn_weiter);
             this.Controls.Add(this.lbl_anleitung);
-            this.Name = "FormZeitfaktor2";
+            this.Name = "FormTimefactor2";
             this.ResumeLayout(false);
             this.PerformLayout();
 

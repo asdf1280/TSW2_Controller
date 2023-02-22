@@ -127,17 +127,11 @@
   <data name="check_active.Text" xml:space="preserve">
     <value>Active</value>
   </data>
-  <data name="btn_einstellungen.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
   <data name="check_deactivateGlobal.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 17</value>
   </data>
   <data name="check_deactivateGlobal.Text" xml:space="preserve">
     <value>Deactivate global</value>
-  </data>
-  <data name="groupBox_ScanErgebnisse.Text" xml:space="preserve">
-    <value>Scan results</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 13</value>

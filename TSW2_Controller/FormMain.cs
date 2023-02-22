@@ -100,7 +100,7 @@ namespace TSW2_Controller {
 
             lbl_originalResult.Text = "";
             lbl_alternativeResult.Text = "";
-            groupBox_ScanErgebnisse.Hide();
+            groupBox_ScanResults.Hide();
 
             Keyboard.initKeylist();
 
@@ -777,10 +777,10 @@ namespace TSW2_Controller {
                 Log.Add("load scan results", false, 1);
                 if (Settings.Default.showScanResult) {
                     pictureBox_Screenshot_original.Show();
-                    pictureBox_Screenshot_alternativ.Show();
+                    pictureBox_Screenshot_alternative.Show();
                 } else {
                     pictureBox_Screenshot_original.Hide();
-                    pictureBox_Screenshot_alternativ.Hide();
+                    pictureBox_Screenshot_alternative.Hide();
                 }
                 #endregion
 
@@ -803,7 +803,7 @@ namespace TSW2_Controller {
         #region Trainconfig und VControllers
         public void ReadTrainConfig() {
             Log.Add("Read TrainConfig");
-            groupBox_ScanErgebnisse.Hide();
+            groupBox_ScanResults.Hide();
             if (File.Exists(ConfigConsts.configPath)) {
                 trainConfig.Clear();
                 using (var reader = new StreamReader(ConfigConsts.configPath)) {
@@ -819,7 +819,7 @@ namespace TSW2_Controller {
                             }
                         }
                         if (!found && values[ConfigConsts.controllerName] != "" && values[ConfigConsts.train] != "Zug") {
-                            groupBox_ScanErgebnisse.Show();
+                            groupBox_ScanResults.Show();
                             lbl_originalResult.Text = values[ConfigConsts.train] + ":\"" + values[ConfigConsts.controllerName] + "\" not found!";
                         }
 
@@ -1158,16 +1158,16 @@ namespace TSW2_Controller {
             //From all joysticks, select only the selected one
             if (selectedJoystickIndex < joystickStates.Count) {
                 int counter = 1;
-                int topIndex = lst_inputs.TopIndex;
+                int topIndex = list_inputs.TopIndex;
 
                 object[] selectedJoystick = (object[])joystickStates[Convert.ToInt32(selectedJoystickIndex)];
                 for (int i = 0; i < ((bool[])selectedJoystick[3]).Length; i++) {
                     if (((bool[])selectedJoystick[3])[i]) {
                         //Show the pressed button
-                        if (counter <= lst_inputs.Items.Count) {
-                            lst_inputs.Items[counter - 1] = "B" + i;
+                        if (counter <= list_inputs.Items.Count) {
+                            list_inputs.Items[counter - 1] = "B" + i;
                         } else {
-                            lst_inputs.Items.Add("B" + i);
+                            list_inputs.Items.Add("B" + i);
                         }
                         counter++;
                     }
@@ -1175,22 +1175,22 @@ namespace TSW2_Controller {
                 for (int i = 0; i < ((int[])selectedJoystick[1]).Length; i++) {
                     if (((int[])selectedJoystick[1])[i] != 0) {
                         //Show the joystick value only if it is != 0
-                        if (counter <= lst_inputs.Items.Count) {
-                            lst_inputs.Items[counter - 1] = ((string[])selectedJoystick[2])[i] + "  " + ((int[])selectedJoystick[1])[i];
+                        if (counter <= list_inputs.Items.Count) {
+                            list_inputs.Items[counter - 1] = ((string[])selectedJoystick[2])[i] + "  " + ((int[])selectedJoystick[1])[i];
                         } else {
-                            lst_inputs.Items.Add(((string[])selectedJoystick[2])[i] + "  " + ((int[])selectedJoystick[1])[i]);
+                            list_inputs.Items.Add(((string[])selectedJoystick[2])[i] + "  " + ((int[])selectedJoystick[1])[i]);
                         }
                         counter++;
                     }
                 }
-                for (int o = lst_inputs.Items.Count - counter; o >= 0; o--) {
-                    lst_inputs.Items[lst_inputs.Items.Count - o - 1] = "";
+                for (int o = list_inputs.Items.Count - counter; o >= 0; o--) {
+                    list_inputs.Items[list_inputs.Items.Count - o - 1] = "";
                 }
-                if (lst_inputs.Items.Count > topIndex) {
-                    lst_inputs.TopIndex = topIndex;
+                if (list_inputs.Items.Count > topIndex) {
+                    list_inputs.TopIndex = topIndex;
                 }
             } else {
-                if (lst_inputs.Items.Count > 0) { lst_inputs.Items.Clear(); }
+                if (list_inputs.Items.Count > 0) { list_inputs.Items.Clear(); }
             }
         }
         #endregion
@@ -1426,7 +1426,7 @@ namespace TSW2_Controller {
                 string second_result = "";
 
                 lbl_originalResult.Invoke((MethodInvoker)delegate { lbl_originalResult.Text = result; });
-                groupBox_ScanErgebnisse.Invoke((MethodInvoker)delegate { groupBox_ScanErgebnisse.Show(); });
+                groupBox_ScanResults.Invoke((MethodInvoker)delegate { groupBox_ScanResults.Show(); });
                 lbl_scantime.Invoke((MethodInvoker)delegate { lbl_scantime.Text = "Scantime:" + stopwatch.ElapsedMilliseconds + "ms"; });
 
                 for (int i = 0; i < activeVControllers.Count; i++) {
@@ -1533,7 +1533,7 @@ namespace TSW2_Controller {
                     }
                 }
             } else {
-                groupBox_ScanErgebnisse.Invoke((MethodInvoker)delegate { groupBox_ScanErgebnisse.Hide(); });
+                groupBox_ScanResults.Invoke((MethodInvoker)delegate { groupBox_ScanResults.Hide(); });
             }
 
             string GetBestMainIndicator(string result, VirtualController virtualController) {
@@ -1627,7 +1627,7 @@ namespace TSW2_Controller {
         private void bgw_readScreen_ProgressChanged(object sender, ProgressChangedEventArgs e) {
             //Update Picturebox
             if (((Bitmap)((object[])e.UserState)[0]).Height != 1) { pictureBox_Screenshot_original.Image = (Bitmap)((object[])e.UserState)[0]; }
-            if (((Bitmap)((object[])e.UserState)[1]).Height != 1) { pictureBox_Screenshot_alternativ.Image = (Bitmap)((object[])e.UserState)[1]; }
+            if (((Bitmap)((object[])e.UserState)[1]).Height != 1) { pictureBox_Screenshot_alternative.Image = (Bitmap)((object[])e.UserState)[1]; }
         }
         private void bgw_readScreen_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
 

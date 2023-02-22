@@ -653,13 +653,13 @@
             this.T3Timer_GetJoyStates.Enabled = true;
             this.T3Timer_GetJoyStates.Tick += new System.EventHandler(this.T3Timer_GetJoyStates_Tick);
             // 
-            // FormSteuerung
+            // FormSteering
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl_Anzeige);
             this.MaximizeBox = false;
-            this.Name = "FormSteuerung";
+            this.Name = "FormSteering";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.tabControl_Anzeige.ResumeLayout(false);
             this.tabPage_Zugauswahl.ResumeLayout(false);

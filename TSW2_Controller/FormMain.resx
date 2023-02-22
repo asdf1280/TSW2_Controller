@@ -118,26 +118,26 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lst_inputs.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="list_inputs.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 117</value>
   </data>
-  <data name="lst_inputs.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="list_inputs.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 95</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lst_inputs.TabIndex" type="System.Int32, mscorlib">
+  <data name="list_inputs.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="&gt;&gt;lst_inputs.Name" xml:space="preserve">
-    <value>lst_inputs</value>
+  <data name="&gt;&gt;list_inputs.Name" xml:space="preserve">
+    <value>list_inputs</value>
   </data>
-  <data name="&gt;&gt;lst_inputs.Type" xml:space="preserve">
+  <data name="&gt;&gt;list_inputs.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lst_inputs.Parent" xml:space="preserve">
+  <data name="&gt;&gt;list_inputs.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;lst_inputs.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;list_inputs.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
   <data name="check_active.AutoSize" type="System.Boolean, mscorlib">
@@ -273,31 +273,31 @@
   <data name="&gt;&gt;lbl_resolution.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="btn_einstellungen.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="btn_settings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="btn_einstellungen.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="btn_settings.Location" type="System.Drawing.Point, System.Drawing">
     <value>233, 15</value>
   </data>
-  <data name="btn_einstellungen.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btn_settings.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 21</value>
   </data>
-  <data name="btn_einstellungen.TabIndex" type="System.Int32, mscorlib">
+  <data name="btn_settings.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
-  <data name="btn_einstellungen.Text" xml:space="preserve">
-    <value>Einstellungen</value>
+  <data name="btn_settings.Text" xml:space="preserve">
+    <value>Settings</value>
   </data>
-  <data name="&gt;&gt;btn_einstellungen.Name" xml:space="preserve">
-    <value>btn_einstellungen</value>
+  <data name="&gt;&gt;btn_settings.Name" xml:space="preserve">
+    <value>btn_settings</value>
   </data>
-  <data name="&gt;&gt;btn_einstellungen.Type" xml:space="preserve">
+  <data name="&gt;&gt;btn_settings.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btn_einstellungen.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btn_settings.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;btn_einstellungen.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btn_settings.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
   <data name="pictureBox_Screenshot_original.Location" type="System.Drawing.Point, System.Drawing">
@@ -327,31 +327,31 @@
   <data name="&gt;&gt;pictureBox_Screenshot_original.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="pictureBox_Screenshot_alternativ.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pictureBox_Screenshot_alternative.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 816</value>
   </data>
-  <data name="pictureBox_Screenshot_alternativ.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pictureBox_Screenshot_alternative.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 24</value>
   </data>
-  <data name="pictureBox_Screenshot_alternativ.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+  <data name="pictureBox_Screenshot_alternative.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
   </data>
-  <data name="pictureBox_Screenshot_alternativ.TabIndex" type="System.Int32, mscorlib">
+  <data name="pictureBox_Screenshot_alternative.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
-  <data name="pictureBox_Screenshot_alternativ.WaitOnLoad" type="System.Boolean, mscorlib">
+  <data name="pictureBox_Screenshot_alternative.WaitOnLoad" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Screenshot_alternativ.Name" xml:space="preserve">
-    <value>pictureBox_Screenshot_alternativ</value>
+  <data name="&gt;&gt;pictureBox_Screenshot_alternative.Name" xml:space="preserve">
+    <value>pictureBox_Screenshot_alternative</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Screenshot_alternativ.Type" xml:space="preserve">
+  <data name="&gt;&gt;pictureBox_Screenshot_alternative.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Screenshot_alternativ.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pictureBox_Screenshot_alternative.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Screenshot_alternativ.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pictureBox_Screenshot_alternative.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
   <data name="check_deactivateGlobal.AutoSize" type="System.Boolean, mscorlib">
@@ -409,7 +409,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbl_originalResult.Parent" xml:space="preserve">
-    <value>groupBox_ScanErgebnisse</value>
+    <value>groupBox_ScanResults</value>
   </data>
   <data name="&gt;&gt;lbl_originalResult.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -436,33 +436,33 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbl_alternativeResult.Parent" xml:space="preserve">
-    <value>groupBox_ScanErgebnisse</value>
+    <value>groupBox_ScanResults</value>
   </data>
   <data name="&gt;&gt;lbl_alternativeResult.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBox_ScanErgebnisse.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBox_ScanResults.Location" type="System.Drawing.Point, System.Drawing">
     <value>141, 117</value>
   </data>
-  <data name="groupBox_ScanErgebnisse.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBox_ScanResults.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 52</value>
   </data>
-  <data name="groupBox_ScanErgebnisse.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBox_ScanResults.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
   </data>
-  <data name="groupBox_ScanErgebnisse.Text" xml:space="preserve">
+  <data name="groupBox_ScanResults.Text" xml:space="preserve">
     <value>Scan Ergebnisse</value>
   </data>
-  <data name="&gt;&gt;groupBox_ScanErgebnisse.Name" xml:space="preserve">
-    <value>groupBox_ScanErgebnisse</value>
+  <data name="&gt;&gt;groupBox_ScanResults.Name" xml:space="preserve">
+    <value>groupBox_ScanResults</value>
   </data>
-  <data name="&gt;&gt;groupBox_ScanErgebnisse.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBox_ScanResults.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox_ScanErgebnisse.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBox_ScanResults.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;groupBox_ScanErgebnisse.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBox_ScanResults.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="lbl_requests.AutoSize" type="System.Boolean, mscorlib">
@@ -595,6 +595,9 @@
   <data name="&gt;&gt;checkBox_autoscroll.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>en</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

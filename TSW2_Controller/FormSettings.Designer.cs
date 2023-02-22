@@ -33,20 +33,19 @@
             this.check_showDebug = new System.Windows.Forms.CheckBox();
             this.lbl_version = new System.Windows.Forms.Label();
             this.check_ShowScan = new System.Windows.Forms.CheckBox();
-            this.btn_speichern = new System.Windows.Forms.Button();
-            this.btn_steuerung = new System.Windows.Forms.Button();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.btn_controls = new System.Windows.Forms.Button();
             this.comboBox_resolution = new System.Windows.Forms.ComboBox();
             this.progressBar_updater = new System.Windows.Forms.ProgressBar();
             this.comboBox_TrainConfig = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.btn_trainconfigHinzufuegen = new System.Windows.Forms.Button();
-            this.btn_trainconfigLoeschen = new System.Windows.Forms.Button();
+            this.btn_addTrainConfig = new System.Windows.Forms.Button();
+            this.btn_delTrainConfig = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_export = new System.Windows.Forms.Button();
             this.btn_import = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.informationsdateiErstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zurConfigGehenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkBox_deleteLogsAutomatically = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
@@ -75,28 +74,28 @@
             this.check_ShowScan.Name = "check_ShowScan";
             this.check_ShowScan.UseVisualStyleBackColor = true;
             // 
-            // btn_speichern
+            // btn_save
             // 
-            resources.ApplyResources(this.btn_speichern, "btn_speichern");
-            this.btn_speichern.Name = "btn_speichern";
-            this.btn_speichern.UseVisualStyleBackColor = true;
-            this.btn_speichern.Click += new System.EventHandler(this.btn_speichern_Click);
+            resources.ApplyResources(this.btn_save, "btn_save");
+            this.btn_save.Name = "btn_save";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_speichern_Click);
             // 
-            // btn_steuerung
+            // btn_controls
             // 
-            resources.ApplyResources(this.btn_steuerung, "btn_steuerung");
-            this.btn_steuerung.Name = "btn_steuerung";
-            this.btn_steuerung.UseVisualStyleBackColor = true;
-            this.btn_steuerung.Click += new System.EventHandler(this.btn_steuerung_Click);
+            resources.ApplyResources(this.btn_controls, "btn_controls");
+            this.btn_controls.Name = "btn_controls";
+            this.btn_controls.UseVisualStyleBackColor = true;
+            this.btn_controls.Click += new System.EventHandler(this.btn_steuerung_Click);
             // 
             // comboBox_resolution
             // 
+            resources.ApplyResources(this.comboBox_resolution, "comboBox_resolution");
             this.comboBox_resolution.FormattingEnabled = true;
             this.comboBox_resolution.Items.AddRange(new object[] {
             resources.GetString("comboBox_resolution.Items"),
             resources.GetString("comboBox_resolution.Items1"),
             resources.GetString("comboBox_resolution.Items2")});
-            resources.ApplyResources(this.comboBox_resolution, "comboBox_resolution");
             this.comboBox_resolution.Name = "comboBox_resolution";
             // 
             // progressBar_updater
@@ -106,8 +105,8 @@
             // 
             // comboBox_TrainConfig
             // 
-            this.comboBox_TrainConfig.FormattingEnabled = true;
             resources.ApplyResources(this.comboBox_TrainConfig, "comboBox_TrainConfig");
+            this.comboBox_TrainConfig.FormattingEnabled = true;
             this.comboBox_TrainConfig.Name = "comboBox_TrainConfig";
             this.comboBox_TrainConfig.SelectedIndexChanged += new System.EventHandler(this.comboBox_TrainConfig_SelectedIndexChanged);
             this.comboBox_TrainConfig.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_TrainConfig_KeyPress);
@@ -118,28 +117,28 @@
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
             // 
-            // btn_trainconfigHinzufuegen
+            // btn_addTrainConfig
             // 
-            resources.ApplyResources(this.btn_trainconfigHinzufuegen, "btn_trainconfigHinzufuegen");
-            this.btn_trainconfigHinzufuegen.Name = "btn_trainconfigHinzufuegen";
-            this.btn_trainconfigHinzufuegen.UseVisualStyleBackColor = true;
-            this.btn_trainconfigHinzufuegen.Click += new System.EventHandler(this.btn_trainconfigHinzufuegen_Click);
+            resources.ApplyResources(this.btn_addTrainConfig, "btn_addTrainConfig");
+            this.btn_addTrainConfig.Name = "btn_addTrainConfig";
+            this.btn_addTrainConfig.UseVisualStyleBackColor = true;
+            this.btn_addTrainConfig.Click += new System.EventHandler(this.btn_trainconfigHinzufuegen_Click);
             // 
-            // btn_trainconfigLoeschen
+            // btn_delTrainConfig
             // 
-            resources.ApplyResources(this.btn_trainconfigLoeschen, "btn_trainconfigLoeschen");
-            this.btn_trainconfigLoeschen.Name = "btn_trainconfigLoeschen";
-            this.btn_trainconfigLoeschen.UseVisualStyleBackColor = true;
-            this.btn_trainconfigLoeschen.Click += new System.EventHandler(this.btn_trainconfigLoeschen_Click);
+            resources.ApplyResources(this.btn_delTrainConfig, "btn_delTrainConfig");
+            this.btn_delTrainConfig.Name = "btn_delTrainConfig";
+            this.btn_delTrainConfig.UseVisualStyleBackColor = true;
+            this.btn_delTrainConfig.Click += new System.EventHandler(this.btn_trainconfigLoeschen_Click);
             // 
             // groupBox3
             // 
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.btn_export);
             this.groupBox3.Controls.Add(this.btn_import);
             this.groupBox3.Controls.Add(this.comboBox_TrainConfig);
-            this.groupBox3.Controls.Add(this.btn_trainconfigHinzufuegen);
-            this.groupBox3.Controls.Add(this.btn_trainconfigLoeschen);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Controls.Add(this.btn_addTrainConfig);
+            this.groupBox3.Controls.Add(this.btn_delTrainConfig);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
@@ -159,29 +158,22 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hilfeToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripItem});
             this.menuStrip1.Name = "menuStrip1";
             // 
-            // hilfeToolStripMenuItem
+            // helpToolStripItem
             // 
-            this.hilfeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.informationsdateiErstellenToolStripMenuItem,
+            resources.ApplyResources(this.helpToolStripItem, "helpToolStripItem");
+            this.helpToolStripItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.zurConfigGehenToolStripMenuItem});
-            this.hilfeToolStripMenuItem.Name = "hilfeToolStripMenuItem";
-            resources.ApplyResources(this.hilfeToolStripMenuItem, "hilfeToolStripMenuItem");
-            // 
-            // informationsdateiErstellenToolStripMenuItem
-            // 
-            this.informationsdateiErstellenToolStripMenuItem.Name = "informationsdateiErstellenToolStripMenuItem";
-            resources.ApplyResources(this.informationsdateiErstellenToolStripMenuItem, "informationsdateiErstellenToolStripMenuItem");
-            this.informationsdateiErstellenToolStripMenuItem.Click += new System.EventHandler(this.informationsdateiErstellenToolStripMenuItem_Click);
+            this.helpToolStripItem.Name = "helpToolStripItem";
             // 
             // zurConfigGehenToolStripMenuItem
             // 
-            this.zurConfigGehenToolStripMenuItem.Name = "zurConfigGehenToolStripMenuItem";
             resources.ApplyResources(this.zurConfigGehenToolStripMenuItem, "zurConfigGehenToolStripMenuItem");
+            this.zurConfigGehenToolStripMenuItem.Name = "zurConfigGehenToolStripMenuItem";
             this.zurConfigGehenToolStripMenuItem.Click += new System.EventHandler(this.zurConfigGehenToolStripMenuItem_Click);
             // 
             // checkBox_deleteLogsAutomatically
@@ -198,8 +190,8 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.progressBar_updater);
             this.Controls.Add(this.comboBox_resolution);
-            this.Controls.Add(this.btn_steuerung);
-            this.Controls.Add(this.btn_speichern);
+            this.Controls.Add(this.btn_controls);
+            this.Controls.Add(this.btn_save);
             this.Controls.Add(this.check_ShowScan);
             this.Controls.Add(this.lbl_version);
             this.Controls.Add(this.check_showDebug);
@@ -222,18 +214,17 @@
         private System.Windows.Forms.CheckBox check_showDebug;
         private System.Windows.Forms.Label lbl_version;
         private System.Windows.Forms.CheckBox check_ShowScan;
-        private System.Windows.Forms.Button btn_speichern;
-        private System.Windows.Forms.Button btn_steuerung;
+        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Button btn_controls;
         private System.Windows.Forms.ComboBox comboBox_resolution;
         private System.Windows.Forms.ProgressBar progressBar_updater;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox_TrainConfig;
-        private System.Windows.Forms.Button btn_trainconfigHinzufuegen;
-        private System.Windows.Forms.Button btn_trainconfigLoeschen;
+        private System.Windows.Forms.Button btn_addTrainConfig;
+        private System.Windows.Forms.Button btn_delTrainConfig;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem hilfeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem informationsdateiErstellenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripItem;
         private System.Windows.Forms.ToolStripMenuItem zurConfigGehenToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox_deleteLogsAutomatically;
         private System.Windows.Forms.Button btn_export;

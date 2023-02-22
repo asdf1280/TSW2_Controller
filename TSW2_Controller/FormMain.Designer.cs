@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.lst_inputs = new System.Windows.Forms.ListBox();
+            this.list_inputs = new System.Windows.Forms.ListBox();
             this.check_active = new System.Windows.Forms.CheckBox();
             this.combobox_trainSelection = new System.Windows.Forms.ComboBox();
             this.timer_CheckSticks = new System.Windows.Forms.Timer(this.components);
@@ -38,28 +38,28 @@
             this.bgw_readScreen = new System.ComponentModel.BackgroundWorker();
             this.listBox_debugInfo = new System.Windows.Forms.ListBox();
             this.lbl_resolution = new System.Windows.Forms.Label();
-            this.btn_einstellungen = new System.Windows.Forms.Button();
+            this.btn_settings = new System.Windows.Forms.Button();
             this.pictureBox_Screenshot_original = new System.Windows.Forms.PictureBox();
-            this.pictureBox_Screenshot_alternativ = new System.Windows.Forms.PictureBox();
+            this.pictureBox_Screenshot_alternative = new System.Windows.Forms.PictureBox();
             this.check_deactivateGlobal = new System.Windows.Forms.CheckBox();
             this.lbl_originalResult = new System.Windows.Forms.Label();
             this.lbl_alternativeResult = new System.Windows.Forms.Label();
-            this.groupBox_ScanErgebnisse = new System.Windows.Forms.GroupBox();
+            this.groupBox_ScanResults = new System.Windows.Forms.GroupBox();
             this.lbl_requests = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_checkJoysticks = new System.Windows.Forms.Button();
             this.lbl_scantime = new System.Windows.Forms.Label();
             this.checkBox_autoscroll = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot_original)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot_alternativ)).BeginInit();
-            this.groupBox_ScanErgebnisse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot_alternative)).BeginInit();
+            this.groupBox_ScanResults.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lst_inputs
+            // list_inputs
             // 
-            this.lst_inputs.FormattingEnabled = true;
-            resources.ApplyResources(this.lst_inputs, "lst_inputs");
-            this.lst_inputs.Name = "lst_inputs";
+            this.list_inputs.FormattingEnabled = true;
+            resources.ApplyResources(this.list_inputs, "list_inputs");
+            this.list_inputs.Name = "list_inputs";
             // 
             // check_active
             // 
@@ -108,12 +108,12 @@
             resources.ApplyResources(this.lbl_resolution, "lbl_resolution");
             this.lbl_resolution.Name = "lbl_resolution";
             // 
-            // btn_einstellungen
+            // btn_settings
             // 
-            resources.ApplyResources(this.btn_einstellungen, "btn_einstellungen");
-            this.btn_einstellungen.Name = "btn_einstellungen";
-            this.btn_einstellungen.UseVisualStyleBackColor = true;
-            this.btn_einstellungen.Click += new System.EventHandler(this.btn_einstellungen_Click);
+            resources.ApplyResources(this.btn_settings, "btn_settings");
+            this.btn_settings.Name = "btn_settings";
+            this.btn_settings.UseVisualStyleBackColor = true;
+            this.btn_settings.Click += new System.EventHandler(this.btn_einstellungen_Click);
             // 
             // pictureBox_Screenshot_original
             // 
@@ -121,11 +121,11 @@
             this.pictureBox_Screenshot_original.Name = "pictureBox_Screenshot_original";
             this.pictureBox_Screenshot_original.TabStop = false;
             // 
-            // pictureBox_Screenshot_alternativ
+            // pictureBox_Screenshot_alternative
             // 
-            resources.ApplyResources(this.pictureBox_Screenshot_alternativ, "pictureBox_Screenshot_alternativ");
-            this.pictureBox_Screenshot_alternativ.Name = "pictureBox_Screenshot_alternativ";
-            this.pictureBox_Screenshot_alternativ.TabStop = false;
+            resources.ApplyResources(this.pictureBox_Screenshot_alternative, "pictureBox_Screenshot_alternative");
+            this.pictureBox_Screenshot_alternative.Name = "pictureBox_Screenshot_alternative";
+            this.pictureBox_Screenshot_alternative.TabStop = false;
             // 
             // check_deactivateGlobal
             // 
@@ -144,13 +144,13 @@
             resources.ApplyResources(this.lbl_alternativeResult, "lbl_alternativeResult");
             this.lbl_alternativeResult.Name = "lbl_alternativeResult";
             // 
-            // groupBox_ScanErgebnisse
+            // groupBox_ScanResults
             // 
-            this.groupBox_ScanErgebnisse.Controls.Add(this.lbl_alternativeResult);
-            this.groupBox_ScanErgebnisse.Controls.Add(this.lbl_originalResult);
-            resources.ApplyResources(this.groupBox_ScanErgebnisse, "groupBox_ScanErgebnisse");
-            this.groupBox_ScanErgebnisse.Name = "groupBox_ScanErgebnisse";
-            this.groupBox_ScanErgebnisse.TabStop = false;
+            this.groupBox_ScanResults.Controls.Add(this.lbl_alternativeResult);
+            this.groupBox_ScanResults.Controls.Add(this.lbl_originalResult);
+            resources.ApplyResources(this.groupBox_ScanResults, "groupBox_ScanResults");
+            this.groupBox_ScanResults.Name = "groupBox_ScanResults";
+            this.groupBox_ScanResults.TabStop = false;
             // 
             // lbl_requests
             // 
@@ -191,46 +191,45 @@
             this.Controls.Add(this.btn_checkJoysticks);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_requests);
-            this.Controls.Add(this.groupBox_ScanErgebnisse);
+            this.Controls.Add(this.groupBox_ScanResults);
             this.Controls.Add(this.check_deactivateGlobal);
-            this.Controls.Add(this.pictureBox_Screenshot_alternativ);
+            this.Controls.Add(this.pictureBox_Screenshot_alternative);
             this.Controls.Add(this.pictureBox_Screenshot_original);
-            this.Controls.Add(this.btn_einstellungen);
+            this.Controls.Add(this.btn_settings);
             this.Controls.Add(this.lbl_resolution);
             this.Controls.Add(this.listBox_debugInfo);
             this.Controls.Add(this.comboBox_JoystickNumber);
             this.Controls.Add(this.combobox_trainSelection);
             this.Controls.Add(this.check_active);
-            this.Controls.Add(this.lst_inputs);
+            this.Controls.Add(this.list_inputs);
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
-            this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot_original)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot_alternativ)).EndInit();
-            this.groupBox_ScanErgebnisse.ResumeLayout(false);
-            this.groupBox_ScanErgebnisse.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot_alternative)).EndInit();
+            this.groupBox_ScanResults.ResumeLayout(false);
+            this.groupBox_ScanResults.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.ListBox lst_inputs;
+        private System.Windows.Forms.ListBox list_inputs;
         private System.Windows.Forms.CheckBox check_active;
         private System.Windows.Forms.ComboBox combobox_trainSelection;
         private System.Windows.Forms.Timer timer_CheckSticks;
         private System.Windows.Forms.ComboBox comboBox_JoystickNumber;
         private System.ComponentModel.BackgroundWorker bgw_readScreen;
         private System.Windows.Forms.Label lbl_resolution;
-        private System.Windows.Forms.Button btn_einstellungen;
+        private System.Windows.Forms.Button btn_settings;
         private System.Windows.Forms.PictureBox pictureBox_Screenshot_original;
-        private System.Windows.Forms.PictureBox pictureBox_Screenshot_alternativ;
+        private System.Windows.Forms.PictureBox pictureBox_Screenshot_alternative;
         private System.Windows.Forms.CheckBox check_deactivateGlobal;
         private System.Windows.Forms.Label lbl_originalResult;
         private System.Windows.Forms.Label lbl_alternativeResult;
-        private System.Windows.Forms.GroupBox groupBox_ScanErgebnisse;
+        private System.Windows.Forms.GroupBox groupBox_ScanResults;
         private System.Windows.Forms.Label lbl_requests;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBox_debugInfo;
