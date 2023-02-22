@@ -86,7 +86,7 @@ namespace TSW2_Controller
         private void btnT0_editButtons_Click(object sender, EventArgs e)
         {
             T1Reset(true);
-            if (comboBoxT0_Zugauswahl.Text != "" && comboBoxT0_Zugauswahl.Text != Localization.TrainSelection())
+            if (comboBoxT0_Zugauswahl.Text != "" && comboBoxT0_Zugauswahl.Text != "_Select train")
             {
                 selectedTrain = comboBoxT0_Zugauswahl.Text;
                 comboBoxT1_KnopfAuswahl.Items.Clear();
@@ -103,7 +103,7 @@ namespace TSW2_Controller
         private void btnT0_editRegler_Click(object sender, EventArgs e)
         {
             T3Reset(true);
-            if (comboBoxT0_Zugauswahl.Text != "" && comboBoxT0_Zugauswahl.Text != Localization.TrainSelection())
+            if (comboBoxT0_Zugauswahl.Text != "" && comboBoxT0_Zugauswahl.Text != "_Select train")
             {
                 selectedTrain = comboBoxT0_Zugauswahl.Text;
                 tabControl_Anzeige.SelectedIndex = 3;

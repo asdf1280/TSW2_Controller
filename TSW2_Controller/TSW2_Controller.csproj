@@ -141,7 +141,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ShiftEmulator.cs" />
-    <Compile Include="Sprache.cs" />
     <Compile Include="Tcfg.cs" />
     <Compile Include="VirtualController.cs" />
     <EmbeddedResource Include="FormMain.en.resx">
