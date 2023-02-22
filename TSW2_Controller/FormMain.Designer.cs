@@ -34,7 +34,6 @@
             this.check_active = new System.Windows.Forms.CheckBox();
             this.combobox_trainSelection = new System.Windows.Forms.ComboBox();
             this.timer_CheckSticks = new System.Windows.Forms.Timer(this.components);
-            this.comboBox_JoystickNumber = new System.Windows.Forms.ComboBox();
             this.bgw_readScreen = new System.ComponentModel.BackgroundWorker();
             this.listBox_debugInfo = new System.Windows.Forms.ListBox();
             this.lbl_resolution = new System.Windows.Forms.Label();
@@ -46,8 +45,6 @@
             this.lbl_alternativeResult = new System.Windows.Forms.Label();
             this.groupBox_ScanResults = new System.Windows.Forms.GroupBox();
             this.lbl_requests = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btn_checkJoysticks = new System.Windows.Forms.Button();
             this.lbl_scantime = new System.Windows.Forms.Label();
             this.checkBox_autoscroll = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot_original)).BeginInit();
@@ -57,8 +54,8 @@
             // 
             // list_inputs
             // 
-            this.list_inputs.FormattingEnabled = true;
             resources.ApplyResources(this.list_inputs, "list_inputs");
+            this.list_inputs.FormattingEnabled = true;
             this.list_inputs.Name = "list_inputs";
             // 
             // check_active
@@ -71,9 +68,9 @@
             // 
             // combobox_trainSelection
             // 
+            resources.ApplyResources(this.combobox_trainSelection, "combobox_trainSelection");
             this.combobox_trainSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combobox_trainSelection.FormattingEnabled = true;
-            resources.ApplyResources(this.combobox_trainSelection, "combobox_trainSelection");
             this.combobox_trainSelection.Name = "combobox_trainSelection";
             this.combobox_trainSelection.Sorted = true;
             this.combobox_trainSelection.SelectedIndexChanged += new System.EventHandler(this.comboBox_Zugauswahl_SelectedIndexChanged);
@@ -82,13 +79,6 @@
             // 
             this.timer_CheckSticks.Interval = 10;
             this.timer_CheckSticks.Tick += new System.EventHandler(this.timer_CheckSticks_Tick);
-            // 
-            // comboBox_JoystickNumber
-            // 
-            this.comboBox_JoystickNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_JoystickNumber.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox_JoystickNumber, "comboBox_JoystickNumber");
-            this.comboBox_JoystickNumber.Name = "comboBox_JoystickNumber";
             // 
             // bgw_readScreen
             // 
@@ -99,8 +89,8 @@
             // 
             // listBox_debugInfo
             // 
-            this.listBox_debugInfo.FormattingEnabled = true;
             resources.ApplyResources(this.listBox_debugInfo, "listBox_debugInfo");
+            this.listBox_debugInfo.FormattingEnabled = true;
             this.listBox_debugInfo.Name = "listBox_debugInfo";
             // 
             // lbl_resolution
@@ -146,9 +136,9 @@
             // 
             // groupBox_ScanResults
             // 
+            resources.ApplyResources(this.groupBox_ScanResults, "groupBox_ScanResults");
             this.groupBox_ScanResults.Controls.Add(this.lbl_alternativeResult);
             this.groupBox_ScanResults.Controls.Add(this.lbl_originalResult);
-            resources.ApplyResources(this.groupBox_ScanResults, "groupBox_ScanResults");
             this.groupBox_ScanResults.Name = "groupBox_ScanResults";
             this.groupBox_ScanResults.TabStop = false;
             // 
@@ -156,18 +146,6 @@
             // 
             resources.ApplyResources(this.lbl_requests, "lbl_requests");
             this.lbl_requests.Name = "lbl_requests";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // btn_checkJoysticks
-            // 
-            resources.ApplyResources(this.btn_checkJoysticks, "btn_checkJoysticks");
-            this.btn_checkJoysticks.Name = "btn_checkJoysticks";
-            this.btn_checkJoysticks.UseVisualStyleBackColor = true;
-            this.btn_checkJoysticks.Click += new System.EventHandler(this.btn_checkJoysticks_Click);
             // 
             // lbl_scantime
             // 
@@ -188,8 +166,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.checkBox_autoscroll);
             this.Controls.Add(this.lbl_scantime);
-            this.Controls.Add(this.btn_checkJoysticks);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_requests);
             this.Controls.Add(this.groupBox_ScanResults);
             this.Controls.Add(this.check_deactivateGlobal);
@@ -198,7 +174,6 @@
             this.Controls.Add(this.btn_settings);
             this.Controls.Add(this.lbl_resolution);
             this.Controls.Add(this.listBox_debugInfo);
-            this.Controls.Add(this.comboBox_JoystickNumber);
             this.Controls.Add(this.combobox_trainSelection);
             this.Controls.Add(this.check_active);
             this.Controls.Add(this.list_inputs);
@@ -220,7 +195,6 @@
         private System.Windows.Forms.CheckBox check_active;
         private System.Windows.Forms.ComboBox combobox_trainSelection;
         private System.Windows.Forms.Timer timer_CheckSticks;
-        private System.Windows.Forms.ComboBox comboBox_JoystickNumber;
         private System.ComponentModel.BackgroundWorker bgw_readScreen;
         private System.Windows.Forms.Label lbl_resolution;
         private System.Windows.Forms.Button btn_settings;
@@ -231,9 +205,7 @@
         private System.Windows.Forms.Label lbl_alternativeResult;
         private System.Windows.Forms.GroupBox groupBox_ScanResults;
         private System.Windows.Forms.Label lbl_requests;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBox_debugInfo;
-        private System.Windows.Forms.Button btn_checkJoysticks;
         private System.Windows.Forms.Label lbl_scantime;
         private System.Windows.Forms.CheckBox checkBox_autoscroll;
     }

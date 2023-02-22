@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="list_inputs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 63</value>
+  </data>
   <data name="check_active.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 15</value>
   </data>
@@ -127,20 +130,35 @@
   <data name="check_active.Text" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="listBox_debugInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 184</value>
+  </data>
+  <data name="pictureBox_Screenshot_original.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 688</value>
+  </data>
+  <data name="pictureBox_Screenshot_alternative.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 718</value>
+  </data>
   <data name="check_deactivateGlobal.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 17</value>
   </data>
   <data name="check_deactivateGlobal.Text" xml:space="preserve">
     <value>Deactivate global</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 13</value>
+  <data name="groupBox_ScanResults.Location" type="System.Drawing.Point, System.Drawing">
+    <value>141, 63</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Joystick No.</value>
+  <data name="lbl_requests.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 168</value>
   </data>
-  <data name="btn_checkJoysticks.Text" xml:space="preserve">
-    <value>Reload joysticks</value>
+  <data name="lbl_scantime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 168</value>
+  </data>
+  <data name="checkBox_autoscroll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 167</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>331, 757</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

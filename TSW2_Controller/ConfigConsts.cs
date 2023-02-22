@@ -10,7 +10,7 @@ namespace TSW2_Controller
     {
         public static int arrayLength = 15;
 
-        public static int train = 0;
+        public static int trainName = 0;
         public static int description = 1;
         public static int controllerName = 2;
         public static int joystickNumber = 3;
@@ -26,7 +26,7 @@ namespace TSW2_Controller
         public static int timeFactor = 13;
         public static int longPress = 14;
 
-        public static string nameForGlobal = "_Global";
+        public static string globalTrainConfigName = "_Global";
 
 
         public static string configFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\TSW2_Controller\TrainConfigs\";

@@ -39,9 +39,6 @@ namespace TSW2_Controller {
 
         static TesseractEngine OCREngine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
 
-        bool[] currentlyPressedButtons = new bool[128];
-        bool[] previouslyPressedButtons = new bool[128];
-
         public static string[] inputNames = { "JoyX", "JoyY", "JoyZ", "pov", "RotX", "RotY", "RotZ", "Sldr" };
 
         bool isDeactivatedGlobally = false;
@@ -861,9 +858,9 @@ namespace TSW2_Controller {
                                 break;
                             }
                         }
-                        if (!found && values[ConfigConsts.controllerName] != "" && values[ConfigConsts.train] != "Zug") {
+                        if (!found && values[ConfigConsts.controllerName] != "" && values[ConfigConsts.trainName] != "Zug") {
                             groupBox_ScanResults.Show();
-                            lbl_originalResult.Text = values[ConfigConsts.train] + ":\"" + values[ConfigConsts.controllerName] + "\" not found!";
+                            lbl_originalResult.Text = values[ConfigConsts.trainName] + ":\"" + values[ConfigConsts.controllerName] + "\" not found!";
                         }
 
                         trainConfig.Add(values);
@@ -901,14 +898,7 @@ namespace TSW2_Controller {
             combobox_trainSelection.SelectedItem = "_Select train";
 
             foreach (string[] str in trainConfig) {
-                bool alreadyExists = false;
-                foreach (string tN in trainNames) {
-                    if (str[0] == tN) {
-                        alreadyExists = true;
-                    }
-                }
-
-                if (!alreadyExists && str[0] != "Zug" && str[0] != ConfigConsts.nameForGlobal) {
+                if (!trainNames.Contains(str[0]) && str[0] != "Zug" && str[0] != ConfigConsts.globalTrainConfigName) {
                     trainNames.Add(str[0]);
                 }
             }
@@ -918,11 +908,11 @@ namespace TSW2_Controller {
             //Reset Infos
             activeTrain.Clear();
 
-            //Was wurde ausgewählt
+            //What was selected
             string selection = combobox_trainSelection.Text;
 
             foreach (string[] str in trainConfig) {
-                if (str[ConfigConsts.train] == selection || (str[ConfigConsts.train] == ConfigConsts.nameForGlobal && !isDeactivatedGlobally)) {
+                if (str[ConfigConsts.trainName] == selection || (str[ConfigConsts.trainName] == ConfigConsts.globalTrainConfigName && !isDeactivatedGlobally)) {
                     //Alle Infos zum Ausgewählten Zug speichern
                     activeTrain.Add(str);
                 }
@@ -934,7 +924,7 @@ namespace TSW2_Controller {
             string selection = combobox_trainSelection.Text;
 
             foreach (string[] singleTrain in trainConfig) {
-                if (singleTrain[ConfigConsts.train] == selection) {
+                if (singleTrain[ConfigConsts.trainName] == selection) {
                     string selected_vControllername = singleTrain[ConfigConsts.controllerName];
                     if (selected_vControllername != "") {
                         foreach (VirtualController vc in vControllerList.ToList()) {
@@ -1001,14 +991,6 @@ namespace TSW2_Controller {
                     stick.GetObjectPropertiesById(deviceObject.ObjectId).Range = new InputRange(-100, 100);
                 }
                 sticks.Add(stick);
-            }
-
-            if (comboBox_JoystickNumber.Items.Count != sticks.Count) {
-                comboBox_JoystickNumber.Items.Clear();
-                for (int i = 0; i < sticks.Count; i++) {
-                    comboBox_JoystickNumber.Items.Add(i);
-                }
-                if (sticks.Count > 0) { comboBox_JoystickNumber.SelectedIndex = comboBox_JoystickNumber.Items.Count - 1; }
             }
 
             Log.Add(sticks.Count + " joysticks found", false, 1);
@@ -1129,112 +1111,17 @@ namespace TSW2_Controller {
             return 0;
         }
 
-        public void HandleButtons() {
-            for (int i = 0; i < activeTrain.Count; i++) {
-                //If it is a normal button on the joystick
-                if (activeTrain[i][ConfigConsts.inputType] == "Button") {
-                    int buttonNumber = Convert.ToInt32(activeTrain[i][ConfigConsts.joystickInput].Replace("B", ""));
-                    if (Convert.ToInt32(activeTrain[i][ConfigConsts.joystickNumber]) <= MainSticks.Count()) {
-                        currentlyPressedButtons[i] = ((bool[])((object[])joystickStates[Convert.ToInt32(activeTrain[i][ConfigConsts.joystickNumber])])[3])[buttonNumber];
-                    }
-                } else if (activeTrain[i][ConfigConsts.inputType].Contains("Button")) {
-                    //When an analog input is to become a button
-                    for (int o = 0; o < inputNames.Count(); o++) {
-                        if (activeTrain[i][ConfigConsts.joystickInput] == inputNames[o]) {
-                            int joyButtonValue = GetJoystickStateByName(activeTrain[i][ConfigConsts.joystickNumber], inputNames[o]);
-                            string[] convert = activeTrain[i][ConfigConsts.inputType].Replace("Button", "").Replace("[", "").Split(']');
-
-
-                            currentlyPressedButtons[i] = false;
-                            foreach (string single_convert in convert) {
-                                if (single_convert.Contains("=")) {
-                                    if (joyButtonValue == Convert.ToInt32(single_convert.Remove(0, 1))) {
-                                        currentlyPressedButtons[i] = true;
-                                        break;
-                                    } else {
-                                        currentlyPressedButtons[i] = false;
-                                    }
-                                } else if (single_convert.Contains(">")) {
-                                    if (joyButtonValue > Convert.ToInt32(single_convert.Remove(0, 1))) {
-                                        currentlyPressedButtons[i] = true;
-                                    } else {
-                                        currentlyPressedButtons[i] = false;
-                                        break;
-                                    }
-                                } else if (single_convert.Contains("<")) {
-                                    if (joyButtonValue < Convert.ToInt32(single_convert.Remove(0, 1))) {
-                                        currentlyPressedButtons[i] = true;
-                                    } else {
-                                        currentlyPressedButtons[i] = false;
-                                        break;
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
-
-
-            for (int i = 0; i < currentlyPressedButtons.Count(); i++) {
-                if (currentlyPressedButtons[i] != previouslyPressedButtons[i]) {
-                    if (currentlyPressedButtons[i] == true) {
-                        //on Press
-                        Log.Add("\"" + activeTrain[i][ConfigConsts.description] + "\" is getting pressed", true);
-                        if (activeTrain[i][ConfigConsts.keyCombination] != "") { Keyboard.ProcessAktion(activeTrain[i][ConfigConsts.keyCombination]); }
-                        if (activeTrain[i][ConfigConsts.action] != "") { Keyboard.KeyDown(Keyboard.ConvertStringToKey(activeTrain[i][ConfigConsts.action])); }
-                    } else {
-                        //on release
-                        Log.Add("\"" + activeTrain[i][ConfigConsts.description] + "\" is getting released", true);
-                        if (activeTrain[i][ConfigConsts.action] != "") { Keyboard.KeyUp(Keyboard.ConvertStringToKey(activeTrain[i][ConfigConsts.action])); }
-                    }
-                    previouslyPressedButtons[i] = currentlyPressedButtons[i];
-                }
-            }
-        }
-
         private void ShowJoystickData() {
-            //Which joystick was selected
-            int selectedJoystickIndex = Convert.ToInt32(comboBox_JoystickNumber.SelectedItem);
-
-            //From all joysticks, select only the selected one
-            if (selectedJoystickIndex < joystickStates.Count) {
-                int counter = 1;
-                int topIndex = list_inputs.TopIndex;
-
-                object[] selectedJoystick = (object[])joystickStates[Convert.ToInt32(selectedJoystickIndex)];
-                for (int i = 0; i < ((bool[])selectedJoystick[3]).Length; i++) {
-                    if (((bool[])selectedJoystick[3])[i]) {
-                        //Show the pressed button
-                        if (counter <= list_inputs.Items.Count) {
-                            list_inputs.Items[counter - 1] = "B" + i;
-                        } else {
-                            list_inputs.Items.Add("B" + i);
-                        }
-                        counter++;
-                    }
-                }
-                for (int i = 0; i < ((int[])selectedJoystick[1]).Length; i++) {
-                    if (((int[])selectedJoystick[1])[i] != 0) {
-                        //Show the joystick value only if it is != 0
-                        if (counter <= list_inputs.Items.Count) {
-                            list_inputs.Items[counter - 1] = ((string[])selectedJoystick[2])[i] + "  " + ((int[])selectedJoystick[1])[i];
-                        } else {
-                            list_inputs.Items.Add(((string[])selectedJoystick[2])[i] + "  " + ((int[])selectedJoystick[1])[i]);
-                        }
-                        counter++;
-                    }
-                }
-                for (int o = list_inputs.Items.Count - counter; o >= 0; o--) {
-                    list_inputs.Items[list_inputs.Items.Count - o - 1] = "";
-                }
-                if (list_inputs.Items.Count > topIndex) {
-                    list_inputs.TopIndex = topIndex;
-                }
-            } else {
-                if (list_inputs.Items.Count > 0) { list_inputs.Items.Clear(); }
+            if(list_inputs.Items.Count != 3) {
+                list_inputs.Items.Clear();
+                list_inputs.Items.Add("0");
+                list_inputs.Items.Add("1");
+                list_inputs.Items.Add("2");
             }
+
+            list_inputs.Items[0] = controlHoldNeeded ? "FD" : "AP";
+            list_inputs.Items[1] = "THRUST " + desiredThrustPercent;
+            list_inputs.Items[2] = "BRAKE " + desiredBrakePercent;
         }
         #endregion
 
@@ -1254,7 +1141,7 @@ namespace TSW2_Controller {
 
             //When active
             if (check_active.Checked) {
-                if (MainSticks.Length > 0) {
+                if (MainSticks.Length == 0) {
                     //Check the individual controls
                     handleVControllers();
 
@@ -1262,12 +1149,9 @@ namespace TSW2_Controller {
                         //Check if text can be read
                         bgw_readScreen.RunWorkerAsync();
                     }
-
-                    //Check the individual joystick buttons
-                    HandleButtons();
                 } else {
                     check_active.Checked = false;
-                    MessageBox.Show("No joystick connected!");
+                    MessageBox.Show("No joystick allowed!");
                 }
             }
 

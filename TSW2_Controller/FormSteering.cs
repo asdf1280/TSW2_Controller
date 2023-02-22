@@ -27,9 +27,9 @@ namespace TSW2_Controller
             FormMain formMain = new FormMain();
             trainConfig = formMain.trainConfig;
 
-            comboBoxT0_Zugauswahl.Items.Add(ConfigConsts.nameForGlobal);
+            comboBoxT0_Zugauswahl.Items.Add(ConfigConsts.globalTrainConfigName);
             comboBoxT0_Zugauswahl.Items.AddRange(formMain.trainNames.ToArray());
-            comboBoxT0_Zugauswahl.SelectedItem = ConfigConsts.nameForGlobal;
+            comboBoxT0_Zugauswahl.SelectedItem = ConfigConsts.globalTrainConfigName;
 
             lblT1_KnopfNr.Text = "Button no.";
             lblT3_AnzahlStufen.Hide();
@@ -74,7 +74,7 @@ namespace TSW2_Controller
         #region T0
         private void comboBoxT0_Zugauswahl_TextChanged(object sender, EventArgs e)
         {
-            if (comboBoxT0_Zugauswahl.Text == ConfigConsts.nameForGlobal)
+            if (comboBoxT0_Zugauswahl.Text == ConfigConsts.globalTrainConfigName)
             {
                 btnT0_editRegler.Enabled = false;
             }
@@ -92,7 +92,7 @@ namespace TSW2_Controller
                 comboBoxT1_KnopfAuswahl.Items.Clear();
                 foreach (string[] cfg in trainConfig)
                 {
-                    if ((cfg[ConfigConsts.train] == selectedTrain && cfg[ConfigConsts.inputType] == "Button") || (cfg[ConfigConsts.train] == selectedTrain && cfg[ConfigConsts.inputType].Contains("[")))
+                    if ((cfg[ConfigConsts.trainName] == selectedTrain && cfg[ConfigConsts.inputType] == "Button") || (cfg[ConfigConsts.trainName] == selectedTrain && cfg[ConfigConsts.inputType].Contains("[")))
                     {
                         comboBoxT1_KnopfAuswahl.Items.Add(cfg[ConfigConsts.description]);
                     }
@@ -133,7 +133,7 @@ namespace TSW2_Controller
             {
                 if (MessageBox.Show("Do you really want to remove \"" + selectedTrain + "?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    if (selectedTrain != ConfigConsts.nameForGlobal)
+                    if (selectedTrain != ConfigConsts.globalTrainConfigName)
                     {
                         comboBoxT0_Zugauswahl.Items.Remove(selectedTrain);
                     }
@@ -141,7 +141,7 @@ namespace TSW2_Controller
                     int counter = 0;
                     for (int i = 0; i < trainConfig.Count; i++)
                     {
-                        if (trainConfig[i][ConfigConsts.train] == selectedTrain)
+                        if (trainConfig[i][ConfigConsts.trainName] == selectedTrain)
                         {
                             trainConfig.RemoveAt(i);
                             i--;
@@ -263,7 +263,7 @@ namespace TSW2_Controller
             //Wenn ich die Auswahl vom Knopfnamen ändere
             foreach (string[] singleTrain in trainConfig)
             {
-                if (singleTrain[ConfigConsts.train] == selectedTrain && singleTrain[ConfigConsts.description] == comboBoxT1_KnopfAuswahl.Text)
+                if (singleTrain[ConfigConsts.trainName] == selectedTrain && singleTrain[ConfigConsts.description] == comboBoxT1_KnopfAuswahl.Text)
                 {
                     if (singleTrain[ConfigConsts.inputType].Contains("["))
                     {
@@ -351,7 +351,7 @@ namespace TSW2_Controller
                 for (int i = 0; i < trainConfig.Count; i++)
                 {
                     string[] singleTrain = trainConfig[i];
-                    if (singleTrain[ConfigConsts.train] == selectedTrain && singleTrain[ConfigConsts.description] == comboBoxT1_KnopfAuswahl.Text)
+                    if (singleTrain[ConfigConsts.trainName] == selectedTrain && singleTrain[ConfigConsts.description] == comboBoxT1_KnopfAuswahl.Text)
                     {
                         singleTrain[ConfigConsts.joystickNumber] = txtT1_JoystickNr.Text;
                         if (!t1IsJoyButton) { singleTrain[ConfigConsts.inputType] = "Button"; } else { singleTrain[ConfigConsts.inputType] = "Button[" + txtT1_Bedingung.Text.Replace(" ", "][") + "]"; }
@@ -367,7 +367,7 @@ namespace TSW2_Controller
                 {
                     string[] singleTrain = new string[trainConfig[0].Length];
 
-                    singleTrain[ConfigConsts.train] = selectedTrain;
+                    singleTrain[ConfigConsts.trainName] = selectedTrain;
                     singleTrain[ConfigConsts.description] = comboBoxT1_KnopfAuswahl.Text;
                     singleTrain[ConfigConsts.joystickNumber] = txtT1_JoystickNr.Text;
                     if (!t1IsJoyButton) { singleTrain[ConfigConsts.inputType] = "Button"; } else { singleTrain[ConfigConsts.inputType] = "Button[" + txtT1_Bedingung.Text.Replace(" ", "][") + "]"; }
@@ -498,7 +498,7 @@ namespace TSW2_Controller
             for (int i = 0; i < trainConfig.Count; i++)
             {
                 string[] singleTrain = trainConfig[i];
-                if (singleTrain[ConfigConsts.train] == selectedTrain && singleTrain[ConfigConsts.description] == comboBoxT1_KnopfAuswahl.Text)
+                if (singleTrain[ConfigConsts.trainName] == selectedTrain && singleTrain[ConfigConsts.description] == comboBoxT1_KnopfAuswahl.Text)
                 {
                     trainConfig.RemoveAt(i);
                     comboBoxT1_KnopfAuswahl.Items.Remove(comboBoxT1_KnopfAuswahl.Text);
@@ -660,7 +660,7 @@ namespace TSW2_Controller
 
             foreach (string[] singleTrain in trainConfig)
             {
-                if (singleTrain[ConfigConsts.train] == selectedTrain)
+                if (singleTrain[ConfigConsts.trainName] == selectedTrain)
                 {
                     if ((singleTrain[ConfigConsts.keyCombination] == "Schub" && radioT3_Schub.Checked) || (singleTrain[ConfigConsts.keyCombination] == "Bremse" && radioT3_Bremse.Checked) || (singleTrain[ConfigConsts.keyCombination] == "Kombihebel" && radioT3_Kombihebel.Checked))
                     {
@@ -779,7 +779,7 @@ namespace TSW2_Controller
                 for (int i = 0; i < trainConfig.Count; i++)
                 {
                     string[] singleTrain = trainConfig[i];
-                    if (singleTrain[ConfigConsts.train] == selectedTrain && ((singleTrain[ConfigConsts.keyCombination] == "Schub" && radioT3_Schub.Checked) || (singleTrain[ConfigConsts.keyCombination] == "Bremse" && radioT3_Bremse.Checked) || (singleTrain[ConfigConsts.keyCombination] == "Kombihebel" && radioT3_Kombihebel.Checked)))
+                    if (singleTrain[ConfigConsts.trainName] == selectedTrain && ((singleTrain[ConfigConsts.keyCombination] == "Schub" && radioT3_Schub.Checked) || (singleTrain[ConfigConsts.keyCombination] == "Bremse" && radioT3_Bremse.Checked) || (singleTrain[ConfigConsts.keyCombination] == "Kombihebel" && radioT3_Kombihebel.Checked)))
                     {
                         if (txtT3_JoyAchse.Text == "" && txtT3_JoyNr.Text == "" && txtT3_AnzahlStufen.Text == "" && txtT3_JoyUmrechnen.Text == "" && txtT3_Zeitfaktor.Text == "" && txtT3_LongPress.Text == "" && txtT3_Sonderfaelle.Text == "")
                         {
@@ -788,7 +788,7 @@ namespace TSW2_Controller
                         }
                         else if (ok)
                         {
-                            singleTrain[ConfigConsts.train] = selectedTrain;
+                            singleTrain[ConfigConsts.trainName] = selectedTrain;
                             singleTrain[ConfigConsts.joystickNumber] = txtT3_JoyNr.Text;
                             singleTrain[ConfigConsts.joystickInput] = txtT3_JoyAchse.Text;
                             singleTrain[ConfigConsts.steps] = txtT3_AnzahlStufen.Text;
@@ -810,7 +810,7 @@ namespace TSW2_Controller
                 if (!ersetzt && ok)
                 {
                     string[] singleTrain = new string[trainConfig[0].Length];
-                    singleTrain[ConfigConsts.train] = selectedTrain;
+                    singleTrain[ConfigConsts.trainName] = selectedTrain;
                     singleTrain[ConfigConsts.joystickNumber] = txtT3_JoyNr.Text;
                     singleTrain[ConfigConsts.joystickInput] = txtT3_JoyAchse.Text;
                     singleTrain[ConfigConsts.steps] = txtT3_AnzahlStufen.Text;
