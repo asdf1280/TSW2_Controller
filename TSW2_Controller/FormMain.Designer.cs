@@ -69,12 +69,12 @@
             this.check_active.UseVisualStyleBackColor = false;
             this.check_active.CheckedChanged += new System.EventHandler(this.check_active_CheckedChanged);
             // 
-            // comboBox_Zugauswahl
+            // combobox_trainSelection
             // 
             this.combobox_trainSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combobox_trainSelection.FormattingEnabled = true;
-            resources.ApplyResources(this.combobox_trainSelection, "comboBox_Zugauswahl");
-            this.combobox_trainSelection.Name = "comboBox_Zugauswahl";
+            resources.ApplyResources(this.combobox_trainSelection, "combobox_trainSelection");
+            this.combobox_trainSelection.Name = "combobox_trainSelection";
             this.combobox_trainSelection.Sorted = true;
             this.combobox_trainSelection.SelectedIndexChanged += new System.EventHandler(this.comboBox_Zugauswahl_SelectedIndexChanged);
             // 
@@ -206,6 +206,7 @@
             this.Name = "FormMain";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
+            this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot_original)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot_alternativ)).EndInit();
             this.groupBox_ScanErgebnisse.ResumeLayout(false);

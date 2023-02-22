@@ -36,7 +36,7 @@ namespace TSW2_Controller {
 
         List<object[]> joystickStates = new List<object[]>(); // id, joyInputs, inputNames, buttons
 
-        static TesseractEngine OCREngine = new TesseractEngine(@"./tessdata", "deu", EngineMode.Default);
+        static TesseractEngine OCREngine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
 
         bool[] currentlyPressedButtons = new bool[128];
         bool[] previouslyPressedButtons = new bool[128];
@@ -51,10 +51,12 @@ namespace TSW2_Controller {
 
         public FormMain() {
             checkVersion();
-            checkLanguageSetting();
 
             Log.Add("Init components");
             InitializeComponent();
+
+            // Improves single line reading performance
+            OCREngine.DefaultPageSegMode = PageSegMode.SingleLine;
 
             Log.Add("Check Files");
             #region File structure checking

@@ -170,25 +170,25 @@
   <data name="&gt;&gt;check_active.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="comboBox_Zugauswahl.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="combobox_trainSelection.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 13</value>
   </data>
-  <data name="comboBox_Zugauswahl.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="combobox_trainSelection.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
   </data>
-  <data name="comboBox_Zugauswahl.TabIndex" type="System.Int32, mscorlib">
+  <data name="combobox_trainSelection.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="&gt;&gt;comboBox_Zugauswahl.Name" xml:space="preserve">
-    <value>comboBox_Zugauswahl</value>
+  <data name="&gt;&gt;combobox_trainSelection.Name" xml:space="preserve">
+    <value>combobox_trainSelection</value>
   </data>
-  <data name="&gt;&gt;comboBox_Zugauswahl.Type" xml:space="preserve">
+  <data name="&gt;&gt;combobox_trainSelection.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboBox_Zugauswahl.Parent" xml:space="preserve">
+  <data name="&gt;&gt;combobox_trainSelection.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;comboBox_Zugauswahl.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;combobox_trainSelection.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
   <metadata name="timer_CheckSticks.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
