@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.lst_inputs = new System.Windows.Forms.ListBox();
             this.check_active = new System.Windows.Forms.CheckBox();
-            this.comboBox_Zugauswahl = new System.Windows.Forms.ComboBox();
+            this.combobox_trainSelection = new System.Windows.Forms.ComboBox();
             this.timer_CheckSticks = new System.Windows.Forms.Timer(this.components);
             this.comboBox_JoystickNumber = new System.Windows.Forms.ComboBox();
             this.bgw_readScreen = new System.ComponentModel.BackgroundWorker();
@@ -71,12 +71,12 @@
             // 
             // comboBox_Zugauswahl
             // 
-            this.comboBox_Zugauswahl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_Zugauswahl.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox_Zugauswahl, "comboBox_Zugauswahl");
-            this.comboBox_Zugauswahl.Name = "comboBox_Zugauswahl";
-            this.comboBox_Zugauswahl.Sorted = true;
-            this.comboBox_Zugauswahl.SelectedIndexChanged += new System.EventHandler(this.comboBox_Zugauswahl_SelectedIndexChanged);
+            this.combobox_trainSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combobox_trainSelection.FormattingEnabled = true;
+            resources.ApplyResources(this.combobox_trainSelection, "comboBox_Zugauswahl");
+            this.combobox_trainSelection.Name = "comboBox_Zugauswahl";
+            this.combobox_trainSelection.Sorted = true;
+            this.combobox_trainSelection.SelectedIndexChanged += new System.EventHandler(this.comboBox_Zugauswahl_SelectedIndexChanged);
             // 
             // timer_CheckSticks
             // 
@@ -199,14 +199,13 @@
             this.Controls.Add(this.lbl_resolution);
             this.Controls.Add(this.listBox_debugInfo);
             this.Controls.Add(this.comboBox_JoystickNumber);
-            this.Controls.Add(this.comboBox_Zugauswahl);
+            this.Controls.Add(this.combobox_trainSelection);
             this.Controls.Add(this.check_active);
             this.Controls.Add(this.lst_inputs);
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
-            this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot_original)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot_alternativ)).EndInit();
             this.groupBox_ScanErgebnisse.ResumeLayout(false);
@@ -219,7 +218,7 @@
         #endregion
         private System.Windows.Forms.ListBox lst_inputs;
         private System.Windows.Forms.CheckBox check_active;
-        private System.Windows.Forms.ComboBox comboBox_Zugauswahl;
+        private System.Windows.Forms.ComboBox combobox_trainSelection;
         private System.Windows.Forms.Timer timer_CheckSticks;
         private System.Windows.Forms.ComboBox comboBox_JoystickNumber;
         private System.ComponentModel.BackgroundWorker bgw_readScreen;

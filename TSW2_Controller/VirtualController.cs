@@ -27,7 +27,7 @@ namespace TSW2_Controller
         public List<string[]> specialCases = new List<string[]>();
         public List<int[]> longPress = new List<int[]>();
         public bool waitToFinishMovement;
-        public bool istStufenlos = false;
+        public bool isStepless = false;
         public bool toleranceMem = false;
 
 
