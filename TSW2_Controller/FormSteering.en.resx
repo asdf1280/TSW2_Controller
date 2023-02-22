@@ -181,9 +181,6 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Joy no.</value>
   </data>
-  <data name="btnT1_Erkennen.Text" xml:space="preserve">
-    <value>Detect</value>
-  </data>
   <data name="lblT1_KnopfNr.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 13</value>
   </data>

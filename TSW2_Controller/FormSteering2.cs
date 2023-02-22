@@ -1,5 +1,4 @@
-﻿using SharpDX.DirectInput;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -110,178 +109,6 @@ namespace TSW2_Controller
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        private void timer_CheckJoysticks_Tick(object sender, EventArgs e)
-        {
-            int counter = 1;
-            int topIndex = listBox_ShowJoystickStates.TopIndex;
-            for (int i = 0; i < FormMain.MainSticks.Length; i++)
-            {
-                int[] joyInputs = new int[8];
-
-                JoystickState state = new JoystickState();
-
-                state = FormMain.MainSticks[i].GetCurrentState();
-
-                joyInputs[0] = state.X;
-                joyInputs[1] = state.Y;
-                joyInputs[2] = state.Z;
-                joyInputs[3] = state.PointOfViewControllers[0] + 1;
-                joyInputs[4] = state.RotationX;
-                joyInputs[5] = state.RotationY;
-                joyInputs[6] = state.RotationZ;
-                joyInputs[7] = state.Sliders[0];
-
-
-                for (int o = 0; o < state.Buttons.Count(); o++)
-                {
-                    if (state.Buttons[o] == true)
-                    {
-
-                        if (counter <= listBox_ShowJoystickStates.Items.Count)
-                        {
-                            listBox_ShowJoystickStates.Items[counter - 1] = "No:" + i + " B" + o;
-                        }
-                        else
-                        {
-                            listBox_ShowJoystickStates.Items.Add("No:" + i + " B" + o);
-                        }
-                        counter++;
-                    }
-                }
-                for (int o = 0; o < joyInputs.Length; o++)
-                {
-                    if (joyInputs[o] != 0)
-                    {
-                        //Zeige den Joystick-Wert nur, wenn er != 0 ist
-                        if (counter <= listBox_ShowJoystickStates.Items.Count)
-                        {
-                            listBox_ShowJoystickStates.Items[counter - 1] = "No:" + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o];
-                        }
-                        else
-                        {
-                            listBox_ShowJoystickStates.Items.Add("No:" + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o]);
-                        }
-                        counter++;
-                    }
-                }
-
-                string textOutput = "";
-                try
-                {
-                    for (int o = 0; i < FormMain.inputNames.Count(); o++)
-                    {
-                        if (FormMain.inputNames[o] == txtR_JoyAchse.Text && i.ToString() == txtR_JoyNr.Text)
-                        {
-                            textOutput = joyInputs[o].ToString() + " ";
-                            for (int j = 0; j < customController.Count; j++)
-                            {
-                                if (j + 1 > customController.Count - 1)
-                                {
-                                    joyInputs[o] = Convert.ToInt32(customController[j][1]);
-                                    textOutput += "-> " + joyInputs[o].ToString() + " ";
-                                    break;
-                                }
-                                else
-                                {
-                                    if (joyInputs[o] >= Convert.ToInt32(customController[j][0]) && joyInputs[o] < Convert.ToInt32(customController[j + 1][0]))
-                                    {
-                                        double steigung = (Convert.ToDouble(customController[j + 1][1]) - Convert.ToDouble(customController[j][1])) / (Convert.ToDouble(customController[j + 1][0]) - Convert.ToDouble(customController[j][0]));
-
-                                        joyInputs[o] = Convert.ToInt32(Math.Round(((joyInputs[o] - Convert.ToDouble(customController[j + 1][0])) * steigung) + Convert.ToDouble(customController[j + 1][1]), 0));
-                                        textOutput += "-> " + joyInputs[o].ToString() + " ";
-                                        break;
-                                    }
-                                }
-                            }
-
-                            progressBar_Joystick.Value = joyInputs[o] + 100;
-                        }
-
-
-                        if (txtR_InputUmrechnen.Text.Length >= 3 && txtR_JoyAchse.Text == FormMain.inputNames[o])
-                        {
-                            try
-                            {
-                                string[] umrechnen = txtR_InputUmrechnen.Text.Split(' ');
-
-                                foreach (string single_umrechnen in umrechnen)
-                                {
-                                    if (single_umrechnen.Contains("|"))
-                                    {
-                                        int von = Convert.ToInt32(single_umrechnen.Remove(single_umrechnen.IndexOf("|"), single_umrechnen.Length - single_umrechnen.IndexOf("|")));
-
-                                        string temp_bis = single_umrechnen.Remove(0, single_umrechnen.IndexOf("|") + 1);
-                                        int index = temp_bis.IndexOf("=");
-                                        int bis = Convert.ToInt32(temp_bis.Remove(index, temp_bis.Length - index));
-                                        int entsprechendeNummer = Convert.ToInt32(single_umrechnen.Remove(0, single_umrechnen.IndexOf("=") + 1));
-
-                                        if (von <= joyInputs[o] && joyInputs[o] <= bis)
-                                        {
-                                            joyInputs[o] = entsprechendeNummer;
-                                            textOutput += "-> " + joyInputs[o] + " ";
-                                            break;
-                                        }
-                                        else if (von >= joyInputs[o] && joyInputs[o] >= bis)
-                                        {
-                                            joyInputs[o] = entsprechendeNummer;
-                                            textOutput += "-> " + joyInputs[o] + " ";
-                                            break;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        int index = single_umrechnen.IndexOf("=");
-                                        int gesuchteNummer = Convert.ToInt32(single_umrechnen.Remove(index, single_umrechnen.Length - index));
-                                        int entsprechendeNummer = Convert.ToInt32(single_umrechnen.Remove(0, index + 1));
-
-                                        if (joyInputs[o] == gesuchteNummer)
-                                        {
-                                            joyInputs[o] = entsprechendeNummer;
-                                            textOutput += "-> " + joyInputs[o] + " ";
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            catch
-                            {
-
-                            }
-                        }
-
-                        if (txtR_JoyAchse.Text == FormMain.inputNames[o])
-                        {
-                            if (radioR_Stufen.Checked)
-                            {
-                                try
-                                {
-                                    joyInputs[o] = Convert.ToInt32(Math.Round(joyInputs[o] * (Convert.ToDouble(txtR_AnzahlStufen.Text) / 100), 0));
-                                    textOutput += "-> " + joyInputs[o];
-                                }
-                                catch
-                                {
-
-                                }
-                            }
-                        }
-                    }
-                }
-                catch
-                {
-
-                }
-
-                lblR_ReglerStand.Text = textOutput;
-            }
-            for (int o = listBox_ShowJoystickStates.Items.Count - counter; o >= 0; o--)
-            {
-                listBox_ShowJoystickStates.Items[listBox_ShowJoystickStates.Items.Count - o - 1] = "";
-            }
-            if (listBox_ShowJoystickStates.Items.Count > topIndex)
-            {
-                listBox_ShowJoystickStates.TopIndex = topIndex;
-            }
-        }
         private void hilfeToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -567,95 +394,7 @@ namespace TSW2_Controller
         }
 
         #region Regler
-        private void btnR_Erkennen_Click(object sender, EventArgs e)
-        {
-            getNumberAndJoy();//First one may contain false information
-            Thread.Sleep(30);
-            string[] output = getNumberAndJoy();
-
-            txtR_JoyNr.Text = output[0];
-            txtR_JoyAchse.Text = output[1];
-
-
-            string[] getNumberAndJoy()
-            {
-                bool wait = true;
-                List<int[]> JoyStateCurrent = new List<int[]>();
-                List<int[]> JoyStateStart = new List<int[]>();
-                for (int i = 0; i < FormMain.MainSticks.Length; i++)
-                {
-                    int[] joyInputs = new int[8];
-
-                    JoystickState state = new JoystickState();
-
-                    state = FormMain.MainSticks[i].GetCurrentState();
-
-                    joyInputs[0] = state.X;
-                    joyInputs[1] = state.Y;
-                    joyInputs[2] = state.Z;
-                    joyInputs[3] = state.PointOfViewControllers[0] + 1;
-                    joyInputs[4] = state.RotationX;
-                    joyInputs[5] = state.RotationY;
-                    joyInputs[6] = state.RotationZ;
-                    joyInputs[7] = state.Sliders[0];
-
-                    JoyStateStart.Add(joyInputs);
-                }
-
-                Stopwatch timeout = new Stopwatch();
-                timeout.Start();
-                while (wait)
-                {
-                    try
-                    {
-                        JoyStateCurrent.Clear();
-                        for (int i = 0; i < FormMain.MainSticks.Length; i++)
-                        {
-                            int[] joyInputs = new int[8];
-
-                            JoystickState state = new JoystickState();
-
-                            state = FormMain.MainSticks[i].GetCurrentState();
-
-                            joyInputs[0] = state.X;
-                            joyInputs[1] = state.Y;
-                            joyInputs[2] = state.Z;
-                            joyInputs[3] = state.PointOfViewControllers[0] + 1;
-                            joyInputs[4] = state.RotationX;
-                            joyInputs[5] = state.RotationY;
-                            joyInputs[6] = state.RotationZ;
-                            joyInputs[7] = state.Sliders[0];
-
-                            JoyStateCurrent.Add(joyInputs);
-                        }
-                        Thread.Sleep(10);
-                        if (JoyStateStart.Count == JoyStateCurrent.Count)
-                        {
-                            for (int id = 0; id < JoyStateCurrent.Count(); id++)
-                            {
-                                for (int input = 0; input < JoyStateCurrent[id].Count(); input++)
-                                {
-                                    if (Math.Abs(JoyStateStart[id][input] - JoyStateCurrent[id][input]) > 30)
-                                    {
-                                        return new string[] { id.ToString(), FormMain.inputNames[input] };
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.ErrorException(ex);
-                    }
-                    if (timeout.ElapsedMilliseconds > 5000)
-                    {
-                        wait = false;
-                    }
-                }
-                timeout.Stop();
-                return new string[] { "/", "/" };
-            }
-        }
+        
         private void btn_R_eigenes_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Visible)
@@ -806,15 +545,17 @@ namespace TSW2_Controller
                         ok = false;
                         MessageBox.Show("Please select \"" + radioR_Stufenlos.Text + "\" or \"" + radioR_Stufen.Text + "\"");
                     }
+                    txtR_JoyNr.Text = "0";
                     if (txtR_JoyNr.Text == "" || !txtR_JoyNr.Text.All(char.IsDigit))
                     {
                         ok = false;
-                        MessageBox.Show("Error with Joy no.");
+                        MessageBox.Show("Error with Joy no. Try to enter some random number.");
                     }
-                    if (txtR_JoyAchse.Text == "" || !FormMain.inputNames.Any(txtR_JoyAchse.Text.Equals))
+                    txtR_JoyAchse.Text = "FakeAxis";
+                    if (txtR_JoyAchse.Text == "")
                     {
                         ok = false;
-                        MessageBox.Show("Error with Joy-Axis");
+                        MessageBox.Show("Error with Joy-Axis. Try to enter some random stuff.");
                     }
                     if (radioR_Stufen.Checked && (!txtR_AnzahlStufen.Text.All(char.IsDigit) || txtR_AnzahlStufen.Text == ""))
                     {
@@ -952,142 +693,6 @@ namespace TSW2_Controller
         #endregion
 
         #region Knöpfe
-        private void btnB_Erkennen_Click(object sender, EventArgs e)
-        {
-            string[] output = new string[] { "", "" };
-
-            if (radioB_normal.Checked)
-            {
-                output = getNumberAndButton();
-            }
-            else
-            {
-                output = getNumberAndJoy();
-            }
-
-            txtB_JoystickNr.Text = output[0];
-            txtB_JoystickKnopf.Text = output[1];
-
-
-            string[] getNumberAndButton()
-            {
-                bool wait = true;
-                int counter = 0;
-                while (wait)
-                {
-                    try
-                    {
-                        for (int i = 0; i < FormMain.MainSticks.Length; i++)
-                        {
-                            int[] joyInputs = new int[8];
-
-                            JoystickState state = new JoystickState();
-
-                            state = FormMain.MainSticks[i].GetCurrentState();
-
-                            bool[] Buttons = state.Buttons;
-                            for (int j = 0; j < Buttons.Length; j++)
-                            {
-                                if (Buttons[j] == true)
-                                {
-                                    return new string[] { i.ToString(), "B" + j };
-                                }
-                            }
-
-                        }
-                        Thread.Sleep(10);
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.ErrorException(ex);
-                    }
-                    counter++;
-                    if (counter > 200)
-                    {
-                        wait = false;
-                    }
-                }
-                return new string[] { "/", "/" };
-            }
-            string[] getNumberAndJoy()
-            {
-                bool wait = true;
-                List<int[]> JoyStateCurrent = new List<int[]>();
-                List<int[]> JoyStateStart = new List<int[]>();
-                for (int i = 0; i < FormMain.MainSticks.Length; i++)
-                {
-                    int[] joyInputs = new int[8];
-
-                    JoystickState state = new JoystickState();
-
-                    state = FormMain.MainSticks[i].GetCurrentState();
-
-                    joyInputs[0] = state.X;
-                    joyInputs[1] = state.Y;
-                    joyInputs[2] = state.Z;
-                    joyInputs[3] = state.PointOfViewControllers[0] + 1;
-                    joyInputs[4] = state.RotationX;
-                    joyInputs[5] = state.RotationY;
-                    joyInputs[6] = state.RotationZ;
-                    joyInputs[7] = state.Sliders[0];
-
-                    JoyStateStart.Add(joyInputs);
-                }
-
-                int counter = 0;
-                while (wait)
-                {
-                    try
-                    {
-
-                        JoyStateCurrent.Clear();
-                        for (int i = 0; i < FormMain.MainSticks.Length; i++)
-                        {
-                            int[] joyInputs = new int[8];
-
-                            JoystickState state = new JoystickState();
-
-                            state = FormMain.MainSticks[i].GetCurrentState();
-
-                            joyInputs[0] = state.X;
-                            joyInputs[1] = state.Y;
-                            joyInputs[2] = state.Z;
-                            joyInputs[3] = state.PointOfViewControllers[0] + 1;
-                            joyInputs[4] = state.RotationX;
-                            joyInputs[5] = state.RotationY;
-                            joyInputs[6] = state.RotationZ;
-                            joyInputs[7] = state.Sliders[0];
-
-                            JoyStateCurrent.Add(joyInputs);
-                        }
-                        Thread.Sleep(10);
-                        if (JoyStateStart.Count == JoyStateCurrent.Count)
-                        {
-                            for (int id = 0; id < JoyStateCurrent.Count(); id++)
-                            {
-                                for (int input = 0; input < JoyStateCurrent[id].Count(); input++)
-                                {
-                                    if (Math.Abs(JoyStateStart[id][input] - JoyStateCurrent[id][input]) > 30)
-                                    {
-                                        return new string[] { id.ToString(), FormMain.inputNames[input] };
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.ErrorException(ex);
-                    }
-                    counter++;
-                    if (counter > 200)
-                    {
-                        wait = false;
-                    }
-                }
-                return new string[] { "/", "/" };
-            }
-        }
         private void comboBoxB_KnopfAuswahl_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (string[] singleTrain in trainConfig)
@@ -1174,7 +779,8 @@ namespace TSW2_Controller
                         ok = false;
                         MessageBox.Show("Error with Joy no.");
                     }
-                    if (txtB_JoystickKnopf.Text == "" || (!FormMain.inputNames.Any(txtB_JoystickKnopf.Text.Equals) && radioB_regler.Checked))
+                    txtB_JoystickKnopf.Text = "69";
+                    if (txtB_JoystickKnopf.Text == "")
                     {
                         ok = false;
                         if (radioB_normal.Checked)

@@ -157,9 +157,6 @@
   <data name="btnR_Speichern.Text" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="btnR_Erkennen.Text" xml:space="preserve">
-    <value>Detect</value>
-  </data>
   <data name="btn_R_eigenes.Text" xml:space="preserve">
     <value>Edit</value>
   </data>
@@ -216,9 +213,6 @@
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Joy-No.</value>
-  </data>
-  <data name="btnB_Erkennen.Text" xml:space="preserve">
-    <value>Detect</value>
   </data>
   <data name="lblR_KnopfNr.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 13</value>

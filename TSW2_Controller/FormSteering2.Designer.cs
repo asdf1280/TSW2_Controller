@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSteering2));
-            this.timer_CheckJoysticks = new System.Windows.Forms.Timer(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnT1_back = new System.Windows.Forms.Button();
             this.groupBoxT1_Regler = new System.Windows.Forms.GroupBox();
@@ -57,7 +55,6 @@
             this.lblR_ReglerStand = new System.Windows.Forms.Label();
             this.radioR_Stufenlos = new System.Windows.Forms.RadioButton();
             this.btnR_Speichern = new System.Windows.Forms.Button();
-            this.btnR_Erkennen = new System.Windows.Forms.Button();
             this.btn_R_eigenes = new System.Windows.Forms.Button();
             this.txtR_AnzahlStufen = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -87,7 +84,6 @@
             this.comboBoxB_KnopfAuswahl = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtB_JoystickNr = new System.Windows.Forms.TextBox();
-            this.btnB_Erkennen = new System.Windows.Forms.Button();
             this.lblR_KnopfNr = new System.Windows.Forms.Label();
             this.txtB_JoystickKnopf = new System.Windows.Forms.TextBox();
             this.radioB_regler = new System.Windows.Forms.RadioButton();
@@ -157,11 +153,6 @@
             this.groupBox1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // timer_CheckJoysticks
-            // 
-            this.timer_CheckJoysticks.Enabled = true;
-            this.timer_CheckJoysticks.Tick += new System.EventHandler(this.timer_CheckJoysticks_Tick);
             // 
             // tabPage2
             // 
@@ -268,7 +259,6 @@
             this.panel_Regler.Controls.Add(this.lblR_ReglerStand);
             this.panel_Regler.Controls.Add(this.radioR_Stufenlos);
             this.panel_Regler.Controls.Add(this.btnR_Speichern);
-            this.panel_Regler.Controls.Add(this.btnR_Erkennen);
             this.panel_Regler.Controls.Add(this.btn_R_eigenes);
             this.panel_Regler.Controls.Add(this.txtR_AnzahlStufen);
             this.panel_Regler.Controls.Add(this.dataGridView1);
@@ -378,13 +368,6 @@
             this.btnR_Speichern.UseVisualStyleBackColor = true;
             this.btnR_Speichern.Click += new System.EventHandler(this.btnR_Speichern_Click);
             // 
-            // btnR_Erkennen
-            // 
-            resources.ApplyResources(this.btnR_Erkennen, "btnR_Erkennen");
-            this.btnR_Erkennen.Name = "btnR_Erkennen";
-            this.btnR_Erkennen.UseVisualStyleBackColor = true;
-            this.btnR_Erkennen.Click += new System.EventHandler(this.btnR_Erkennen_Click);
-            // 
             // btn_R_eigenes
             // 
             resources.ApplyResources(this.btn_R_eigenes, "btn_R_eigenes");
@@ -487,7 +470,6 @@
             this.tabPage3.Controls.Add(this.comboBoxB_KnopfAuswahl);
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.txtB_JoystickNr);
-            this.tabPage3.Controls.Add(this.btnB_Erkennen);
             this.tabPage3.Controls.Add(this.lblR_KnopfNr);
             this.tabPage3.Controls.Add(this.txtB_JoystickKnopf);
             this.tabPage3.Controls.Add(this.radioB_regler);
@@ -571,13 +553,6 @@
             resources.ApplyResources(this.txtB_JoystickNr, "txtB_JoystickNr");
             this.txtB_JoystickNr.Name = "txtB_JoystickNr";
             this.txtB_JoystickNr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_OnlyNumbers_KeyPress);
-            // 
-            // btnB_Erkennen
-            // 
-            resources.ApplyResources(this.btnB_Erkennen, "btnB_Erkennen");
-            this.btnB_Erkennen.Name = "btnB_Erkennen";
-            this.btnB_Erkennen.UseVisualStyleBackColor = true;
-            this.btnB_Erkennen.Click += new System.EventHandler(this.btnB_Erkennen_Click);
             // 
             // lblR_KnopfNr
             // 
@@ -995,7 +970,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Timer timer_CheckJoysticks;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBoxT1_Regler;
         private System.Windows.Forms.ListBox listBoxT1_ControllerList;
@@ -1028,7 +1002,6 @@
         private System.Windows.Forms.Label lblR_AnzahlStufen;
         private System.Windows.Forms.TextBox txtR_Sonderfaelle;
         private System.Windows.Forms.TextBox txtR_AnzahlStufen;
-        private System.Windows.Forms.Button btnR_Erkennen;
         private System.Windows.Forms.RadioButton radioR_Stufenlos;
         private System.Windows.Forms.Button btnR_m100;
         private System.Windows.Forms.RadioButton radioR_Stufen;
@@ -1048,7 +1021,6 @@
         private System.Windows.Forms.ComboBox comboBoxB_KnopfAuswahl;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtB_JoystickNr;
-        private System.Windows.Forms.Button btnB_Erkennen;
         private System.Windows.Forms.Label lblR_KnopfNr;
         private System.Windows.Forms.TextBox txtB_JoystickKnopf;
         private System.Windows.Forms.RadioButton radioB_regler;

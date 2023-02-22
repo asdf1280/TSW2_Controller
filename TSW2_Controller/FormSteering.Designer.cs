@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSteering));
             this.tabControl_Anzeige = new System.Windows.Forms.TabControl();
             this.tabPage_Zugauswahl = new System.Windows.Forms.TabPage();
@@ -55,7 +54,6 @@
             this.comboBoxT1_KnopfAuswahl = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtT1_JoystickNr = new System.Windows.Forms.TextBox();
-            this.btnT1_Erkennen = new System.Windows.Forms.Button();
             this.lblT1_KnopfNr = new System.Windows.Forms.Label();
             this.txtT1_JoystickKnopf = new System.Windows.Forms.TextBox();
             this.radioT1_regler = new System.Windows.Forms.RadioButton();
@@ -77,7 +75,6 @@
             this.tabPage_Regler = new System.Windows.Forms.TabPage();
             this.btnT3_ZeitfaktorFinden = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.listBoxT3_ShowJoystickStates = new System.Windows.Forms.ListBox();
             this.btnT3_leeren = new System.Windows.Forms.Button();
             this.btnT3_Speichern = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
@@ -104,8 +101,6 @@
             this.radioT3_Kombihebel = new System.Windows.Forms.RadioButton();
             this.radioT3_Bremse = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
-            this.T1Timer_CheckForButtonPress = new System.Windows.Forms.Timer(this.components);
-            this.T3Timer_GetJoyStates = new System.Windows.Forms.Timer(this.components);
             this.tabControl_Anzeige.SuspendLayout();
             this.tabPage_Zugauswahl.SuspendLayout();
             this.tabPage_Button.SuspendLayout();
@@ -198,7 +193,6 @@
             this.tabPage_Button.Controls.Add(this.comboBoxT1_KnopfAuswahl);
             this.tabPage_Button.Controls.Add(this.label3);
             this.tabPage_Button.Controls.Add(this.txtT1_JoystickNr);
-            this.tabPage_Button.Controls.Add(this.btnT1_Erkennen);
             this.tabPage_Button.Controls.Add(this.lblT1_KnopfNr);
             this.tabPage_Button.Controls.Add(this.txtT1_JoystickKnopf);
             this.tabPage_Button.Controls.Add(this.radioT1_regler);
@@ -301,13 +295,6 @@
             // 
             resources.ApplyResources(this.txtT1_JoystickNr, "txtT1_JoystickNr");
             this.txtT1_JoystickNr.Name = "txtT1_JoystickNr";
-            // 
-            // btnT1_Erkennen
-            // 
-            resources.ApplyResources(this.btnT1_Erkennen, "btnT1_Erkennen");
-            this.btnT1_Erkennen.Name = "btnT1_Erkennen";
-            this.btnT1_Erkennen.UseVisualStyleBackColor = true;
-            this.btnT1_Erkennen.Click += new System.EventHandler(this.btnT1_Erkennen_Click);
             // 
             // lblT1_KnopfNr
             // 
@@ -446,7 +433,6 @@
             resources.ApplyResources(this.tabPage_Regler, "tabPage_Regler");
             this.tabPage_Regler.Controls.Add(this.btnT3_ZeitfaktorFinden);
             this.tabPage_Regler.Controls.Add(this.button1);
-            this.tabPage_Regler.Controls.Add(this.listBoxT3_ShowJoystickStates);
             this.tabPage_Regler.Controls.Add(this.btnT3_leeren);
             this.tabPage_Regler.Controls.Add(this.btnT3_Speichern);
             this.tabPage_Regler.Controls.Add(this.label16);
@@ -484,14 +470,6 @@
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnT1_Back_Click);
-            // 
-            // listBoxT3_ShowJoystickStates
-            // 
-            resources.ApplyResources(this.listBoxT3_ShowJoystickStates, "listBoxT3_ShowJoystickStates");
-            this.listBoxT3_ShowJoystickStates.BackColor = System.Drawing.SystemColors.Window;
-            this.listBoxT3_ShowJoystickStates.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxT3_ShowJoystickStates.FormattingEnabled = true;
-            this.listBoxT3_ShowJoystickStates.Name = "listBoxT3_ShowJoystickStates";
             // 
             // btnT3_leeren
             // 
@@ -644,15 +622,6 @@
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
             // 
-            // T1Timer_CheckForButtonPress
-            // 
-            this.T1Timer_CheckForButtonPress.Tick += new System.EventHandler(this.T1Timer_CheckForButtonPress_Tick);
-            // 
-            // T3Timer_GetJoyStates
-            // 
-            this.T3Timer_GetJoyStates.Enabled = true;
-            this.T3Timer_GetJoyStates.Tick += new System.EventHandler(this.T3Timer_GetJoyStates_Tick);
-            // 
             // FormSteering
             // 
             resources.ApplyResources(this, "$this");
@@ -690,7 +659,6 @@
         private System.Windows.Forms.ComboBox comboBoxT1_KnopfAuswahl;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtT1_JoystickNr;
-        private System.Windows.Forms.Button btnT1_Erkennen;
         private System.Windows.Forms.Label lblT1_KnopfNr;
         private System.Windows.Forms.TextBox txtT1_JoystickKnopf;
         private System.Windows.Forms.RadioButton radioT1_regler;
@@ -716,7 +684,6 @@
         private System.Windows.Forms.TextBox txtT2_Haltezeit;
         private System.Windows.Forms.Button btnT2_Hinzufügen;
         private System.Windows.Forms.Button btnT2_Fertig;
-        private System.Windows.Forms.Timer T1Timer_CheckForButtonPress;
         private System.Windows.Forms.Label lblT1_Bedingung;
         private System.Windows.Forms.TextBox txtT1_Bedingung;
         private System.Windows.Forms.ListBox listBoxT1_ShowJoystickStates;
@@ -751,8 +718,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnT3_Speichern;
         private System.Windows.Forms.Button btnT3_leeren;
-        private System.Windows.Forms.ListBox listBoxT3_ShowJoystickStates;
-        private System.Windows.Forms.Timer T3Timer_GetJoyStates;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnT3_ZeitfaktorFinden;
         private System.Windows.Forms.Button btnT0_Delete;
