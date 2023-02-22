@@ -1296,11 +1296,11 @@ namespace TSW2_Controller {
                         vc.toleranceMem = true;
                     }
                 } else {
-                    //Stufen
+                    //Stepped
                     if (vc.waitToFinishMovement == false) {
-                        //Zahl zu Stufe umwandeln
+                        //Convert number to level
                         int currentNotch = Convert.ToInt32(Math.Round(vc.currentJoystickValue * (Convert.ToDouble(vc.stufen) / 100), 0));
-                        //Differenz berechnen
+                        //Calculate difference
                         int diff = currentNotch - vc.currentSimValue;
                         if (diff != 0) {
                             Log.Add(vc.name + ":move from " + vc.currentSimValue + " to " + currentNotch, true);
@@ -1315,7 +1315,7 @@ namespace TSW2_Controller {
                                 Thread.Sleep(80);
                                 vc.waitToFinishMovement = false;
                                 vc.cancelScan = -1;
-                                vc.getText = 3; //Anfrage für 3x Texterkennung
+                                vc.getText = 3; //Request for 3x text recognition
                             }).Start();
                             vc.currentSimValue = currentNotch;
                         }
@@ -1406,7 +1406,7 @@ namespace TSW2_Controller {
             for (int i = 0; i < activeVControllers.Count; i++) {
                 VirtualController vc = activeVControllers[i];
                 if (vc.getText > 0) {
-                    //Anzahl der verschiedenen Anfragen
+                    //Number of different requests
                     requestcount++;
                 }
             }
@@ -1414,7 +1414,7 @@ namespace TSW2_Controller {
             lbl_requests.Invoke((MethodInvoker)delegate { lbl_requests.Text = "Text requests:" + requestcount.ToString(); });
 
             if (requestcount > 0) {
-                //Die erste Zeile lesen
+                //Read the first line
                 Stopwatch stopwatch = Stopwatch.StartNew();
                 string result = GetText(Screenshot(true));
                 stopwatch.Stop();
@@ -1594,7 +1594,7 @@ namespace TSW2_Controller {
                     }
 
                     if (bestMatchWord == "") {
-                        //Wenn kein Indikator 1 zu 1 gefunden wurde, versuche etwas zu finden, was ähnlich ist
+                        // If no 1 to 1 indicator was found, try to find something that is similar
                         int indicatorWordCount = indicator.Split(' ').Count();
                         string[] splitResult = result.Split(' ');
 
