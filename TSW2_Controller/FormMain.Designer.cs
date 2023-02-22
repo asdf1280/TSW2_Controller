@@ -47,7 +47,6 @@
             this.groupBox_ScanErgebnisse = new System.Windows.Forms.GroupBox();
             this.lbl_requests = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lbl_updateAvailable = new System.Windows.Forms.Label();
             this.btn_checkJoysticks = new System.Windows.Forms.Button();
             this.lbl_scantime = new System.Windows.Forms.Label();
             this.checkBox_autoscroll = new System.Windows.Forms.CheckBox();
@@ -163,13 +162,6 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // lbl_updateAvailable
-            // 
-            resources.ApplyResources(this.lbl_updateAvailable, "lbl_updateAvailable");
-            this.lbl_updateAvailable.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lbl_updateAvailable.Name = "lbl_updateAvailable";
-            this.lbl_updateAvailable.Click += new System.EventHandler(this.lbl_updateAvailable_Click);
-            // 
             // btn_checkJoysticks
             // 
             resources.ApplyResources(this.btn_checkJoysticks, "btn_checkJoysticks");
@@ -197,7 +189,6 @@
             this.Controls.Add(this.checkBox_autoscroll);
             this.Controls.Add(this.lbl_scantime);
             this.Controls.Add(this.btn_checkJoysticks);
-            this.Controls.Add(this.lbl_updateAvailable);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_requests);
             this.Controls.Add(this.groupBox_ScanErgebnisse);
@@ -241,7 +232,6 @@
         private System.Windows.Forms.GroupBox groupBox_ScanErgebnisse;
         private System.Windows.Forms.Label lbl_requests;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbl_updateAvailable;
         private System.Windows.Forms.ListBox listBox_debugInfo;
         private System.Windows.Forms.Button btn_checkJoysticks;
         private System.Windows.Forms.Label lbl_scantime;

@@ -1,6 +1,6 @@
 ﻿namespace TSW2_Controller
 {
-    partial class FormSteuerung2
+    partial class FormSteering2
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSteuerung2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSteering2));
             this.timer_CheckJoysticks = new System.Windows.Forms.Timer(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnT1_back = new System.Windows.Forms.Button();
@@ -722,7 +722,7 @@
             resources.ApplyResources(this.checkboxT2_Kombihebel, "checkboxT2_Kombihebel");
             this.checkboxT2_Kombihebel.Name = "checkboxT2_Kombihebel";
             this.checkboxT2_Kombihebel.UseVisualStyleBackColor = true;
-            this.checkboxT2_Kombihebel.CheckedChanged += new System.EventHandler(this.checkboxT2_Kombihebel_CheckedChanged);
+            this.checkboxT2_Kombihebel.CheckedChanged += new System.EventHandler(this.checkboxT2_Combined_CheckedChanged);
             // 
             // groupBox_kombihebel
             // 

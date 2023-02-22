@@ -96,35 +96,29 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSteuerung.cs">
+    <Compile Include="FormSteering.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSteuerung.Designer.cs">
-      <DependentUpon>FormSteuerung.cs</DependentUpon>
+    <Compile Include="FormSteering.Designer.cs">
+      <DependentUpon>FormSteering.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSteuerung2.cs">
+    <Compile Include="FormSteering2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSteuerung2.Designer.cs">
-      <DependentUpon>FormSteuerung2.cs</DependentUpon>
+    <Compile Include="FormSteering2.Designer.cs">
+      <DependentUpon>FormSteering2.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormWasIstNeu.cs">
+    <Compile Include="FormTimefactor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormWasIstNeu.Designer.cs">
-      <DependentUpon>FormWasIstNeu.cs</DependentUpon>
+    <Compile Include="FormTimefactor.Designer.cs">
+      <DependentUpon>FormTimefactor.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormZeitfaktor.cs">
+    <Compile Include="FormTimefactor2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormZeitfaktor.Designer.cs">
-      <DependentUpon>FormZeitfaktor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormZeitfaktor2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormZeitfaktor2.Designer.cs">
-      <DependentUpon>FormZeitfaktor2.cs</DependentUpon>
+    <Compile Include="FormTimefactor2.Designer.cs">
+      <DependentUpon>FormTimefactor2.cs</DependentUpon>
     </Compile>
     <Compile Include="Keyboard.cs" />
     <Compile Include="Log.cs" />
@@ -161,36 +155,30 @@
       <DependentUpon>FormSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSteuerung.en.resx">
-      <DependentUpon>FormSteuerung.cs</DependentUpon>
+    <EmbeddedResource Include="FormSteering.en.resx">
+      <DependentUpon>FormSteering.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSteuerung.resx">
-      <DependentUpon>FormSteuerung.cs</DependentUpon>
+    <EmbeddedResource Include="FormSteering.resx">
+      <DependentUpon>FormSteering.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSteuerung2.en.resx">
-      <DependentUpon>FormSteuerung2.cs</DependentUpon>
+    <EmbeddedResource Include="FormSteering2.en.resx">
+      <DependentUpon>FormSteering2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSteuerung2.resx">
-      <DependentUpon>FormSteuerung2.cs</DependentUpon>
+    <EmbeddedResource Include="FormSteering2.resx">
+      <DependentUpon>FormSteering2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormWasIstNeu.en.resx">
-      <DependentUpon>FormWasIstNeu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormWasIstNeu.resx">
-      <DependentUpon>FormWasIstNeu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormZeitfaktor.en.resx">
-      <DependentUpon>FormZeitfaktor.cs</DependentUpon>
+    <EmbeddedResource Include="FormTimefactor.en.resx">
+      <DependentUpon>FormTimefactor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormZeitfaktor.resx">
-      <DependentUpon>FormZeitfaktor.cs</DependentUpon>
+    <EmbeddedResource Include="FormTimefactor.resx">
+      <DependentUpon>FormTimefactor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormZeitfaktor2.en.resx">
-      <DependentUpon>FormZeitfaktor2.cs</DependentUpon>
+    <EmbeddedResource Include="FormTimefactor2.en.resx">
+      <DependentUpon>FormTimefactor2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormZeitfaktor2.resx">
-      <DependentUpon>FormZeitfaktor2.cs</DependentUpon>
+    <EmbeddedResource Include="FormTimefactor2.resx">
+      <DependentUpon>FormTimefactor2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

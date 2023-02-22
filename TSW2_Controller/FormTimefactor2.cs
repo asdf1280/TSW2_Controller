@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace TSW2_Controller
 {
-    public partial class FormZeitfaktor2 : Form
+    public partial class FormTimefactor2 : Form
     {
         int anleitungsschritt = 1;
         int fertig = 100;
@@ -27,7 +27,7 @@ namespace TSW2_Controller
 
         VirtualController virtualController = new VirtualController();
 
-        public FormZeitfaktor2(string selectedController, bool isContinuouslyVariable)
+        public FormTimefactor2(string selectedController, bool isContinuouslyVariable)
         {
             InitializeComponent();
 
@@ -67,7 +67,7 @@ namespace TSW2_Controller
             }
             else
             {
-                Sprache.ShowMessageBox("ERROR " + controller + " nicht gefunden!", "ERROR " + controller + " not found!");
+                Localization.ShowMessageBox("ERROR " + controller + " nicht gefunden!", "ERROR " + controller + " not found!");
                 DialogResult = DialogResult.Cancel;
                 Close();
             }
@@ -83,53 +83,26 @@ namespace TSW2_Controller
                 {
                     if (istStufenlos)
                     {
-                        if (Sprache.isGerman)
-                        {
-                            anleitungstext.Add("Anleitung:");
-                            anleitungstext.Add("Stelle den stufenlosen Regler auf einen kleinen, in % angezeigten Wert.");
-                            anleitungstext.Add("Überprüfe, ob man von diesem Wert aus, bis auf das Maximum kommen kann, ohne, dass der Regler ins stocken kommt.");
-                        }
-                        else
-                        {
-                            anleitungstext.Add("Instructions:");
-                            anleitungstext.Add("Set the stepless conmtroller to a small value, that is displayed in %.");
-                            anleitungstext.Add("Check if you can get from this value to the maximum, without the controller stopping.");
-                        }
+                        anleitungstext.Add("Instructions:");
+                        anleitungstext.Add("Set the stepless conmtroller to a small value, that is displayed in %.");
+                        anleitungstext.Add("Check if you can get from this value to the maximum, without the controller stopping.");
 
                         anleitungsschritt = fertig;
                     }
                     else
                     {
-                        if (Sprache.isGerman)
-                        {
-                            anleitungstext.Add("Anleitung:");
-                            anleitungstext.Add("Stelle den Stufenregler auf eine, in der Mitte liegenden, Position.");
-                            anleitungstext.Add("Es wird gleich die Position vor und hinter dieser Position getestet.");
-                        }
-                        else
-                        {
-                            anleitungstext.Add("Instructions:");
-                            anleitungstext.Add("Set the notched controller to a middle position.");
-                            anleitungstext.Add("The position in front of and behind this position will be tested.");
-                        }
+                        anleitungstext.Add("Instructions:");
+                        anleitungstext.Add("Set the notched controller to a middle position.");
+                        anleitungstext.Add("The position in front of and behind this position will be tested.");
 
                         anleitungsschritt = fertig;
                     }
                 }
                 else
                 {
-                    if (Sprache.isGerman)
-                    {
-                        anleitungstext.Add("Anleitung:");
-                        anleitungstext.Add("Stelle den Kombihebel auf einen kleinen, im Schubbereich liegenden, in % angezeigten Wert.");
-                        anleitungstext.Add("Überprüfe, ob man von diesem Wert aus, bis auf das Maximum kommen kann, ohne, dass der Regler ins stocken kommt.");
-                    }
-                    else
-                    {
-                        anleitungstext.Add("Instructions:");
-                        anleitungstext.Add("Set the master controller to a small value in the throttle area, that is displayed in %.");
-                        anleitungstext.Add("Check if you can get from this value to the maximum, without the controller stopping.");
-                    }
+                    anleitungstext.Add("Instructions:");
+                    anleitungstext.Add("Set the master controller to a small value in the throttle area, that is displayed in %.");
+                    anleitungstext.Add("Check if you can get from this value to the maximum, without the controller stopping.");
                     anleitungsschritt = fertig;
                 }
             }
@@ -137,31 +110,15 @@ namespace TSW2_Controller
             {
                 if (istKombihebel)
                 {
-                    if (Sprache.isGerman)
-                    {
-                        anleitungstext.Add("Stelle den Kombihebel nun auf einen kleinen, im Bremsbereich liegenden, in % angezeigten, Wert.");
-                        anleitungstext.Add("Überprüfe, ob man von diesem Wert aus, bis auf die maximale Bremskraft kommen kann, ohne, dass der Regler ins stocken kommt.");
-                    }
-                    else
-                    {
-                        anleitungstext.Add("Now set the master controller to a small value in the braking area, that is displayed in %.");
-                        anleitungstext.Add("Check whether you can get from this value to the maximum braking power, without the controller stopping");
-                    }
+                    anleitungstext.Add("Now set the master controller to a small value in the braking area, that is displayed in %.");
+                    anleitungstext.Add("Check whether you can get from this value to the maximum braking power, without the controller stopping");
                     anleitungsschritt = fertig;
                 }
             }
             else if (anleitungsschritt >= 100)
             {
-                if (Sprache.isGerman)
-                {
-                    anleitungstext.Add("Klicke nun auf \"Start\" und wechsle innerhalb von 7 Sekunden zum Simulator.");
-                    anleitungstext.Add("Drücke dann keine Taste mehr und bewege auch nicht mehr die Kamera, bis sich der Regler 5 Sekunden lang nicht mehr bewegt.");
-                }
-                else
-                {
-                    anleitungstext.Add("Click on \"Start\" and switch to the simulator within 7 seconds.");
-                    anleitungstext.Add("After that, do not press any button or move the camera until the controller does not move for 5 seconds.");
-                }
+                anleitungstext.Add("Click on \"Start\" and switch to the simulator within 7 seconds.");
+                anleitungstext.Add("After that, do not press any button or move the camera until the controller does not move for 5 seconds.");
                 btn_weiter.Hide();
                 btn_start.Show();
             }
@@ -365,7 +322,7 @@ namespace TSW2_Controller
             }
             else
             {
-                lbl_ERROR.Text = Sprache.Translate("Konnte keine Zahl lesen!","Could not get a number!");
+                lbl_ERROR.Text = Localization.Translate("Konnte keine Zahl lesen!","Could not get a number!");
                 btn_start.Text = "Start";
                 btn_start.Enabled = true;
                 timervalue = 7;
@@ -450,7 +407,7 @@ namespace TSW2_Controller
                 }
                 else
                 {
-                    lbl_ERROR.Text = Sprache.Translate("Konnte keine Zahl lesen!", "Could not get a number!");
+                    lbl_ERROR.Text = Localization.Translate("Konnte keine Zahl lesen!", "Could not get a number!");
                     btn_start.Text = "Start";
                     btn_start.Enabled = true;
                     timervalue = 7;
@@ -524,7 +481,7 @@ namespace TSW2_Controller
                 }
                 else
                 {
-                    lbl_ERROR.Text = Sprache.Translate("Konnte keine Zahl lesen!", "Could not get a number!");
+                    lbl_ERROR.Text = Localization.Translate("Konnte keine Zahl lesen!", "Could not get a number!");
                     btn_start.Text = "Start";
                     btn_start.Enabled = true;
                     timervalue = 7;
@@ -619,7 +576,7 @@ namespace TSW2_Controller
             }
             else
             {
-                lbl_ERROR.Text = Sprache.Translate("Textindikator nicht gefunden!","No text indicator found!");
+                lbl_ERROR.Text = Localization.Translate("Textindikator nicht gefunden!","No text indicator found!");
             }
         }
 

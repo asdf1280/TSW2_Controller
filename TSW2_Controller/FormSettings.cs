@@ -60,20 +60,6 @@ namespace TSW2_Controller
 
                 checkBox_deleteLogsAutomatically.Checked = Settings.Default.DeleteLogsAutomatically;
 
-                if (Sprache.isGerman)
-                {
-                    deutschToolStripMenuItem.Checked = true;
-                }
-                else
-                {
-                    englischToolStripMenuItem.Checked = true;
-                }
-
-                if (newestVersion != "")
-                {
-                    sucheNachUpdatesToolStripMenuItem1.Text = Sprache.Translate("Installiere v" + newestVersion, "Install v" + newestVersion);
-                }
-
                 string[] files = Directory.GetFiles(Tcfg.configOrdnerPfad);
                 comboBox_TrainConfig.Items.Add("_Standard");
                 foreach (string file in files)
@@ -95,112 +81,6 @@ namespace TSW2_Controller
                 Log.ErrorException(ex);
             }
         }
-
-        #region Updater
-        public async void CheckGitHubNewerVersion()
-        {
-            try
-            {
-                GitHubClient client = new GitHubClient(new ProductHeaderValue("DerJantob"));
-                IReadOnlyList<Release> releases = await client.Repository.Release.GetAll("DerJantob", "TSW2_Controller");
-
-                //Setup the versions
-                Version latestGitHubVersion = new Version(releases[0].TagName);
-                Version localVersion = new Version(Assembly.GetExecutingAssembly().GetName().Version.ToString().Remove(Assembly.GetExecutingAssembly().GetName().Version.ToString().Length - 2, 2)); //Replace this with your local version. 
-                                                                                                                                                                                                     //Only tested with numeric values.
-                int versionComparison = localVersion.CompareTo(latestGitHubVersion);
-                if (versionComparison < 0)
-                {
-                    Log.Add("Update available", false, 1);
-                    //The version on GitHub is more up to date than this local release.
-                    if (newestVersion.Contains("dontAsk"))
-                    {
-                        newestVersion = newestVersion.Replace("dontAsk", "");
-                        progressBar_updater.Show();
-                        DownloadNewestVersion(latestGitHubVersion);
-                    }
-                    else if (MessageBox.Show("Version " + latestGitHubVersion + Sprache.Translate(" ist verfügbar! Möchtest du aktualisieren?", " is available! Do you want to update?"), "Update", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        progressBar_updater.Show();
-                        DownloadNewestVersion(latestGitHubVersion);
-                    }
-                    else
-                    {
-                        System.Diagnostics.Process.Start("https://github.com/DerJantob/TSW2_Controller");
-                    }
-                }
-                else
-                {
-                    //This local Version and the Version on GitHub are equal
-                    Log.Add("No update available");
-                    Sprache.ShowMessageBox("Du hast die neuste Version", "You have the latest version");
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.ErrorException(ex);
-                if (Sprache.isGerman)
-                {
-                    MessageBox.Show("Es konnte keine Verbindung zu \"github.com/DerJantob/TSW2_Controller\" hergestellt werden.\n\nDas kann eventuell daran liegen dass das Anfragelimit überschritten wurde. Das wird nach einer Stunde zurückgesetzt.");
-                }
-                else
-                {
-                    MessageBox.Show("Could not reach \"github.com/DerJantob/TSW2_Controller\"\n\nThis may be due to the fact that the request limit has been exceeded. This is reset after one hour.");
-                }
-            }
-        }
-        private void DownloadNewestVersion(Version version)
-        {
-            Log.Add("Download \"" + @"https://github.com/DerJantob/TSW2_Controller/releases/download/" + version + "/TSW2_Controller_Setup.exe\"");
-
-            sucheNachUpdatesToolStripMenuItem1.Text = Sprache.Translate("Installiere...", "Installing...");
-            sucheNachUpdatesToolStripMenuItem1.Enabled = false;
-            Uri uri = new Uri(@"https://github.com/DerJantob/TSW2_Controller/releases/download/" + version + @"/TSW2_Controller_Setup.exe");
-            var filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Temp/TSW2_Controller_Setup.exe");
-
-            try
-            {
-                if (File.Exists(filename))
-                {
-                    File.Delete(filename);
-                }
-
-                WebClient wc = new WebClient();
-                wc.DownloadFileAsync(uri, filename);
-                wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wc_DownloadProgressChanged);
-                wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadFileCompleted);
-            }
-            catch (Exception ex)
-            {
-                Log.ErrorException(ex);
-            }
-        }
-        private void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            if (progressBar_updater.Value != e.ProgressPercentage)
-            {
-                Log.Add("Downloading... " + e.ProgressPercentage + "%");
-            }
-            progressBar_updater.Value = e.ProgressPercentage;
-        }
-        private void wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            if (e.Error == null)
-            {
-                Process.Start(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Temp/TSW2_Controller_Setup.exe"));
-                Close();
-                System.Windows.Forms.Application.Exit();
-            }
-            else
-            {
-                MessageBox.Show("Unable to download exe", "Download failed!");
-                progressBar_updater.Hide();
-                sucheNachUpdatesToolStripMenuItem1.Text = Sprache.Translate("Download gescheitert", "Download failed");
-                sucheNachUpdatesToolStripMenuItem1.Enabled = true;
-            }
-        }
-        #endregion
-
 
         #region TrainConfig wechseln
         private void comboBox_TrainConfig_KeyUp(object sender, KeyEventArgs e)
@@ -269,7 +149,7 @@ namespace TSW2_Controller
                 if (!comboBox_TrainConfig.Items.Contains(comboBox_TrainConfig.Text))
                 {
                     //Hinzufügen
-                    if (MessageBox.Show(Sprache.Translate("Einstellungen von ", "Transfer the data of ") + Settings.Default.selectedTrainConfig + Sprache.Translate(" übernehmen?", "?"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(Localization.Translate("Einstellungen von ", "Transfer the data of ") + Settings.Default.selectedTrainConfig + Localization.Translate(" übernehmen?", "?"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         File.Copy(Tcfg.configpfad, Tcfg.configOrdnerPfad + comboBox_TrainConfig.Text + ".csv", true);
                     }
@@ -285,7 +165,7 @@ namespace TSW2_Controller
             }
             else
             {
-                MessageBox.Show(Sprache.Translate("Das Feld darf nicht leer sein", "The text field cannot be empty"));
+                MessageBox.Show(Localization.Translate("Das Feld darf nicht leer sein", "The text field cannot be empty"));
             }
         }
 
@@ -295,7 +175,7 @@ namespace TSW2_Controller
             {
                 if (File.Exists(Tcfg.configOrdnerPfad + comboBox_TrainConfig.Text + ".csv"))
                 {
-                    if (MessageBox.Show(Sprache.Translate("Möchtest du \"", "Do you want to remove \"") + comboBox_TrainConfig.Text + Sprache.Translate("\" löschen?", "\"?") + "\n" + Sprache.Translate("Alle Züge gehen dabei verloren!", "All trains will be deleted!"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(Localization.Translate("Möchtest du \"", "Do you want to remove \"") + comboBox_TrainConfig.Text + Localization.Translate("\" löschen?", "\"?") + "\n" + Localization.Translate("Alle Züge gehen dabei verloren!", "All trains will be deleted!"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         File.Delete(Tcfg.configOrdnerPfad + comboBox_TrainConfig.Text + ".csv");
                         Settings.Default.selectedTrainConfig = "_Standard";
@@ -344,7 +224,7 @@ namespace TSW2_Controller
             catch (Exception ex)
             {
                 Log.ErrorException(ex);
-                MessageBox.Show(Sprache.Translate("Fehler bei der Auflösung", "Error with resolution!"));
+                MessageBox.Show(Localization.Translate("Fehler bei der Auflösung", "Error with resolution!"));
             }
 
             try
@@ -365,7 +245,7 @@ namespace TSW2_Controller
         private void btn_steuerung_Click(object sender, EventArgs e)
         {
             Log.Add("Going to controls");
-            FormSteuerung2 formSteuerung2 = new FormSteuerung2(_FormMain);
+            FormSteering2 formSteuerung2 = new FormSteering2(_FormMain);
             formSteuerung2.Location = this.Location;
             formSteuerung2.ShowDialog();
             Log.Add("Leaving controls");
@@ -404,105 +284,6 @@ namespace TSW2_Controller
             else
             {
                 File.Copy(Tcfg.configpfad, Tcfg.configOrdnerPfad + Settings.Default.selectedTrainConfig + ".csv", true);
-            }
-        }
-
-        private void ChangeIndicatorLanguage(string Sprache)
-        {
-            if (Sprache == "de-DE")
-            {
-                Settings.Default.SchubIndexe_EN = Settings.Default.SchubIndexe;
-                Settings.Default.BremsIndexe_EN = Settings.Default.BremsIndexe;
-                Settings.Default.Kombihebel_SchubIndexe_EN = Settings.Default.Kombihebel_SchubIndexe;
-                Settings.Default.Kombihebel_BremsIndexe_EN = Settings.Default.Kombihebel_BremsIndexe;
-
-                Settings.Default.SchubIndexe = Settings.Default.SchubIndexe_DE;
-                Settings.Default.BremsIndexe = Settings.Default.BremsIndexe_DE;
-                Settings.Default.Kombihebel_SchubIndexe = Settings.Default.Kombihebel_SchubIndexe_DE;
-                Settings.Default.Kombihebel_BremsIndexe = Settings.Default.Kombihebel_BremsIndexe_DE;
-            }
-            else
-            {
-                Settings.Default.SchubIndexe_DE = Settings.Default.SchubIndexe;
-                Settings.Default.BremsIndexe_DE = Settings.Default.BremsIndexe;
-                Settings.Default.Kombihebel_SchubIndexe_DE = Settings.Default.Kombihebel_SchubIndexe;
-                Settings.Default.Kombihebel_BremsIndexe_DE = Settings.Default.Kombihebel_BremsIndexe;
-
-                Settings.Default.SchubIndexe = Settings.Default.SchubIndexe_EN;
-                Settings.Default.BremsIndexe = Settings.Default.BremsIndexe_EN;
-                Settings.Default.Kombihebel_SchubIndexe = Settings.Default.Kombihebel_SchubIndexe_EN;
-                Settings.Default.Kombihebel_BremsIndexe = Settings.Default.Kombihebel_BremsIndexe_EN;
-            }
-        }
-
-        private void txt_ConvertKeyToString_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            //Wenn man im "Aktion" Feld eine Taste drückt finde passenden Namen zur Taste
-            //PreviewKeyDown um auch tab-Taste zu erlauben
-            ((TextBox)sender).Text = Keyboard.ConvertKeyToString(e.KeyCode);
-            btn_speichern.Select();
-        }
-
-        private void txt_SuppressKeyPress_KeyDown(object sender, KeyEventArgs e)
-        {
-            //Verhindert, dass die gedrückte Taste ins Textfeld geschrieben wird
-            e.SuppressKeyPress = true;
-        }
-
-        private void wasIstNeuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormWasIstNeu formWasIstNeu = new FormWasIstNeu("0.0.0");
-            formWasIstNeu.ShowDialog();
-        }
-
-        private void informationsdateiErstellenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string finishedFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "TSW2Controller_HelpFile.zip");
-            string startfolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\TSW2_Controller";
-
-            if (File.Exists(finishedFile)) { File.Delete(finishedFile); }
-            ZipFile.CreateFromDirectory(startfolder, finishedFile, CompressionLevel.Fastest, true);
-            Process.Start("explorer.exe", "/select, \"" + finishedFile + "\"");
-            Sprache.ShowMessageBox("Datei wurde auf dem Desktop erstellt!", "File has been created on the desktop!");
-            Close();
-            System.Windows.Forms.Application.Exit();
-        }
-
-        private void sucheNachUpdatesToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Log.Add("Check github Version...");
-            if (newestVersion != "")
-            {
-                newestVersion += "dontAsk";
-            }
-            CheckGitHubNewerVersion();
-        }
-
-        private void englischToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!englischToolStripMenuItem.Checked)
-            {
-                englischToolStripMenuItem.Checked = true;
-                deutschToolStripMenuItem.Checked = false;
-
-                Settings.Default.Language = "en";
-                ChangeIndicatorLanguage(Settings.Default.Language);
-                Settings.Default.Save();
-                System.Windows.Forms.Application.Restart();
-            }
-        }
-
-        private void deutschToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!deutschToolStripMenuItem.Checked)
-            {
-                deutschToolStripMenuItem.Checked = true;
-                englischToolStripMenuItem.Checked = false;
-
-                Settings.Default.Language = "de-DE";
-                ChangeIndicatorLanguage(Settings.Default.Language);
-                Settings.Default.Save();
-                System.Windows.Forms.Application.Restart();
             }
         }
 
@@ -560,7 +341,7 @@ namespace TSW2_Controller
                 {
                     if (File.Exists(Tcfg.configOrdnerPfad + openFileDialog.SafeFileName))
                     {
-                        if (MessageBox.Show(Sprache.Translate("Überschreiben?", "Overwrite?"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show(Localization.Translate("Überschreiben?", "Overwrite?"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             File.Copy(openFileDialog.FileName, Tcfg.configOrdnerPfad + openFileDialog.SafeFileName, true);
                         }

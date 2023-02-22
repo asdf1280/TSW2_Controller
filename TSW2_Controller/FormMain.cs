@@ -60,7 +60,7 @@ namespace TSW2_Controller
             InitializeComponent();
 
             Log.Add("Check Files");
-            #region Dateistruktur überprüfen
+            #region File structure checking
             try
             {
                 if (!File.Exists(Tcfg.configpfad))
@@ -79,16 +79,8 @@ namespace TSW2_Controller
                 }
                 if (!File.Exists(Tcfg.controllersConfigPfad))
                 {
-                    if (Sprache.isGerman)
-                    {
-                        Log.Add("Copy :" + Tcfg.controllersstandardpfad_DE + " to " + Tcfg.controllersConfigPfad);
-                        File.Copy(Tcfg.controllersstandardpfad_DE, Tcfg.controllersConfigPfad, false);
-                    }
-                    else
-                    {
-                        Log.Add("Copy :" + Tcfg.controllersstandardpfad_EN + " to " + Tcfg.controllersConfigPfad);
-                        File.Copy(Tcfg.controllersstandardpfad_EN, Tcfg.controllersConfigPfad, false);
-                    }
+                    Log.Add("Copy :" + Tcfg.controllersstandardpfad_EN + " to " + Tcfg.controllersConfigPfad);
+                    File.Copy(Tcfg.controllersstandardpfad_EN, Tcfg.controllersConfigPfad, false);
                 }
                 if (!Directory.Exists(Tcfg.configOrdnerPfad))
                 {
@@ -123,10 +115,7 @@ namespace TSW2_Controller
 
             lbl_originalResult.Text = "";
             lbl_alternativeResult.Text = "";
-            lbl_updateAvailable.Text = "";
             groupBox_ScanErgebnisse.Hide();
-
-            CheckGitHubNewerVersion();
 
             Keyboard.initKeylist();
 
@@ -142,13 +131,13 @@ namespace TSW2_Controller
         }
 
         #region UI
-        #region Haupttimer
+        #region Main timer
         private void timer_CheckSticks_Tick(object sender, EventArgs e)
         {
             Main();
         }
         #endregion
-        #region Zugauswahl
+        #region Train Selection
         private void comboBox_Zugauswahl_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedTrain = comboBox_Zugauswahl.Text;
@@ -181,7 +170,7 @@ namespace TSW2_Controller
             getActiveVControllers();
         }
         #endregion
-        #region Checkbox Aktiv
+        #region Checkbox active
         private void check_active_CheckedChanged(object sender, EventArgs e)
         {
             if (check_active.Checked)
@@ -254,7 +243,7 @@ namespace TSW2_Controller
             }
         }
         #endregion
-        #region Deaktiviere Global
+        #region Deactivate global
         private void check_deactivateGlobal_CheckedChanged(object sender, EventArgs e)
         {
             if (check_deactivateGlobal.Checked)
@@ -276,7 +265,7 @@ namespace TSW2_Controller
             getActiveTrain();
         }
         #endregion
-        #region Einstellungen
+        #region Settings
         private void btn_einstellungen_Click(object sender, EventArgs e)
         {
             Log.Add("Going to settings:");
@@ -301,7 +290,7 @@ namespace TSW2_Controller
             }
         }
         #endregion
-        #region Joysticks überprüfen
+        #region Check joystick
         private void btn_checkJoysticks_Click(object sender, EventArgs e)
         {
             Joystick[] sticks = getSticks();
@@ -312,51 +301,7 @@ namespace TSW2_Controller
             }
         }
         #endregion
-        #region CheckGitHubVersion
-        private async void CheckGitHubNewerVersion()
-        {
-            try
-            {
-                GitHubClient client = new GitHubClient(new ProductHeaderValue("DerJantob"));
-                IReadOnlyList<Release> releases = await client.Repository.Release.GetAll("DerJantob", "TSW2_Controller");
-
-                //Setup the versions
-                Version latestGitHubVersion = new Version(releases[0].TagName);
-                Version localVersion = new Version(Assembly.GetExecutingAssembly().GetName().Version.ToString().Remove(Assembly.GetExecutingAssembly().GetName().Version.ToString().Length - 2, 2)); //Replace this with your local version. 
-                                                                                                                                                                                                     //Only tested with numeric values.
-                Log.Add("Get Releases from GitHub:");
-                foreach (Release rel in releases) { Log.Add("->" + rel.TagName, false, 1); }
-                Log.Add("->Your Version:" + localVersion.ToString(), false, 1);
-
-                int versionComparison = localVersion.CompareTo(latestGitHubVersion);
-                if (versionComparison < 0)
-                {
-                    //The version on GitHub is more up to date than this local release.
-                    Log.Add("Update available", false, 1);
-                    lbl_updateAvailable.Text = "Version " + latestGitHubVersion + "\n" + Sprache.Translate("ist verfügbar", "is available");
-                    FormSettings.newestVersion = latestGitHubVersion.ToString();
-                }
-                else
-                {
-                    Log.Add("->No update available", false, 1);
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.ErrorException(ex);
-            }
-        }
-        #endregion
-        #region lbl Update verfügbar
-        private void lbl_updateAvailable_Click(object sender, EventArgs e)
-        {
-            FormSettings formSettings = new FormSettings(this);
-            formSettings.Location = this.Location;
-            formSettings.CheckGitHubNewerVersion();
-            formSettings.ShowDialog();
-        }
-        #endregion
-        #region FormClose
+        #region Form Close
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -364,7 +309,7 @@ namespace TSW2_Controller
         #endregion
         #endregion
 
-        #region Allgemeine Funktionen
+        #region General Functions
         public static bool ContainsWord(string stringToCheck, string word)
         {
             if (word != null)
@@ -471,7 +416,6 @@ namespace TSW2_Controller
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
-            Sprache.initLanguage();
         }
 
         public Bitmap Screenshot(bool normal)
@@ -580,7 +524,7 @@ namespace TSW2_Controller
         }
         #endregion
 
-        #region Versions überprüfung
+        #region Version Check
         public void checkVersion()
         {
             Log.Add("Check version of settings...");
@@ -597,13 +541,10 @@ namespace TSW2_Controller
                         Settings.Default.Upgrade();
                         checkLanguageSetting();
 
-                        FormWasIstNeu formWasIstNeu = new FormWasIstNeu(prevVersion.ToString());
-                        formWasIstNeu.ShowDialog();
-
                         #region Update besonderheiten
                         if (new Version(prevVersion.ToString()).CompareTo(new Version("1.0.9")) < 0)
                         {
-                            Sprache.ShowMessageBox("Deine vorherige Version ist wahrscheinlich zu alt und lässt sich nicht mehr automatisch konvertieren. Du musst das Programm deinstallieren (komplett) und die neuste Version wieder installieren.", "Your previous version is probably too old and cannot be converted automatically. You need to uninstall the program (completely) and reinstall the latest version.");
+                            Localization.ShowMessageBox("Deine vorherige Version ist wahrscheinlich zu alt und lässt sich nicht mehr automatisch konvertieren. Du musst das Programm deinstallieren (komplett) und die neuste Version wieder installieren.", "Your previous version is probably too old and cannot be converted automatically. You need to uninstall the program (completely) and reinstall the latest version.");
                         }
                         else
                         {
@@ -614,7 +555,7 @@ namespace TSW2_Controller
                                 {
                                     //Backup
                                     File.Copy(Tcfg.configpfad, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\backupTrainConfig.csv", true);
-                                    Sprache.ShowMessageBox("Ein Backup wurde auf dem Desktop erstellt", "Backup has been created on the Desktop");
+                                    Localization.ShowMessageBox("Ein Backup wurde auf dem Desktop erstellt", "Backup has been created on the Desktop");
 
                                     //Neue Tastenbenennung
                                     string[] file = File.ReadAllLines(Tcfg.configpfad);
@@ -722,17 +663,17 @@ namespace TSW2_Controller
                             if (new Version(prevVersion.ToString()).CompareTo(new Version("2.0.0")) < 0)
                             {
                                 Log.Add("2.0.0", false, 1);
-                                List<string> schubIndexe = new List<string>();
-                                List<string> bremsIndexe = new List<string>();
-                                List<string> kombihebel_schubIndexe = new List<string>();
-                                List<string> kombihebel_bremsIndexe = new List<string>();
+                                List<string> ThrustIndex = new List<string>();
+                                List<string> BrakeIndex = new List<string>();
+                                List<string> Combined_ThrustIndex = new List<string>();
+                                List<string> Combined_BrakeIndex = new List<string>();
 
                                 List<string> output_Text = new List<string>();
 
-                                schubIndexe.AddRange(Settings.Default.SchubIndexe.Cast<string>().ToArray());
-                                bremsIndexe.AddRange(Settings.Default.BremsIndexe.Cast<string>().ToArray());
-                                kombihebel_bremsIndexe.AddRange(Settings.Default.Kombihebel_BremsIndexe.Cast<string>().ToArray());
-                                kombihebel_schubIndexe.AddRange(Settings.Default.Kombihebel_SchubIndexe.Cast<string>().ToArray());
+                                ThrustIndex.AddRange(Settings.Default.ThrustIndex.Cast<string>().ToArray());
+                                BrakeIndex.AddRange(Settings.Default.BrakeIndex.Cast<string>().ToArray());
+                                Combined_BrakeIndex.AddRange(Settings.Default.Combined_BrakeIndex.Cast<string>().ToArray());
+                                Combined_ThrustIndex.AddRange(Settings.Default.Combined_ThrustIndex.Cast<string>().ToArray());
 
                                 string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Update_Info";
 
@@ -746,7 +687,7 @@ namespace TSW2_Controller
 
                                 CloneDirectory(Tcfg.configOrdnerPfad, folderPath + @"\backupTrainConfig.csv");
 
-                                Sprache.ShowMessageBox("Ein Backup wurde auf dem Desktop erstellt", "Backup has been created on the Desktop");
+                                Localization.ShowMessageBox("Ein Backup wurde auf dem Desktop erstellt", "Backup has been created on the Desktop");
 
                                 List<List<string>> tempTrainconfig = new List<List<string>>();
 
@@ -803,40 +744,19 @@ namespace TSW2_Controller
 
                                                     if (singleRow[7] == "Schub")
                                                     {
-                                                        if (Sprache.isGerman)
-                                                        {
-                                                            singleRow.Insert(Tcfg.reglerName, "Schub");
-                                                        }
-                                                        else
-                                                        {
-                                                            singleRow.Insert(Tcfg.reglerName, "Throttle");
-                                                        }
+                                                        singleRow.Insert(Tcfg.reglerName, "Throttle");
                                                         singleRow[1] = "";
                                                         singleRow[8] = "";
                                                     }
                                                     else if (singleRow[7] == "Bremse")
                                                     {
-                                                        if (Sprache.isGerman)
-                                                        {
-                                                            singleRow.Insert(Tcfg.reglerName, "Bremse");
-                                                        }
-                                                        else
-                                                        {
-                                                            singleRow.Insert(Tcfg.reglerName, "Brake");
-                                                        }
+                                                        singleRow.Insert(Tcfg.reglerName, "Brake");
                                                         singleRow[1] = "";
                                                         singleRow[8] = "";
                                                     }
                                                     else if (singleRow[7] == "Kombihebel")
                                                     {
-                                                        if (Sprache.isGerman)
-                                                        {
-                                                            singleRow.Insert(Tcfg.reglerName, "Kombihebel");
-                                                        }
-                                                        else
-                                                        {
-                                                            singleRow.Insert(Tcfg.reglerName, "Master Controller");
-                                                        }
+                                                        singleRow.Insert(Tcfg.reglerName, "Master Controller");
                                                         singleRow[1] = "";
                                                         singleRow[8] = "";
                                                     }
@@ -896,89 +816,44 @@ namespace TSW2_Controller
                                 }
 
 
-                                if (Sprache.isGerman)
-                                {
-                                    output_Text.Add("In der Version 2.0.0 hat sich viel geändert. Unter anderem die Art und Weise, wie Regler funktionieren.");
-                                    output_Text.Add("Da ich mich dazu entschieden habe, Schubregler und Kombihebel seperat zu behandeln, kann ich die alten Textindikatoren");
-                                    output_Text.Add("nicht einfach übernehmen.");
-                                    output_Text.Add("");
-                                    output_Text.Add("Was muss ich also tun, um meine alten Einstellungen in die neue Version zu übertragen?");
-                                    output_Text.Add("");
-                                    output_Text.Add("1. ");
-                                    output_Text.Add("Klicke auf \"Einstellungen\"->\"Steuerung\"->\"Globale Tastenbelegung\".");
-                                    output_Text.Add("Dort solltest du nun die Regler Schub, Bremse und Kombihebel finden.");
-                                    output_Text.Add("");
-                                    output_Text.Add("2. ");
-                                    output_Text.Add("Wähle Schub aus und überprüfe zuerst die Tastenbelegung.");
-                                    output_Text.Add("Als nächstes überprüfst die Hauptindikatoren.");
-                                    output_Text.Add("Hier solltest du aber nicht mehr die Textindikatoren für den Kombihebel eintragen!");
-                                    output_Text.Add("Die Textindikatoren die du voher für den Schub und Kombihebel hattest sind die folgenden:");
-                                    output_Text.AddRange(Settings.Default.SchubIndexe.Cast<string>().ToArray());
-                                    output_Text.Add("");
-                                    output_Text.Add("3.");
-                                    output_Text.Add("Das gleiche machst du nun für die Bremse.");
-                                    output_Text.Add("Die Textindikatoren die du voher für die Bremse hattest sind die folgenden:");
-                                    output_Text.AddRange(Settings.Default.BremsIndexe.Cast<string>().ToArray());
-                                    output_Text.Add("");
-                                    output_Text.Add("4.");
-                                    output_Text.Add("Jetzt guckst du dir den Regler \"Kombihebel\" an. Wie du siehst, ist hier der Haken bei \"Kombihebel\" gesetzt.");
-                                    output_Text.Add("Das erlaubt dem Regler auch in den Bremsbereich (negative Zahlen) zu gehen.");
-                                    output_Text.Add("Hier trägst du nun die Indikatoren für den Kombihebel ein und die für den Schub-/ und Bremsbereich.");
-                                    output_Text.Add("Du hattest vorher die folgenden Indikatoren:");
-                                    output_Text.Add("Schubbereich:");
-                                    output_Text.AddRange(Settings.Default.Kombihebel_SchubIndexe.Cast<string>().ToArray());
-                                    output_Text.Add("Bremsbereich:");
-                                    output_Text.AddRange(Settings.Default.Kombihebel_BremsIndexe.Cast<string>().ToArray());
-                                    output_Text.Add("");
-                                    output_Text.Add("Fertig!");
-                                    output_Text.Add("Falls du irgendwelche Probleme beim Übertragen deiner alten Einstellungen, oder bei anderen Dingen bekommst, kannst du mir gerne");
-                                    output_Text.Add("auf Github (https://github.com/DerJantob/TSW2_Controller/issues/new/choose) oder");
-                                    output_Text.Add("im RailSim Forum (https://rail-sim.de/forum/thread/37646-tsw2-controller-den-tsw-mit-einem-joystick-steuern/) schreiben.");
-                                    output_Text.Add("");
-                                    output_Text.Add("LG");
-                                    output_Text.Add("Jannik");
-                                }
-                                else
-                                {
-                                    output_Text.Add("A lot has changed in version 2.0.0. Among other things, the way controllers work.");
-                                    output_Text.Add("Since I decided to treat Throttle and Master Controller separately, I can't just copy the old text indicators.");
-                                    output_Text.Add("");
-                                    output_Text.Add("So what do I need to do to transfer my old settings to the new version?");
-                                    output_Text.Add("");
-                                    output_Text.Add("1. ");
-                                    output_Text.Add("Go to \"Settings\"->\"Controls\"->\"Global keybinds\".");
-                                    output_Text.Add("There you should now find the controllers Throttle, Brake and Master Controller.");
-                                    output_Text.Add("");
-                                    output_Text.Add("2. ");
-                                    output_Text.Add("Select Throttle and check the keybinds first.");
-                                    output_Text.Add("Next check the main indicators.");
-                                    output_Text.Add("But you should no longer enter the text indicators for the Master Controller here!");
-                                    output_Text.Add("The text indicators you had before for the trottle and Master Controller are the following:");
-                                    output_Text.AddRange(Settings.Default.SchubIndexe.Cast<string>().ToArray());
-                                    output_Text.Add("");
-                                    output_Text.Add("3.");
-                                    output_Text.Add("Do the same for the brake.");
-                                    output_Text.Add("The text indicators you had before for the brake are the following:");
-                                    output_Text.AddRange(Settings.Default.BremsIndexe.Cast<string>().ToArray());
-                                    output_Text.Add("");
-                                    output_Text.Add("4.");
-                                    output_Text.Add("Now select \"Master Controller\". As you can see, the checkbox \"Master Controller\" is checked.");
-                                    output_Text.Add("This allows the controller to also go into the braking area (negative numbers).");
-                                    output_Text.Add("Here you now enter the indicators for the Master Controller and those for the throttle/ and brake area.");
-                                    output_Text.Add("You previously had the following indicators:");
-                                    output_Text.Add("Throttle area:");
-                                    output_Text.AddRange(Settings.Default.Kombihebel_SchubIndexe.Cast<string>().ToArray());
-                                    output_Text.Add("Brake area:");
-                                    output_Text.AddRange(Settings.Default.Kombihebel_BremsIndexe.Cast<string>().ToArray());
-                                    output_Text.Add("");
-                                    output_Text.Add("Done!");
-                                    output_Text.Add("If you get any problems converting your old settings, or anything else, feel free to contact me on");
-                                    output_Text.Add("Github (https://github.com/DerJantob/TSW2_Controller/issues/new/choose) or");
-                                    output_Text.Add("on the DTG Forum (https://forums.dovetailgames.com/threads/tsw2_controller-control-tsw2-with-a-joystick.52402/).");
-                                    output_Text.Add("");
-                                    output_Text.Add("Kind regards");
-                                    output_Text.Add("Jannik");
-                                }
+                                output_Text.Add("A lot has changed in version 2.0.0. Among other things, the way controllers work.");
+                                output_Text.Add("Since I decided to treat Throttle and Master Controller separately, I can't just copy the old text indicators.");
+                                output_Text.Add("");
+                                output_Text.Add("So what do I need to do to transfer my old settings to the new version?");
+                                output_Text.Add("");
+                                output_Text.Add("1. ");
+                                output_Text.Add("Go to \"Settings\"->\"Controls\"->\"Global keybinds\".");
+                                output_Text.Add("There you should now find the controllers Throttle, Brake and Master Controller.");
+                                output_Text.Add("");
+                                output_Text.Add("2. ");
+                                output_Text.Add("Select Throttle and check the keybinds first.");
+                                output_Text.Add("Next check the main indicators.");
+                                output_Text.Add("But you should no longer enter the text indicators for the Master Controller here!");
+                                output_Text.Add("The text indicators you had before for the trottle and Master Controller are the following:");
+                                output_Text.AddRange(Settings.Default.ThrustIndex.Cast<string>().ToArray());
+                                output_Text.Add("");
+                                output_Text.Add("3.");
+                                output_Text.Add("Do the same for the brake.");
+                                output_Text.Add("The text indicators you had before for the brake are the following:");
+                                output_Text.AddRange(Settings.Default.BrakeIndex.Cast<string>().ToArray());
+                                output_Text.Add("");
+                                output_Text.Add("4.");
+                                output_Text.Add("Now select \"Master Controller\". As you can see, the checkbox \"Master Controller\" is checked.");
+                                output_Text.Add("This allows the controller to also go into the braking area (negative numbers).");
+                                output_Text.Add("Here you now enter the indicators for the Master Controller and those for the throttle/ and brake area.");
+                                output_Text.Add("You previously had the following indicators:");
+                                output_Text.Add("Throttle area:");
+                                output_Text.AddRange(Settings.Default.Combined_ThrustIndex.Cast<string>().ToArray());
+                                output_Text.Add("Brake area:");
+                                output_Text.AddRange(Settings.Default.Combined_BrakeIndex.Cast<string>().ToArray());
+                                output_Text.Add("");
+                                output_Text.Add("Done!");
+                                output_Text.Add("If you get any problems converting your old settings, or anything else, feel free to contact me on");
+                                output_Text.Add("Github (https://github.com/DerJantob/TSW2_Controller/issues/new/choose) or");
+                                output_Text.Add("on the DTG Forum (https://forums.dovetailgames.com/threads/tsw2_controller-control-tsw2-with-a-joystick.52402/).");
+                                output_Text.Add("");
+                                output_Text.Add("Kind regards");
+                                output_Text.Add("Jannik");
 
                                 File.WriteAllLines(folderPath + @"\UpdateInfo.txt", output_Text.ToArray());
                                 System.Diagnostics.Process.Start(folderPath + @"\UpdateInfo.txt");
@@ -990,28 +865,10 @@ namespace TSW2_Controller
                     }
                     else
                     {
-                        //Neuinstallation
-                        CultureInfo ci = CultureInfo.InstalledUICulture;
-                        if (ci.Name == "de-DE")
-                        {
-                            //Sprache von Windows
-                            Settings.Default.Language = "de-DE";
-                            Settings.Default.Save();
-                            Sprache.initLanguage();
-                        }
-
                         if (!File.Exists(Tcfg.controllersConfigPfad))
                         {
-                            if (Sprache.isGerman)
-                            {
-                                File.Copy(Tcfg.controllersstandardpfad_DE, Tcfg.controllersConfigPfad, false);
-                                Log.Add("Copy :" + Tcfg.controllersstandardpfad_DE + " to " + Tcfg.controllersConfigPfad);
-                            }
-                            else
-                            {
-                                File.Copy(Tcfg.controllersstandardpfad_EN, Tcfg.controllersConfigPfad, false);
-                                Log.Add("Copy :" + Tcfg.controllersstandardpfad_EN + " to " + Tcfg.controllersConfigPfad);
-                            }
+                            File.Copy(Tcfg.controllersstandardpfad_EN, Tcfg.controllersConfigPfad, false);
+                            Log.Add("Copy :" + Tcfg.controllersstandardpfad_EN + " to " + Tcfg.controllersConfigPfad);
                         }
                     }
 
@@ -1173,8 +1030,8 @@ namespace TSW2_Controller
         {
             trainNames.Clear();
             comboBox_Zugauswahl.Items.Clear();
-            comboBox_Zugauswahl.Items.Add(Sprache.Translate("_Zugauswahl", "_Select train"));
-            comboBox_Zugauswahl.SelectedItem = Sprache.Translate("_Zugauswahl", "_Select train");
+            comboBox_Zugauswahl.Items.Add(Localization.Translate("_Zugauswahl", "_Select train"));
+            comboBox_Zugauswahl.SelectedItem = Localization.Translate("_Zugauswahl", "_Select train");
 
             foreach (string[] str in trainConfig)
             {
@@ -1481,7 +1338,7 @@ namespace TSW2_Controller
             {
                 Log.ErrorException(ex);
                 MainSticks = getSticks();
-                Sprache.ShowMessageBox(stick.Information.InstanceName + " nicht mehr angeschlossen!", stick.Information.InstanceName + " not connected anymore!");
+                Localization.ShowMessageBox(stick.Information.InstanceName + " nicht mehr angeschlossen!", stick.Information.InstanceName + " not connected anymore!");
             }
         }
 
@@ -1692,7 +1549,7 @@ namespace TSW2_Controller
                 else
                 {
                     check_active.Checked = false;
-                    Sprache.ShowMessageBox("Kein Joystick angeschlossen!", "No joystick connected!");
+                    Localization.ShowMessageBox("Kein Joystick angeschlossen!", "No joystick connected!");
                 }
             }
 
@@ -1947,7 +1804,7 @@ namespace TSW2_Controller
 
                 lbl_originalResult.Invoke((MethodInvoker)delegate { lbl_originalResult.Text = result; });
                 groupBox_ScanErgebnisse.Invoke((MethodInvoker)delegate { groupBox_ScanErgebnisse.Show(); });
-                lbl_scantime.Invoke((MethodInvoker)delegate { lbl_scantime.Text = Sprache.Translate("Scanzeit:", "Scantime:") + stopwatch.ElapsedMilliseconds + "ms"; });
+                lbl_scantime.Invoke((MethodInvoker)delegate { lbl_scantime.Text = Localization.Translate("Scanzeit:", "Scantime:") + stopwatch.ElapsedMilliseconds + "ms"; });
 
                 for (int i = 0; i < activeVControllers.Count; i++)
                 {

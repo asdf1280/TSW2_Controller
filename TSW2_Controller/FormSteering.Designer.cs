@@ -1,6 +1,6 @@
 ﻿namespace TSW2_Controller
 {
-    partial class FormSteuerung
+    partial class FormSteering
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSteuerung));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSteering));
             this.tabControl_Anzeige = new System.Windows.Forms.TabControl();
             this.tabPage_Zugauswahl = new System.Windows.Forms.TabPage();
             this.btnT0_Delete = new System.Windows.Forms.Button();
@@ -623,21 +623,21 @@
             resources.ApplyResources(this.radioT3_Schub, "radioT3_Schub");
             this.radioT3_Schub.Name = "radioT3_Schub";
             this.radioT3_Schub.UseVisualStyleBackColor = true;
-            this.radioT3_Schub.CheckedChanged += new System.EventHandler(this.radioT3_SchubBremseKombihebel_CheckedChanged);
+            this.radioT3_Schub.CheckedChanged += new System.EventHandler(this.radioT3_SchubBremseCombined_CheckedChanged);
             // 
             // radioT3_Kombihebel
             // 
             resources.ApplyResources(this.radioT3_Kombihebel, "radioT3_Kombihebel");
             this.radioT3_Kombihebel.Name = "radioT3_Kombihebel";
             this.radioT3_Kombihebel.UseVisualStyleBackColor = true;
-            this.radioT3_Kombihebel.CheckedChanged += new System.EventHandler(this.radioT3_SchubBremseKombihebel_CheckedChanged);
+            this.radioT3_Kombihebel.CheckedChanged += new System.EventHandler(this.radioT3_SchubBremseCombined_CheckedChanged);
             // 
             // radioT3_Bremse
             // 
             resources.ApplyResources(this.radioT3_Bremse, "radioT3_Bremse");
             this.radioT3_Bremse.Name = "radioT3_Bremse";
             this.radioT3_Bremse.UseVisualStyleBackColor = true;
-            this.radioT3_Bremse.CheckedChanged += new System.EventHandler(this.radioT3_SchubBremseKombihebel_CheckedChanged);
+            this.radioT3_Bremse.CheckedChanged += new System.EventHandler(this.radioT3_SchubBremseCombined_CheckedChanged);
             // 
             // label10
             // 

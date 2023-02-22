@@ -1,6 +1,6 @@
 ﻿namespace TSW2_Controller
 {
-    partial class FormZeitfaktor
+    partial class FormTimefactor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormZeitfaktor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTimefactor));
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_anleitung = new System.Windows.Forms.Label();
             this.radio_Stufenlos = new System.Windows.Forms.RadioButton();
@@ -117,7 +117,7 @@
             resources.ApplyResources(this.radio_kombihebel, "radio_kombihebel");
             this.radio_kombihebel.Name = "radio_kombihebel";
             this.radio_kombihebel.UseVisualStyleBackColor = true;
-            this.radio_kombihebel.CheckedChanged += new System.EventHandler(this.radio_kombihebel_CheckedChanged);
+            this.radio_kombihebel.CheckedChanged += new System.EventHandler(this.radio_Combined_CheckedChanged);
             // 
             // panel2
             // 

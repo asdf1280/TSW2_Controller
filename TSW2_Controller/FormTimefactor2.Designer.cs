@@ -1,6 +1,6 @@
 ﻿namespace TSW2_Controller
 {
-    partial class FormZeitfaktor2
+    partial class FormTimefactor2
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormZeitfaktor2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTimefactor2));
             this.lbl_anleitung = new System.Windows.Forms.Label();
             this.btn_weiter = new System.Windows.Forms.Button();
             this.btn_start = new System.Windows.Forms.Button();
