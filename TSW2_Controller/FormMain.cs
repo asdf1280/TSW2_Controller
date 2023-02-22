@@ -18,6 +18,7 @@ using Octokit;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using System.Net.Sockets;
 
 namespace TSW2_Controller {
     public partial class FormMain : Form {
@@ -47,7 +48,10 @@ namespace TSW2_Controller {
 
         public string selectedTrain = "";
 
-
+        // TSWOCR Values
+        public bool controlHoldNeeded = true;
+        public int desiredThrustPercent = 0;
+        public int desiredBrakePercent = 0;
 
         public FormMain() {
             checkVersion();
@@ -113,6 +117,45 @@ namespace TSW2_Controller {
 
 
             timer_CheckSticks.Start();
+
+            // TSWOCR Server Socket
+            var t = new Thread(() => {
+                var listener = new TcpListener(IPAddress.Loopback, 4776);
+                listener.Start();
+
+                while (true) {
+                    var c = listener.AcceptTcpClient();
+
+                    var t2 = new Thread(() => {
+                        var r = new BinaryReader(c.GetStream());
+                        try {
+                            while (true) {
+                                var input = r.ReadString();
+                                if (input == "r") {
+                                    controlHoldNeeded = true;
+                                    desiredBrakePercent = 0;
+                                    desiredThrustPercent = 0;
+                                } else if (input.StartsWith("a")) {
+                                    controlHoldNeeded = false;
+                                    desiredBrakePercent = 0;
+                                    desiredThrustPercent = int.Parse(input.Substring(1));
+                                } else if (input.StartsWith("b")) {
+                                    controlHoldNeeded = false;
+                                    desiredThrustPercent = 0;
+                                    desiredBrakePercent = int.Parse(input.Substring(1));
+                                }
+                            }
+                        } catch {
+                            c.Close();
+                            c.Dispose();
+                        }
+                    });
+                    t2.IsBackground = true;
+                    t2.Start();
+                }
+            });
+            t.IsBackground = true;
+            t.Start();
         }
 
         #region UI
