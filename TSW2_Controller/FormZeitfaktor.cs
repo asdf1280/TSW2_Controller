@@ -422,5 +422,10 @@ namespace TSW2_Controller
                 Log.ErrorException(ex);
             }
         }
+
+        private void FormZeitfaktor_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

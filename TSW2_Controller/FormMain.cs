@@ -227,7 +227,7 @@ namespace TSW2_Controller
                 Log.Add("KeyLayout:" + string.Join(",", Settings.Default.Tastenbelegung.Cast<string>().ToArray()));
                 Log.Add("version:" + "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString().Remove(Assembly.GetExecutingAssembly().GetName().Version.ToString().Length - 2, 2));
                 Log.Add("Resolution:" + Settings.Default.res.Width + "x" + Settings.Default.res.Height);
-                Log.Add("Language:" + Settings.Default.Sprache);
+                Log.Add("Language:" + Settings.Default.Language);
                 Log.Add("WindowsLanguage:" + InputLanguage.CurrentInputLanguage.Culture.Name);
                 Log.Add("KeyboardLayout:" + InputLanguage.CurrentInputLanguage.LayoutName);
                 Log.Add("");
@@ -469,8 +469,8 @@ namespace TSW2_Controller
 
         public static void checkLanguageSetting()
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Sprache);
-            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Sprache);
+            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
             Sprache.initLanguage();
         }
 
@@ -995,7 +995,7 @@ namespace TSW2_Controller
                         if (ci.Name == "de-DE")
                         {
                             //Sprache von Windows
-                            Settings.Default.Sprache = "de-DE";
+                            Settings.Default.Language = "de-DE";
                             Settings.Default.Save();
                             Sprache.initLanguage();
                         }

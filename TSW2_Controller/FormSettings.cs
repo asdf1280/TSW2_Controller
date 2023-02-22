@@ -485,8 +485,8 @@ namespace TSW2_Controller
                 englischToolStripMenuItem.Checked = true;
                 deutschToolStripMenuItem.Checked = false;
 
-                Settings.Default.Sprache = "en";
-                ChangeIndicatorLanguage(Settings.Default.Sprache);
+                Settings.Default.Language = "en";
+                ChangeIndicatorLanguage(Settings.Default.Language);
                 Settings.Default.Save();
                 System.Windows.Forms.Application.Restart();
             }
@@ -499,8 +499,8 @@ namespace TSW2_Controller
                 deutschToolStripMenuItem.Checked = true;
                 englischToolStripMenuItem.Checked = false;
 
-                Settings.Default.Sprache = "de-DE";
-                ChangeIndicatorLanguage(Settings.Default.Sprache);
+                Settings.Default.Language = "de-DE";
+                ChangeIndicatorLanguage(Settings.Default.Language);
                 Settings.Default.Save();
                 System.Windows.Forms.Application.Restart();
             }

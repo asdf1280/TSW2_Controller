@@ -37,7 +37,7 @@
     <Setting Name="Version" Type="System.String" Scope="User">
       <Value Profile="(Default)">1.0.0</Value>
     </Setting>
-    <Setting Name="Sprache" Type="System.String" Scope="User">
+    <Setting Name="Language" Type="System.String" Scope="User">
       <Value Profile="(Default)">en</Value>
     </Setting>
     <Setting Name="selectedTrainConfig" Type="System.String" Scope="User">

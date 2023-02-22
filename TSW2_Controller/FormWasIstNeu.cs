@@ -29,7 +29,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v1.0.0" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("- Veröffentlichung");
                 }
@@ -46,7 +46,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v1.0.1" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("- Textindikatoren wechseln mit der Sprache");
                     changelog.Add("- Sprache wird beim erstmaligen Start automatisch erkannt");
@@ -71,7 +71,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v1.0.2" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("- Fix: Kombihebel hat im Bremsbereich nicht mehr funktioniert, wenn ein Knopf hinzugefügt wurde");
                 }
@@ -88,7 +88,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v1.0.3" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("- Fix: Probleme mit der Textindikatoren-Reihenfolge");
                     changelog.Add("- Verbesserung: Auflisten von vielen Joystick-Informationen");
@@ -105,7 +105,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v1.0.4" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("- Fix: Wenn man das Joystickverhalten geändert hat (Invertiert / Anderer Joy Modus), dann wurde das unabhängig von der Joynummer übernommen");
                     changelog.Add("- Fix/Verbessert: Tastenbelegung für Schub und Bremse einstellbar, damit verschiedene Tastaturlayouts funktionieren");
@@ -126,7 +126,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v1.1.0" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("- Man kann nun in den Einstellungen zwischen TrainConfigs wechseln");
                     changelog.Add("- Hinzugefügt: Log datei");
@@ -163,7 +163,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v1.1.1" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("- Windows 11 kompatibel");
                     changelog.Add("- Hinzugefügt: Joysticks können jetzt auch angeschlossen werden, während das Programm läuft");
@@ -184,7 +184,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v1.1.2" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("- Verändert: Statt automatischem erkennen von neuen Joysticks gibt es jetzt einen Knopf dafür, da es Probleme damit gab");
                 }
@@ -201,7 +201,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v2.0.0" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("Es gibt ein neues tutorial:");
                     changelog.Add("https://youtu.be/Sej1L0p_myo");
@@ -252,7 +252,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v2.0.1" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("- Bugfix: Langsame Joystickbewegung wurde ignoriert");
                     changelog.Add("- Hinzugefügt: Knopf zum entfernen eines Reglers");
@@ -275,7 +275,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v2.0.2" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("- Kleine Verbesserung: Texterkennung bevorzugt nun den längsten Indikator");
                 }
@@ -292,7 +292,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v2.0.3" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("- Verbesserung: Texterkennung vom Bremsbereich");
                     changelog.Add("- Fix: Tastenkombination-Editor Probleme");
@@ -313,7 +313,7 @@ namespace TSW2_Controller
             {
                 changelog.Add("v2.0.4" + "\n");
 
-                if (Settings.Default.Sprache == "de-DE")
+                if (Settings.Default.Language == "de-DE")
                 {
                     changelog.Add("- Fix: Eingabe eines negativen Zeitfaktors verhindern");
                     changelog.Add("- Verbesserung: Hinweis zum Speichern von Änderungen beim Wechseln und Bearbeiten von Reglern.");

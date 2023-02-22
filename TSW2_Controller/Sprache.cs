@@ -18,7 +18,7 @@ namespace TSW2_Controller
 
         public static void ShowMessageBox(string Deutsch, string Englisch)
         {
-            if (Settings.Default.Sprache == "de-DE")
+            if (Settings.Default.Language == "de-DE")
             {
                 MessageBox.Show(Deutsch);
             }
@@ -30,7 +30,7 @@ namespace TSW2_Controller
 
         public static void initLanguage()
         {
-            if (Settings.Default.Sprache == "de-DE")
+            if (Settings.Default.Language == "de-DE")
             {
                 isGerman = true;
             }
@@ -42,7 +42,7 @@ namespace TSW2_Controller
 
         public static string Translate(string Deutsch, string Englisch = "")
         {
-            if (Settings.Default.Sprache == "de-DE")
+            if (Settings.Default.Language == "de-DE")
             {
                 return Deutsch;
             }
