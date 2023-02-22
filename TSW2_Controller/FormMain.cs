@@ -2,29 +2,21 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Net;
+using System.Net.Sockets;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tesseract;
-using SharpDX.DirectInput;
-using System.IO;
 using TSW2_Controller.Properties;
-using System.Reflection;
-using System.Net;
-using Octokit;
-using System.Globalization;
-using System.Text.RegularExpressions;
-using System.Diagnostics;
-using System.Net.Sockets;
 
 namespace TSW2_Controller {
     public partial class FormMain : Form {
-        DirectInput input = new DirectInput();
-        public static Joystick[] MainSticks;
-
         public static Rectangle res = Screen.PrimaryScreen.Bounds;
 
         public List<string[]> trainConfig = new List<string[]>();
@@ -35,11 +27,9 @@ namespace TSW2_Controller {
 
         public List<string> trainNames = new List<string>();
 
-        List<object[]> joystickStates = new List<object[]>(); // id, joyInputs, inputNames, buttons
-
         static TesseractEngine OCREngine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
 
-        public static string[] inputNames = { "JoyX", "JoyY", "JoyZ", "pov", "RotX", "RotY", "RotZ", "Sldr" };
+        public static string[] axisNames = { "JoyX", "JoyY", "JoyZ", "pov", "RotX", "RotY", "RotZ", "Sldr" };
 
         bool isDeactivatedGlobally = false;
 
@@ -106,8 +96,6 @@ namespace TSW2_Controller {
             Keyboard.initKeylist();
 
             loadSettings();
-
-            MainSticks = getSticks();
 
             ReadVControllers();
             ReadTrainConfig();
@@ -284,15 +272,6 @@ namespace TSW2_Controller {
                 if (combobox_trainSelection.Items.Contains(tmp_selTrain)) {
                     combobox_trainSelection.SelectedItem = tmp_selTrain;
                 }
-            }
-        }
-        #endregion
-        #region Check joysticks
-        private void btn_checkJoysticks_Click(object sender, EventArgs e) {
-            Joystick[] sticks = getSticks();
-
-            if (sticks.Count() != MainSticks.Count()) {
-                MainSticks = sticks;
             }
         }
         #endregion
@@ -979,140 +958,92 @@ namespace TSW2_Controller {
         #endregion
 
         #region Joystick und Buttons
-        public Joystick[] getSticks() {
-            Log.Add("Search for joysticks:");
-            //strg+c strg+v
-            List<Joystick> sticks = new List<Joystick>();
-            foreach (DeviceInstance device in input.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AttachedOnly)) {
-                Joystick stick = new Joystick(input, device.InstanceGuid);
-                stick.Acquire();
+        void fakeStickHandle() {
+            foreach (string[] strActiveTrain in activeTrain) {
+                // Controller names taken from default csv file
+                var controllerName = strActiveTrain[ConfigConsts.controllerName];
+                if (controllerName == "Throttle" || controllerName == "Brake" || controllerName == "Master Controller") {
+                    List<string[]> customController = new List<string[]>();
+                    string[] split = strActiveTrain[ConfigConsts.invert].Split('|');
+                    for (int j = 0; j < split.Count() - 1; j += 2) {
+                        customController.Add(new string[] { split[j], split[j + 1] });
+                    }
 
-                foreach (DeviceObjectInstance deviceObject in stick.GetObjects(DeviceObjectTypeFlags.Axis)) {
-                    stick.GetObjectPropertiesById(deviceObject.ObjectId).Range = new InputRange(-100, 100);
-                }
-                sticks.Add(stick);
-            }
+                    // AUTOPILOT JOYSTICK VALUE FAKE INJECTION STARTS HERE ==================================
+                    int inputValue = 0;
+                    if (controllerName == "Master Controller") {
+                        if (desiredBrakePercent > 0) {
+                            inputValue = desiredBrakePercent * -1;
+                        } else if (desiredThrustPercent > 0) {
+                            inputValue = desiredThrustPercent;
+                        }
+                    } else if (controllerName == "Throttle") {
+                        inputValue = desiredThrustPercent;
+                    } else if (controllerName == "Brake") {
+                        inputValue = desiredBrakePercent;
+                    }
+                    // AUTOPILOT CODE END
 
-            Log.Add(sticks.Count + " joysticks found", false, 1);
-            return sticks.ToArray();
+                    for (int j = 0; j < customController.Count; j++) {
+                        if (j + 1 > customController.Count - 1) {
+                            inputValue = Convert.ToInt32(customController[j][1]);
+                            break;
+                        } else {
+                            if (inputValue >= Convert.ToInt32(customController[j][0]) && inputValue < Convert.ToInt32(customController[j + 1][0])) {
+                                double steigung = (Convert.ToDouble(customController[j + 1][1]) - Convert.ToDouble(customController[j][1])) / (Convert.ToDouble(customController[j + 1][0]) - Convert.ToDouble(customController[j][0]));
 
-        }
-
-        void stickHandle(Joystick stick, int id) {
-            try {
-                bool[] buttons;
-                int[] joyInputs = new int[8];
-
-                JoystickState state = new JoystickState();
-
-                //Get all information about the stick selected with id
-                state = stick.GetCurrentState();
-
-                joyInputs[0] = state.X;
-                joyInputs[1] = state.Y;
-                joyInputs[2] = state.Z;
-                joyInputs[3] = state.PointOfViewControllers[0] + 1;
-                joyInputs[4] = state.RotationX;
-                joyInputs[5] = state.RotationY;
-                joyInputs[6] = state.RotationZ;
-                joyInputs[7] = state.Sliders[0];
-
-
-                for (int i = 0; i < inputNames.Length; i++) {
-                    foreach (string[] strActiveTrain in activeTrain) {
-                        //A well-known axis name appears in the Trainconfig
-                        if (strActiveTrain[ConfigConsts.joystickInput] == inputNames[i] && Convert.ToInt32(strActiveTrain[ConfigConsts.joystickNumber]) == id && strActiveTrain[ConfigConsts.controllerName] != "") {
-                            List<string[]> customController = new List<string[]>();
-                            string[] split = strActiveTrain[ConfigConsts.invert].Split('|');
-                            for (int j = 0; j < split.Count() - 1; j += 2) {
-                                customController.Add(new string[] { split[j], split[j + 1] });
+                                inputValue = Convert.ToInt32(Math.Round(((inputValue - Convert.ToDouble(customController[j + 1][0])) * steigung) + Convert.ToDouble(customController[j + 1][1]), 0));
+                                break;
                             }
+                        }
+                    }
 
-                            for (int j = 0; j < customController.Count; j++) {
-                                if (j + 1 > customController.Count - 1) {
-                                    joyInputs[i] = Convert.ToInt32(customController[j][1]);
+
+                    //Certain input values are to be converted into others
+                    if (strActiveTrain[ConfigConsts.inputConvert].Length > 5) {
+                        string[] umrechnen = strActiveTrain[ConfigConsts.inputConvert].Remove(strActiveTrain[ConfigConsts.inputConvert].Length - 1).Replace("[", "").Split(']');
+
+                        foreach (string single_umrechnen in umrechnen) {
+                            if (single_umrechnen.Contains("|")) {
+                                int von = Convert.ToInt32(single_umrechnen.Remove(single_umrechnen.IndexOf("|"), single_umrechnen.Length - single_umrechnen.IndexOf("|")));
+
+                                string temp_bis = single_umrechnen.Remove(0, single_umrechnen.IndexOf("|") + 1);
+                                int index = temp_bis.IndexOf("=");
+                                int bis = Convert.ToInt32(temp_bis.Remove(index, temp_bis.Length - index));
+                                int entsprechendeNummer = Convert.ToInt32(single_umrechnen.Remove(0, single_umrechnen.IndexOf("=") + 1));
+
+                                if (von <= inputValue && inputValue <= bis) {
+                                    inputValue = entsprechendeNummer;
                                     break;
-                                } else {
-                                    if (joyInputs[i] >= Convert.ToInt32(customController[j][0]) && joyInputs[i] < Convert.ToInt32(customController[j + 1][0])) {
-                                        double steigung = (Convert.ToDouble(customController[j + 1][1]) - Convert.ToDouble(customController[j][1])) / (Convert.ToDouble(customController[j + 1][0]) - Convert.ToDouble(customController[j][0]));
+                                } else if (von >= inputValue && inputValue >= bis) {
+                                    inputValue = entsprechendeNummer;
+                                    break;
+                                }
+                            } else {
+                                int index = single_umrechnen.IndexOf("=");
+                                int gesuchteNummer = Convert.ToInt32(single_umrechnen.Remove(index, single_umrechnen.Length - index));
+                                int entsprechendeNummer = Convert.ToInt32(single_umrechnen.Remove(0, index + 1));
 
-                                        joyInputs[i] = Convert.ToInt32(Math.Round(((joyInputs[i] - Convert.ToDouble(customController[j + 1][0])) * steigung) + Convert.ToDouble(customController[j + 1][1]), 0));
-                                        break;
-                                    }
+                                if (inputValue == gesuchteNummer) {
+                                    inputValue = entsprechendeNummer;
+                                    break;
                                 }
                             }
-
-
-                            //Certain input values are to be converted into others
-                            if (strActiveTrain[ConfigConsts.inputConvert].Length > 5) {
-                                string[] umrechnen = strActiveTrain[ConfigConsts.inputConvert].Remove(strActiveTrain[ConfigConsts.inputConvert].Length - 1).Replace("[", "").Split(']');
-
-                                foreach (string single_umrechnen in umrechnen) {
-                                    if (single_umrechnen.Contains("|")) {
-                                        int von = Convert.ToInt32(single_umrechnen.Remove(single_umrechnen.IndexOf("|"), single_umrechnen.Length - single_umrechnen.IndexOf("|")));
-
-                                        string temp_bis = single_umrechnen.Remove(0, single_umrechnen.IndexOf("|") + 1);
-                                        int index = temp_bis.IndexOf("=");
-                                        int bis = Convert.ToInt32(temp_bis.Remove(index, temp_bis.Length - index));
-                                        int entsprechendeNummer = Convert.ToInt32(single_umrechnen.Remove(0, single_umrechnen.IndexOf("=") + 1));
-
-                                        if (von <= joyInputs[i] && joyInputs[i] <= bis) {
-                                            joyInputs[i] = entsprechendeNummer;
-                                            break;
-                                        } else if (von >= joyInputs[i] && joyInputs[i] >= bis) {
-                                            joyInputs[i] = entsprechendeNummer;
-                                            break;
-                                        }
-                                    } else {
-                                        int index = single_umrechnen.IndexOf("=");
-                                        int gesuchteNummer = Convert.ToInt32(single_umrechnen.Remove(index, single_umrechnen.Length - index));
-                                        int entsprechendeNummer = Convert.ToInt32(single_umrechnen.Remove(0, index + 1));
-
-                                        if (joyInputs[i] == gesuchteNummer) {
-                                            joyInputs[i] = entsprechendeNummer;
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-
-                            for (int j = 0; j < activeVControllers.Count; j++) {
-                                if (strActiveTrain[ConfigConsts.controllerName] == activeVControllers[j].name) {
-                                    activeVControllers[j].currentJoystickValue = joyInputs[i];
-                                }
-                            }
-
                         }
                     }
-                }
 
-                //Get all button states
-                buttons = state.Buttons;
-
-                //Save all important information about the joystick in a list
-                joystickStates.Add(new object[] { id, joyInputs, inputNames, buttons });
-            } catch (Exception ex) {
-                Log.ErrorException(ex);
-                MainSticks = getSticks();
-                MessageBox.Show(stick.Information.InstanceName + " not connected anymore!");
-            }
-        }
-
-        public int GetJoystickStateByName(string id, string input) {
-            foreach (object[] obyJstk in joystickStates) {
-                if ((int)obyJstk[0] == Convert.ToInt32(id)) {
-                    for (int i = 0; i < ((string[])obyJstk[2]).Length; i++) {
-                        if (((string[])obyJstk[2])[i] == input) {
-                            return ((int[])obyJstk[1])[i];
+                    for (int j = 0; j < activeVControllers.Count; j++) {
+                        if (strActiveTrain[ConfigConsts.controllerName] == activeVControllers[j].name) {
+                            activeVControllers[j].currentJoystickValue = inputValue;
                         }
                     }
+
                 }
             }
-            return 0;
         }
 
         private void ShowJoystickData() {
-            if(list_inputs.Items.Count != 3) {
+            if (list_inputs.Items.Count != 3) {
                 list_inputs.Items.Clear();
                 list_inputs.Items.Add("0");
                 list_inputs.Items.Add("1");
@@ -1127,13 +1058,13 @@ namespace TSW2_Controller {
 
         #region Main
         private void Main() {
-            //Delete all information about the joysticks
-            joystickStates.Clear();
+            //for (int i = 0; i < MainSticks.Length; i++) {
+            //    //Save the info of each individual joystick
+            //    stickHandle(MainSticks[i], i);
+            //}
 
-            for (int i = 0; i < MainSticks.Length; i++) {
-                //Save the info of each individual joystick
-                stickHandle(MainSticks[i], i);
-            }
+            // This function acts as if all joysticks were scanned
+            fakeStickHandle();
 
             //Show the user info about the joysticks
             ShowJoystickData();
@@ -1141,17 +1072,12 @@ namespace TSW2_Controller {
 
             //When active
             if (check_active.Checked) {
-                if (MainSticks.Length == 0) {
-                    //Check the individual controls
-                    handleVControllers();
+                //Check the individual controls
+                handleVControllers();
 
-                    if (!bgw_readScreen.IsBusy) {
-                        //Check if text can be read
-                        bgw_readScreen.RunWorkerAsync();
-                    }
-                } else {
-                    check_active.Checked = false;
-                    MessageBox.Show("No joystick allowed!");
+                if (!bgw_readScreen.IsBusy) {
+                    //Check if text can be read
+                    bgw_readScreen.RunWorkerAsync();
                 }
             }
 
