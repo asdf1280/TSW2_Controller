@@ -12,17 +12,8 @@ namespace TSW2_Controller
     {
         public static string TrainSelection()
         {
-            return Translate("_Zugauswahl", "_Select train");
-        }
-
-        public static void ShowMessageBox(string Deutsch, string English)
-        {
-            MessageBox.Show(English);
-        }
-
-        public static string Translate(string Deutsch, string English = "")
-        {
-            return English;
+            return "_Select train";
         }
     }
 }
+ 

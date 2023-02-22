@@ -192,58 +192,6 @@ namespace TSW2_Controller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
-            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
-        public global::System.Collections.Specialized.StringCollection BrakeIndex_EN {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["BrakeIndex_EN"]));
-            }
-            set {
-                this["BrakeIndex_EN"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
-            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
-        public global::System.Collections.Specialized.StringCollection ThrustIndex_EN {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["ThrustIndex_EN"]));
-            }
-            set {
-                this["ThrustIndex_EN"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
-            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
-        public global::System.Collections.Specialized.StringCollection Combined_BrakeIndex_EN {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Combined_BrakeIndex_EN"]));
-            }
-            set {
-                this["Combined_BrakeIndex_EN"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
-            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" />")]
-        public global::System.Collections.Specialized.StringCollection Combined_ThrustIndex_EN {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Combined_ThrustIndex_EN"]));
-            }
-            set {
-                this["Combined_ThrustIndex_EN"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool DeleteLogsAutomatically {
             get {

@@ -31,7 +31,7 @@ namespace TSW2_Controller
             comboBoxT0_Zugauswahl.Items.AddRange(formMain.trainNames.ToArray());
             comboBoxT0_Zugauswahl.SelectedItem = Tcfg.nameForGlobal;
 
-            lblT1_KnopfNr.Text = Localization.Translate("KnopfNr.", "Button no.");
+            lblT1_KnopfNr.Text = "Button no.";
             lblT3_AnzahlStufen.Hide();
             lblT1_Bedingung.Hide();
             txtT1_Bedingung.Hide();
@@ -131,7 +131,7 @@ namespace TSW2_Controller
 
             if (selectedTrain != "")
             {
-                if (MessageBox.Show(Localization.Translate("Möchtest du wirklich \"","Do you really want to remove \"") + selectedTrain + Localization.Translate("\" löschen?","?"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Do you really want to remove \"" + selectedTrain + "?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     if (selectedTrain != Tcfg.nameForGlobal)
                     {
@@ -163,7 +163,7 @@ namespace TSW2_Controller
                     }
                     File.WriteAllLines(Tcfg.configpfad, line);
 
-                    MessageBox.Show(counter + Localization.Translate(" Einträge gelöscht!", " entries deleted!"));
+                    MessageBox.Show(counter + " entries deleted!");
                 }
             }
         }
@@ -189,14 +189,14 @@ namespace TSW2_Controller
             if (radioT1_normal.Checked)
             {
                 t1IsJoyButton = false;
-                lblT1_KnopfNr.Text = Localization.Translate("KnopfNr.","Button no.");
+                lblT1_KnopfNr.Text = "Button no.";
                 lblT1_Bedingung.Hide();
                 txtT1_Bedingung.Hide();
             }
             else
             {
                 t1IsJoyButton = true;
-                lblT1_KnopfNr.Text = Localization.Translate("JoyName","Joyname");
+                lblT1_KnopfNr.Text = "Joyname";
                 lblT1_Bedingung.Show();
                 txtT1_Bedingung.Show();
             }
@@ -307,40 +307,40 @@ namespace TSW2_Controller
             if (comboBoxT1_KnopfAuswahl.Text == "")
             {
                 ok = false;
-                Localization.ShowMessageBox("Kein Name eingegeben", "No name entered");
+                MessageBox.Show("No name entered");
             }
             if (txtT1_JoystickNr.Text == "" || !txtT1_JoystickNr.Text.All(char.IsDigit))
             {
                 ok = false;
-                Localization.ShowMessageBox("Fehler bei Joystick Nr.", "Error with Joy no.");
+                MessageBox.Show("Error with Joy no.");
             }
             if (txtT1_JoystickKnopf.Text == "" || (!txtT1_JoystickKnopf.Text.All(char.IsDigit) && radioT1_normal.Checked) || (!FormMain.inputNames.Any(txtT1_JoystickKnopf.Text.Equals) && radioT1_regler.Checked))
             {
                 ok = false;
                 if (radioT1_normal.Checked)
                 {
-                    Localization.ShowMessageBox("Fehler bei Knopf Nr.", "Error with Button-no.");
+                    MessageBox.Show("Error with Button-no.");
                 }
                 else
                 {
-                    Localization.ShowMessageBox("Fehler bei JoyName", "Error with Joyname");
+                    MessageBox.Show("Error with Joyname");
                 }
             }
             if (txtT1_Bedingung.Text != "" && (!(txtT1_Bedingung.Text.Contains("<") || txtT1_Bedingung.Text.Contains(">") || txtT1_Bedingung.Text.Contains("=")) || txtT1_Bedingung.Text.Any(char.IsLetter)))
             {
                 //txtT1_Bedingung.Text != "" weil es leer sein darf
                 ok = false;
-                Localization.ShowMessageBox("Fehler bei Bedingung", "Error with Condition");
+                MessageBox.Show("Error with Condition");
             }
             if (txtT1_Aktion.Text == "" && txtT1_Tastenkombination.Text == "")
             {
                 ok = false;
-                Localization.ShowMessageBox("Keine Aktion oder Tastenkombination", "No action or keyboard shortcut");
+                MessageBox.Show("No action or keyboard shortcut");
             }
             if (txtT1_Tastenkombination.Text != "" && !(txtT1_Tastenkombination.Text.Split('_').Count() == 3 || txtT1_Tastenkombination.Text.Split('_').Count() % 3 == 0))
             {
                 ok = false;
-                Localization.ShowMessageBox("Fehler bei Tastenkombination", "Error with keyboard shortcut");
+                MessageBox.Show("Error with keyboard shortcut");
             }
             #endregion
 
@@ -360,7 +360,7 @@ namespace TSW2_Controller
                         singleTrain[Tcfg.tastenKombination] = txtT1_Tastenkombination.Text;
                         trainConfig[i] = singleTrain;
                         ersetzt = true;
-                        MessageBox.Show(Localization.Translate("Ersetzt","Relpaced"));
+                        MessageBox.Show("Relpaced");
                     }
                 }
                 if (!ersetzt)
@@ -376,7 +376,7 @@ namespace TSW2_Controller
                     singleTrain[Tcfg.tastenKombination] = txtT1_Tastenkombination.Text;
                     trainConfig.Add(singleTrain);
                     comboBoxT1_KnopfAuswahl.Items.Add(comboBoxT1_KnopfAuswahl.Text);
-                    MessageBox.Show(Localization.Translate("Hinzugefügt","Added"));
+                    MessageBox.Show("Added");
                 }
 
                 //Schreibe Datei
@@ -453,11 +453,11 @@ namespace TSW2_Controller
                         //Zeige den gedrückten Button
                         if (counter <= listBoxT1_ShowJoystickStates.Items.Count)
                         {
-                            listBoxT1_ShowJoystickStates.Items[counter - 1] = Localization.Translate("Nr:","No:") + i + " " + "B" + o;
+                            listBoxT1_ShowJoystickStates.Items[counter - 1] = "No:" + i + " " + "B" + o;
                         }
                         else
                         {
-                            listBoxT1_ShowJoystickStates.Items.Add(Localization.Translate("Nr:", "No:") + i + " " + "B" + o);
+                            listBoxT1_ShowJoystickStates.Items.Add("No:" + i + " " + "B" + o);
                         }
                         counter++;
                     }
@@ -469,11 +469,11 @@ namespace TSW2_Controller
                         //Zeige den Joystick-Wert nur, wenn er != 0 ist
                         if (counter <= listBoxT1_ShowJoystickStates.Items.Count)
                         {
-                            listBoxT1_ShowJoystickStates.Items[counter - 1] = Localization.Translate("Nr:", "No:") + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o];
+                            listBoxT1_ShowJoystickStates.Items[counter - 1] = "No:" + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o];
                         }
                         else
                         {
-                            listBoxT1_ShowJoystickStates.Items.Add(Localization.Translate("Nr:", "No:") + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o]);
+                            listBoxT1_ShowJoystickStates.Items.Add("No:" + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o]);
                         }
                         counter++;
                     }
@@ -504,7 +504,7 @@ namespace TSW2_Controller
                     comboBoxT1_KnopfAuswahl.Items.Remove(comboBoxT1_KnopfAuswahl.Text);
                     comboBoxT1_KnopfAuswahl.Text = "";
                     T1Reset(false);
-                    Localization.ShowMessageBox("Entfernt", "Removed");
+                    MessageBox.Show("Removed");
                 }
             }
 
@@ -584,7 +584,7 @@ namespace TSW2_Controller
             }
             else
             {
-                Localization.ShowMessageBox("Keine Taste", "No key");
+                MessageBox.Show("No key");
             }
         }
         private void txtT2_Haltezeit_KeyPress(object sender, KeyPressEventArgs e)
@@ -729,45 +729,45 @@ namespace TSW2_Controller
                 if (!(radioT3_Stufen.Checked || radioT3_Stufenlos.Checked))
                 {
                     ok = false;
-                    Localization.ShowMessageBox("Wähle noch \"" + radioT3_Stufenlos.Text + "\" oder \"" + radioT3_Stufen.Text + "\" aus", "Please select \"" + radioT3_Stufenlos.Text + "\" or \"" + radioT3_Stufen.Text + "\"");
+                    MessageBox.Show("Please select \"" + radioT3_Stufenlos.Text + "\" or \"" + radioT3_Stufen.Text + "\"");
                 }
                 if (txtT3_JoyNr.Text == "" || !txtT3_JoyNr.Text.All(char.IsDigit))
                 {
                     ok = false;
-                    Localization.ShowMessageBox("Fehler bei Joystick Nr.", "Error with Joy no.");
+                    MessageBox.Show("Error with Joy no.");
                 }
                 if (txtT3_JoyAchse.Text == "" || !FormMain.inputNames.Any(txtT3_JoyAchse.Text.Equals))
                 {
                     ok = false;
-                    Localization.ShowMessageBox("Fehler bei Joy-Achse", "Error with Joy-Axis");
+                    MessageBox.Show("Error with Joy-Axis");
                 }
                 if (radioT3_Stufen.Checked && (!txtT3_AnzahlStufen.Text.All(char.IsDigit) || txtT3_AnzahlStufen.Text == ""))
                 {
                     ok = false;
-                    Localization.ShowMessageBox("Fehler bei Anzahl der Stufen", "Error with Number of notches");
+                    MessageBox.Show("Error with Number of notches");
                 }
                 if (txtT3_JoyUmrechnen.Text != "" && (txtT3_JoyUmrechnen.Text.Any(char.IsLetter) || txtT3_JoyUmrechnen.Text.Split(' ').Count() + 1 != txtT3_JoyUmrechnen.Text.Split('=').Count()))
                 {
                     //txtT3_JoyUmrechnen.Text != "" weil es leer sein darf
                     ok = false;
-                    Localization.ShowMessageBox("Fehler bei Joy umrechnen", "Error with Reassign joy states");
+                    MessageBox.Show("Error with Reassign joy states");
                 }
                 if (txtT3_Sonderfaelle.Text != "" && (txtT3_Sonderfaelle.Text.Split(' ').Count() + 1 != txtT3_Sonderfaelle.Text.Split('=').Count()))
                 {
                     //txtT3_Sonderfaelle.Text != "" weil es leer sein darf
                     ok = false;
-                    Localization.ShowMessageBox("Fehler bei Sonderfälle umrechnen", "Error with Convert special cases");
+                    MessageBox.Show("Error with Convert special cases");
                 }
                 if (txtT3_Zeitfaktor.Text == "" || txtT3_Zeitfaktor.Text.Any(char.IsLetter))
                 {
                     ok = false;
-                    Localization.ShowMessageBox("Fehler bei Zeitfakrot", "Error with Time factor");
+                    MessageBox.Show("Error with Time factor");
                 }
                 if (txtT3_LongPress.Text != "" && (txtT3_LongPress.Text.Split(' ').Count() + 1 != txtT3_LongPress.Text.Split(':').Count()))
                 {
                     //txtT3_Zeitfaktor.Text != "" weil es leer sein darf
                     ok = false;
-                    Localization.ShowMessageBox("Fehler bei Länger drücken", "Error with Long press");
+                    MessageBox.Show("Error with Long press");
                 }
             }
             #endregion
@@ -784,7 +784,7 @@ namespace TSW2_Controller
                         if (txtT3_JoyAchse.Text == "" && txtT3_JoyNr.Text == "" && txtT3_AnzahlStufen.Text == "" && txtT3_JoyUmrechnen.Text == "" && txtT3_Zeitfaktor.Text == "" && txtT3_LongPress.Text == "" && txtT3_Sonderfaelle.Text == "")
                         {
                             trainConfig.RemoveAt(i);
-                            Localization.ShowMessageBox("Gelöscht!", "Deleted!");
+                            MessageBox.Show("Deleted!");
                         }
                         else if (ok)
                         {
@@ -802,7 +802,7 @@ namespace TSW2_Controller
 
                             trainConfig[i] = singleTrain;
 
-                            MessageBox.Show(Localization.Translate("Ersetzt","Replaced"));
+                            MessageBox.Show("Replaced");
                         }
                         ersetzt = true;
                     }
@@ -826,7 +826,7 @@ namespace TSW2_Controller
 
                     trainConfig.Add(singleTrain);
 
-                    MessageBox.Show(Localization.Translate("Erstellt","Added"));
+                    MessageBox.Show("Added");
                 }
                 //Schreibe Datei
                 string[] line = new string[trainConfig.Count];
@@ -949,11 +949,11 @@ namespace TSW2_Controller
                         //Zeige den Joystick-Wert nur, wenn er != 0 ist
                         if (counter <= listBoxT3_ShowJoystickStates.Items.Count)
                         {
-                            listBoxT3_ShowJoystickStates.Items[counter - 1] = Localization.Translate("Nr:","No:") + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o];
+                            listBoxT3_ShowJoystickStates.Items[counter - 1] = "No:" + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o];
                         }
                         else
                         {
-                            listBoxT3_ShowJoystickStates.Items.Add(Localization.Translate("Nr:", "No:" + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o]));
+                            listBoxT3_ShowJoystickStates.Items.Add("No:" + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o]);
                         }
                         counter++;
                     }

@@ -44,7 +44,7 @@ namespace TSW2_Controller
 
             lblB_Bedingung.Hide();
             txtB_Bedingung.Hide();
-            lblR_KnopfNr.Text = Localization.Translate("KnopfNr.", "Button no.");
+            lblR_KnopfNr.Text = "Button no.";
 
             dataGridView1.Size = new Size(254, 205);
 
@@ -139,11 +139,11 @@ namespace TSW2_Controller
 
                         if (counter <= listBox_ShowJoystickStates.Items.Count)
                         {
-                            listBox_ShowJoystickStates.Items[counter - 1] = Localization.Translate("Nr:", "No:") + i + " B" + o;
+                            listBox_ShowJoystickStates.Items[counter - 1] = "No:" + i + " B" + o;
                         }
                         else
                         {
-                            listBox_ShowJoystickStates.Items.Add(Localization.Translate("Nr:", "No:") + i + " B" + o);
+                            listBox_ShowJoystickStates.Items.Add("No:" + i + " B" + o);
                         }
                         counter++;
                     }
@@ -155,11 +155,11 @@ namespace TSW2_Controller
                         //Zeige den Joystick-Wert nur, wenn er != 0 ist
                         if (counter <= listBox_ShowJoystickStates.Items.Count)
                         {
-                            listBox_ShowJoystickStates.Items[counter - 1] = Localization.Translate("Nr:", "No:") + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o];
+                            listBox_ShowJoystickStates.Items[counter - 1] = "No:" + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o];
                         }
                         else
                         {
-                            listBox_ShowJoystickStates.Items.Add(Localization.Translate("Nr:", "No:" + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o]));
+                            listBox_ShowJoystickStates.Items.Add("No:" + i + " " + FormMain.inputNames[o] + "  " + joyInputs[o]);
                         }
                         counter++;
                     }
@@ -337,7 +337,7 @@ namespace TSW2_Controller
 
             if (selectedTrain != "")
             {
-                if (MessageBox.Show(Localization.Translate("Möchtest du wirklich \"", "Do you really want to remove \"") + selectedTrain + Localization.Translate("\" löschen?", "?"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Do you really want to remove \"" + selectedTrain + "?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     if (selectedTrain != Tcfg.nameForGlobal)
                     {
@@ -369,7 +369,7 @@ namespace TSW2_Controller
                     }
                     File.WriteAllLines(Tcfg.configpfad, line);
 
-                    MessageBox.Show(counter + Localization.Translate(" Einträge gelöscht!", " entries deleted!"));
+                    MessageBox.Show(counter + " entries deleted!");
                 }
             }
         }
@@ -459,7 +459,7 @@ namespace TSW2_Controller
                 }
                 else
                 {
-                    if (MessageBox.Show(Localization.Translate("Weiter ohne zu speichern?", "Continue without saving?"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("Continue without saving?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         configIsBeeingChanged = 0;
                     }
@@ -537,7 +537,7 @@ namespace TSW2_Controller
             bool cancel = false;
             if (configIsBeeingChanged != 0)
             {
-                if (MessageBox.Show(Localization.Translate("Weiter ohne zu speichern?", "Continue without saving?"), "", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                if (MessageBox.Show("Continue without saving?", "", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     cancel = true;
                 }
@@ -756,14 +756,14 @@ namespace TSW2_Controller
         }
         private void listBoxT1_ControllerList_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete && MessageBox.Show(Localization.Translate("Möchtest du diesen Regler wirklich entfernen?", "Do you really want to remove this controller?"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (e.KeyCode == Keys.Delete && MessageBox.Show("Do you really want to remove this controller?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 RemoveSelectedController();
             }
         }
         private void RemoveSelectedController()
         {
-            if (MessageBox.Show(Localization.Translate("Möchtest du wirklich " + listBoxT1_ControllerList.SelectedItem.ToString() + " löschen?", "Do you really want to delete " + listBoxT1_ControllerList.SelectedItem.ToString() + "?"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Do you really want to delete " + listBoxT1_ControllerList.SelectedItem.ToString() + "?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 for (int i = 0; i < trainConfig.Count; i++)
                 {
@@ -797,52 +797,52 @@ namespace TSW2_Controller
                 else if (txtR_JoyAchse.Text.Contains(",") || txtR_JoyNr.Text.Contains(",") || txtR_AnzahlStufen.Text.Contains(",") || txtR_InputUmrechnen.Text.Contains(",") || txtR_Zeitfaktor.Text.Contains(",") || txtR_LongPress.Text.Contains(",") || txtR_Sonderfaelle.Text.Contains(","))
                 {
                     ok = false;
-                    Localization.ShowMessageBox("Du darfst kein Komma benutzen! Das würde deine Config zerstören, also versuch es nicht zu umgehen :)", "You are not allowed to enter a comma! That would break your config, so don't try to work around it :)");
+                    MessageBox.Show("You are not allowed to enter a comma! That would break your config, so don't try to work around it :)");
                 }
                 else
                 {
                     if (!(radioR_Stufen.Checked || radioR_Stufenlos.Checked))
                     {
                         ok = false;
-                        Localization.ShowMessageBox("Wähle noch \"" + radioR_Stufenlos.Text + "\" oder \"" + radioR_Stufen.Text + "\" aus", "Please select \"" + radioR_Stufenlos.Text + "\" or \"" + radioR_Stufen.Text + "\"");
+                        MessageBox.Show("Please select \"" + radioR_Stufenlos.Text + "\" or \"" + radioR_Stufen.Text + "\"");
                     }
                     if (txtR_JoyNr.Text == "" || !txtR_JoyNr.Text.All(char.IsDigit))
                     {
                         ok = false;
-                        Localization.ShowMessageBox("Fehler bei Joystick Nr.", "Error with Joy no.");
+                        MessageBox.Show("Error with Joy no.");
                     }
                     if (txtR_JoyAchse.Text == "" || !FormMain.inputNames.Any(txtR_JoyAchse.Text.Equals))
                     {
                         ok = false;
-                        Localization.ShowMessageBox("Fehler bei Joy-Achse", "Error with Joy-Axis");
+                        MessageBox.Show("Error with Joy-Axis");
                     }
                     if (radioR_Stufen.Checked && (!txtR_AnzahlStufen.Text.All(char.IsDigit) || txtR_AnzahlStufen.Text == ""))
                     {
                         ok = false;
-                        Localization.ShowMessageBox("Fehler bei Anzahl der Stufen", "Error with Number of notches");
+                        MessageBox.Show("Error with Number of notches");
                     }
                     if (txtR_InputUmrechnen.Text != "" && (txtR_InputUmrechnen.Text.Any(char.IsLetter) || txtR_InputUmrechnen.Text.Split(' ').Count() + 1 != txtR_InputUmrechnen.Text.Split('=').Count()))
                     {
                         //txtT3_JoyUmrechnen.Text != "" weil es leer sein darf
                         ok = false;
-                        Localization.ShowMessageBox("Fehler bei Joy umrechnen", "Error with Reassign joy states");
+                        MessageBox.Show("Error with Reassign joy states");
                     }
                     if (txtR_Sonderfaelle.Text != "" && (txtR_Sonderfaelle.Text.Split(' ').Count() + 1 != txtR_Sonderfaelle.Text.Split('=').Count()))
                     {
                         //txtT3_Sonderfaelle.Text != "" weil es leer sein darf
                         ok = false;
-                        Localization.ShowMessageBox("Fehler bei Sonderfälle umrechnen", "Error with Convert special cases");
+                        MessageBox.Show("Error with Convert special cases");
                     }
                     if (txtR_Zeitfaktor.Text == "" || txtR_Zeitfaktor.Text.Any(char.IsLetter) || txtR_Zeitfaktor.Text.Contains("-"))
                     {
                         ok = false;
-                        Localization.ShowMessageBox("Fehler bei Zeitfaktor", "Error with Time factor");
+                        MessageBox.Show("Error with Time factor");
                     }
                     if (txtR_LongPress.Text != "" && (txtR_LongPress.Text.Split(' ').Count() + 1 != txtR_LongPress.Text.Split(':').Count() && !txtR_LongPress.Text.Contains("|")))
                     {
                         //txtT3_Zeitfaktor.Text != "" weil es leer sein darf
                         ok = false;
-                        Localization.ShowMessageBox("Fehler bei Länger drücken", "Error with Long press");
+                        MessageBox.Show("Error with Long press");
                     }
                     txtR_LongPress.Text = txtR_LongPress.Text.Replace("=", ":");
                 }
@@ -1119,13 +1119,13 @@ namespace TSW2_Controller
             {
                 lblB_Bedingung.Hide();
                 txtB_Bedingung.Hide();
-                lblR_KnopfNr.Text = Localization.Translate("KnopfNr.", "Button no.");
+                lblR_KnopfNr.Text = "Button no.";
             }
             else
             {
                 lblB_Bedingung.Show();
                 txtB_Bedingung.Show();
-                lblR_KnopfNr.Text = Localization.Translate("JoyName", "Joyname");
+                lblR_KnopfNr.Text = "Joyname";
             }
         }
         private void btnB_entfernen_Click(object sender, EventArgs e)
@@ -1160,47 +1160,47 @@ namespace TSW2_Controller
                 if (comboBoxB_KnopfAuswahl.Text.Contains(",") || txtB_Aktion.Text.Contains(",") || txtB_Bedingung.Text.Contains(",") || txtB_JoystickKnopf.Text.Contains(",") || txtB_Tastenkombination.Text.Contains(","))
                 {
                     ok = false;
-                    Localization.ShowMessageBox("Du darfst kein Komma benutzen! Das würde deine Config zerstören, also versuch es nicht zu umgehen :)", "You are not allowed to enter a comma! That would break your config, so don't try to work around it :)");
+                    MessageBox.Show("You are not allowed to enter a comma! That would break your config, so don't try to work around it :)");
                 }
                 else
                 {
                     if (comboBoxB_KnopfAuswahl.Text == "")
                     {
                         ok = false;
-                        Localization.ShowMessageBox("Kein Name eingegeben", "No name entered");
+                        MessageBox.Show("No name entered");
                     }
                     if (txtB_JoystickNr.Text == "" || !txtB_JoystickNr.Text.All(char.IsDigit))
                     {
                         ok = false;
-                        Localization.ShowMessageBox("Fehler bei Joystick Nr.", "Error with Joy no.");
+                        MessageBox.Show("Error with Joy no.");
                     }
                     if (txtB_JoystickKnopf.Text == "" || (!FormMain.inputNames.Any(txtB_JoystickKnopf.Text.Equals) && radioB_regler.Checked))
                     {
                         ok = false;
                         if (radioB_normal.Checked)
                         {
-                            Localization.ShowMessageBox("Fehler bei Knopf Nr.", "Error with Button-no.");
+                            MessageBox.Show("Error with Button-no.");
                         }
                         else
                         {
-                            Localization.ShowMessageBox("Fehler bei JoyName", "Error with Joyname");
+                            MessageBox.Show("Error with Joyname");
                         }
                     }
                     if (txtB_Bedingung.Text != "" && (!(txtB_Bedingung.Text.Contains("<") || txtB_Bedingung.Text.Contains(">") || txtB_Bedingung.Text.Contains("=")) || txtB_Bedingung.Text.Any(char.IsLetter)))
                     {
                         //txtB_Bedingung.Text != "" weil es leer sein darf
                         ok = false;
-                        Localization.ShowMessageBox("Fehler bei Bedingung", "Error with Condition");
+                        MessageBox.Show("Error with Condition");
                     }
                     if (txtB_Aktion.Text == "" && txtB_Tastenkombination.Text == "")
                     {
                         ok = false;
-                        Localization.ShowMessageBox("Keine Aktion oder Tastenkombination", "No action or keyboard shortcut");
+                        MessageBox.Show("No action or keyboard shortcut");
                     }
                     if (txtB_Tastenkombination.Text != "" && !(txtB_Tastenkombination.Text.Split('_').Count() == 3 || txtB_Tastenkombination.Text.Split('_').Count() % 3 == 0))
                     {
                         ok = false;
-                        Localization.ShowMessageBox("Fehler bei Tastenkombination", "Error with keyboard shortcut");
+                        MessageBox.Show("Error with keyboard shortcut");
                     }
                 }
                 #endregion
@@ -1268,10 +1268,10 @@ namespace TSW2_Controller
                     splitted[i + 1] = splitted[i + 1].Replace("[", "").Replace("]", "");
                     splitted[i + 2] = splitted[i + 2].Replace("[", "").Replace("]", "");
 
-                    if (splitted[i + 1].Contains("press")) { listBoxT3_Output.Items.Add(Localization.Translate(splitted[i] + " kurz drücken, danach " + splitted[i + 2] + "ms warten", splitted[i] + " short press, then wait " + splitted[i + 2] + "ms")); }
-                    if (splitted[i + 1].Contains("hold")) { listBoxT3_Output.Items.Add(Localization.Translate(splitted[i] + " für " + splitted[i + 1].Replace("hold", "") + "ms halten, danach " + splitted[i + 2] + "ms warten", "hold " + splitted[i] + " for " + splitted[i + 1].Replace("hold", "") + "ms, then wait " + splitted[i + 2] + "ms")); }
-                    if (splitted[i + 1].Contains("down")) { listBoxT3_Output.Items.Add(Localization.Translate(splitted[i] + " gedrückt halten, danach " + splitted[i + 2] + "ms warten", "hold down " + splitted[i] + ", then wait " + splitted[i + 2] + "ms")); }
-                    if (splitted[i + 1].Contains("up")) { listBoxT3_Output.Items.Add(Localization.Translate(splitted[i] + " loslassen, danach " + splitted[i + 2] + "ms warten", "release " + splitted[i] + ", then wait " + splitted[i + 2] + "ms")); }
+                    if (splitted[i + 1].Contains("press")) { listBoxT3_Output.Items.Add(splitted[i] + " short press, then wait " + splitted[i + 2] + "ms"); }
+                    if (splitted[i + 1].Contains("hold")) { listBoxT3_Output.Items.Add("hold " + splitted[i] + " for " + splitted[i + 1].Replace("hold", "") + "ms, then wait " + splitted[i + 2] + "ms"); }
+                    if (splitted[i + 1].Contains("down")) { listBoxT3_Output.Items.Add("hold down " + splitted[i] + ", then wait " + splitted[i + 2] + "ms"); }
+                    if (splitted[i + 1].Contains("up")) { listBoxT3_Output.Items.Add("release " + splitted[i] + ", then wait " + splitted[i + 2] + "ms"); }
                 }
             }
 
@@ -1308,29 +1308,29 @@ namespace TSW2_Controller
                 if (radioT3_einmalDruecken.Checked)
                 {
                     tastenkombiliste.Insert(insertIndex, txtT3_Taste.Text + "_[press]_[" + txtT3_Wartezeit.Text + "]");
-                    listBoxT3_Output.Items.Insert(insertIndex, Localization.Translate(txtT3_Taste.Text + " kurz drücken, danach " + txtT3_Wartezeit.Text + "ms warten", txtT3_Taste.Text + " short press, then wait " + txtT3_Wartezeit.Text + "ms"));
+                    listBoxT3_Output.Items.Insert(insertIndex, txtT3_Taste.Text + " short press, then wait " + txtT3_Wartezeit.Text + "ms");
                 }
                 else if (radioT3_Halten.Checked)
                 {
                     tastenkombiliste.Insert(insertIndex, txtT3_Taste.Text + "_[hold" + txtT3_Haltezeit.Text + "]_[" + txtT3_Wartezeit.Text + "]");
-                    listBoxT3_Output.Items.Insert(insertIndex, Localization.Translate(txtT3_Taste.Text + " für " + txtT3_Haltezeit.Text + "ms halten, danach " + txtT3_Wartezeit.Text + "ms warten", "hold " + txtT3_Taste.Text + " for " + txtT3_Haltezeit.Text + "ms, then wait " + txtT3_Wartezeit.Text + "ms"));
+                    listBoxT3_Output.Items.Insert(insertIndex, "hold " + txtT3_Taste.Text + " for " + txtT3_Haltezeit.Text + "ms, then wait " + txtT3_Wartezeit.Text + "ms");
                 }
                 else if (radioT3_Druecken.Checked)
                 {
                     tastenkombiliste.Insert(insertIndex, txtT3_Taste.Text + "_[down]_[" + txtT3_Wartezeit.Text + "]");
-                    listBoxT3_Output.Items.Insert(insertIndex, Localization.Translate(txtT3_Taste.Text + " gedrückt halten, danach " + txtT3_Wartezeit.Text + "ms warten", "press " + txtT3_Taste.Text + " down, then wait " + txtT3_Wartezeit.Text + "ms"));
+                    listBoxT3_Output.Items.Insert(insertIndex, "press " + txtT3_Taste.Text + " down, then wait " + txtT3_Wartezeit.Text + "ms");
                 }
                 else if (radioT3_Loslassen.Checked)
                 {
                     tastenkombiliste.Insert(insertIndex, txtT3_Taste.Text + "_[up]_[" + txtT3_Wartezeit.Text + "]");
-                    listBoxT3_Output.Items.Insert(insertIndex, Localization.Translate(txtT3_Taste.Text + " loslassen, danach " + txtT3_Wartezeit.Text + "ms warten", "release " + txtT3_Taste.Text + ", then wait " + txtT3_Wartezeit.Text + "ms"));
+                    listBoxT3_Output.Items.Insert(insertIndex, "release " + txtT3_Taste.Text + ", then wait " + txtT3_Wartezeit.Text + "ms");
                 }
                 listBoxT3_Output.SelectedIndex = insertIndex;
                 radioT3_einmalDruecken.Checked = true;
             }
             else
             {
-                Localization.ShowMessageBox("Keine Taste", "No key");
+                MessageBox.Show("No key");
             }
         }
         private void btnT3_Fertig_Click(object sender, EventArgs e)
@@ -1471,7 +1471,7 @@ namespace TSW2_Controller
         }
         private void btnT2_remove_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(Localization.Translate("Möchtest du wirklich den Regler " + comboBoxT2_Reglerauswahl.Text + " löschen?", "Do you really want to remove " + comboBoxT2_Reglerauswahl.Text + "?"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Do you really want to remove " + comboBoxT2_Reglerauswahl.Text + "?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 ComboBox cb = comboBoxT2_Reglerauswahl;
                 if (cb.Items.Contains(cb.Text))
@@ -1548,7 +1548,7 @@ namespace TSW2_Controller
         private void comboBoxT2_Indicators_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            if (MessageBox.Show(Localization.Translate("Willst du " + cb.Text + " ENTFERNEN?", "Do you want to REMOVE " + cb.Text + "?"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Do you want to REMOVE " + cb.Text + "?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 cb.Items.Remove(cb.Text);
             }
@@ -1660,7 +1660,7 @@ namespace TSW2_Controller
         }
         private void btnT2_defaultSettings_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(Localization.Translate("Möchtest du wirklich alle Regler auf die Standardeinstellungen zurücksetzen? (Ohne speichern wirksam)", "Do you really want to reset all controllers to default settings?"), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Do you really want to reset all controllers to default settings?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 File.Copy(Tcfg.controllersstandardpfad_EN, Tcfg.controllersConfigPfad, true);
                 Log.Add("Copy :" + Tcfg.controllersstandardpfad_EN + " to " + Tcfg.controllersConfigPfad);

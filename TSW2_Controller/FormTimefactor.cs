@@ -94,7 +94,7 @@ namespace TSW2_Controller
                     }
                     else
                     {
-                        MessageBox.Show(Localization.Translate("Du hast noch keinen Startwert eingetragen!", "You didn't enter any starting value!"));
+                        MessageBox.Show("You didn't enter any starting value!");
                     }
                 }
                 catch (Exception ex)
@@ -176,12 +176,12 @@ namespace TSW2_Controller
                         Keyboard.HoldKey(Keys.Escape, 300);
                         this.Focus();
                         Interaction.Beep();
-                        DialogResult dialog = MessageBox.Show(Localization.Translate("Keine Nummer erkannt. Kann es sein, dass du beim Maximum gelandet bist?", "No number detected. Could it be that you have reached the maximum?"), Localization.Translate("Fehler","Error"), MessageBoxButtons.YesNo);
+                        DialogResult dialog = MessageBox.Show("No number detected. Could it be that you have reached the maximum?", "Error", MessageBoxButtons.YesNo);
 
                         if (dialog == DialogResult.Yes)
                         {
-                            MessageBox.Show(Localization.Translate("OK, dann stelle den Regler nochmal auf ", "OK, than set the controller back to ") + startNumber + "%" + Localization.Translate(" und bestätige mit OK", " and press OK"));
-                            MessageBox.Show(Localization.Translate("Drücke nochmal auf OK, wechsel innerhalb von 7 Sekunden zum TSW und warte", "Press OK again, switch to TSW within 7 seconds and wait"));
+                            MessageBox.Show("OK, than set the controller back to " + startNumber + "%" + " and press OK");
+                            MessageBox.Show("Press OK again, switch to TSW within 7 seconds and wait");
                             Thread.Sleep(7000);
                             delay = 800;
                             //Versuche es nochmal
@@ -192,7 +192,7 @@ namespace TSW2_Controller
                             {
                                 try
                                 {
-                                    string userinput = Interaction.InputBox(Localization.Translate("Auf welcher Zahl bist du gelandet?", "What number did you land on?"));
+                                    string userinput = Interaction.InputBox("What number did you land on?");
                                     endNumber = Convert.ToInt32(userinput);
                                     wait = false;
                                     nothingDetected = true;
@@ -209,13 +209,13 @@ namespace TSW2_Controller
                     if (!nothingDetected) { Keyboard.HoldKey(Keys.Escape, 300); }
                     this.Focus();
                     Interaction.Beep();
-                    MessageBox.Show(Localization.Translate("Fertig!","Done!") + "\n" + Localization.Translate("Als Wert für den Zeitfaktor kannst du nun ", "You can now set the time factor to ") + Math.Round(Convert.ToDouble(endNumber - startNumber) * (1000.0 / delay), 0) + Localization.Translate(" eintragen"));
+                    MessageBox.Show("You can now set the time factor to " + Math.Round(Convert.ToDouble(endNumber - startNumber) * (1000.0 / delay), 0));
                 }
                 else if (endNumber != -1)
                 {
                     this.Focus();
                     Interaction.Beep();
-                    MessageBox.Show(Localization.Translate("Hmm da hast du wohl etwas falsch gemacht Die Startzahl sollte groeßer als die Endzahl sein", "Hmm, you must have done something wrong. The starting number should be greater than the ending number."));
+                    MessageBox.Show("Hmm, you must have done something wrong. The starting number should be greater than the ending number.");
                 }
             }
             else
@@ -291,14 +291,14 @@ namespace TSW2_Controller
                     Keyboard.HoldKey(Keys.Escape, 300);
                     this.Focus();
                     Interaction.Beep();
-                    MessageBox.Show(Localization.Translate("Fertig!", "Done!") + "\n" + Localization.Translate("Als Wert für den Zeitfaktor kannst du nun ", "You can now set the time factor to ") + Math.Round((Convert.ToDouble(overskip_Value - nextStep_Value) / 2) + nextStep_Value, 0) + Localization.Translate(" eintragen"));
+                    MessageBox.Show("Done!" + "\n" + "You can now set the time factor to " + Math.Round((Convert.ToDouble(overskip_Value - nextStep_Value) / 2) + nextStep_Value, 0));
                 }
                 else
                 {
                     Keyboard.HoldKey(Keys.Escape, 300);
                     this.Focus();
                     Interaction.Beep();
-                    MessageBox.Show(Localization.Translate("Hmm da hast du wohl etwas falsch gemacht Die Startzahl sollte groeßer als die Endzahl sein", "Hmm, you must have done something wrong. The starting number should be greater than the ending number."));
+                    MessageBox.Show("Hmm, you must have done something wrong. The starting number should be greater than the ending number.");
                 }
             }
 
@@ -328,8 +328,8 @@ namespace TSW2_Controller
             Keyboard.HoldKey(Keys.Escape, 300);
             this.Focus();
             Interaction.Beep();
-            MessageBox.Show(Localization.Translate("Stelle den Regler nun auf den bremswert", "Now set the controller to the braking value"));
-            MessageBox.Show(Localization.Translate("Drücke nochmal auf OK, wechsel innerhalb von 7 Sekunden zum TSW und warte", "Press OK again, switch to TSW within 7 seconds and wait"));
+            MessageBox.Show("Now set the controller to the braking value");
+            MessageBox.Show("Press OK again, switch to TSW within 7 seconds and wait");
             Thread.Sleep(7000);
 
             Keyboard.HoldKey(Keyboard.decreaseThrottle, 0);
@@ -350,7 +350,7 @@ namespace TSW2_Controller
             Keyboard.HoldKey(Keys.Escape, 300);
             this.Focus();
             Interaction.Beep();
-            MessageBox.Show(Localization.Translate("Fertig!", "Done!") + "\n" + Localization.Translate("Als Wert für den Zeitfaktor kannst du nun ", "You can now set the time factor to ") + ersterZeitwert + "|" + zweiterZeitwert + Localization.Translate(" eintragen"));
+            MessageBox.Show("Done!" + "\n" + "You can now set the time factor to " + ersterZeitwert + "|" + zweiterZeitwert);
             Close();
         }
 
@@ -408,7 +408,7 @@ namespace TSW2_Controller
 
         private void btn_start_longpress_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Localization.Translate("Drücke nochmal auf OK, wechsel innerhalb von 7 Sekunden zum TSW und warte", "Press OK again, switch to TSW within 7 seconds and wait"));
+            MessageBox.Show("Press OK again, switch to TSW within 7 seconds and wait");
             Thread.Sleep(7000);
             try
             {

@@ -46,6 +46,7 @@
             this.btn_import = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informationsdateiErstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zurConfigGehenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkBox_deleteLogsAutomatically = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
@@ -166,9 +167,16 @@
             // hilfeToolStripMenuItem
             // 
             this.hilfeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.informationsdateiErstellenToolStripMenuItem,
             this.zurConfigGehenToolStripMenuItem});
             this.hilfeToolStripMenuItem.Name = "hilfeToolStripMenuItem";
             resources.ApplyResources(this.hilfeToolStripMenuItem, "hilfeToolStripMenuItem");
+            // 
+            // informationsdateiErstellenToolStripMenuItem
+            // 
+            this.informationsdateiErstellenToolStripMenuItem.Name = "informationsdateiErstellenToolStripMenuItem";
+            resources.ApplyResources(this.informationsdateiErstellenToolStripMenuItem, "informationsdateiErstellenToolStripMenuItem");
+            this.informationsdateiErstellenToolStripMenuItem.Click += new System.EventHandler(this.informationsdateiErstellenToolStripMenuItem_Click);
             // 
             // zurConfigGehenToolStripMenuItem
             // 
@@ -225,6 +233,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem hilfeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem informationsdateiErstellenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zurConfigGehenToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox_deleteLogsAutomatically;
         private System.Windows.Forms.Button btn_export;

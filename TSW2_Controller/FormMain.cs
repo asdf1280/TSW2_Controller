@@ -131,13 +131,13 @@ namespace TSW2_Controller
         }
 
         #region UI
-        #region Main timer
+        #region Haupttimer
         private void timer_CheckSticks_Tick(object sender, EventArgs e)
         {
             Main();
         }
         #endregion
-        #region Train Selection
+        #region Zugauswahl
         private void comboBox_Zugauswahl_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedTrain = comboBox_Zugauswahl.Text;
@@ -170,7 +170,7 @@ namespace TSW2_Controller
             getActiveVControllers();
         }
         #endregion
-        #region Checkbox active
+        #region Checkbox Aktiv
         private void check_active_CheckedChanged(object sender, EventArgs e)
         {
             if (check_active.Checked)
@@ -243,7 +243,7 @@ namespace TSW2_Controller
             }
         }
         #endregion
-        #region Deactivate global
+        #region Deaktiviere Global
         private void check_deactivateGlobal_CheckedChanged(object sender, EventArgs e)
         {
             if (check_deactivateGlobal.Checked)
@@ -265,7 +265,7 @@ namespace TSW2_Controller
             getActiveTrain();
         }
         #endregion
-        #region Settings
+        #region Einstellungen
         private void btn_einstellungen_Click(object sender, EventArgs e)
         {
             Log.Add("Going to settings:");
@@ -290,7 +290,7 @@ namespace TSW2_Controller
             }
         }
         #endregion
-        #region Check joystick
+        #region Joysticks überprüfen
         private void btn_checkJoysticks_Click(object sender, EventArgs e)
         {
             Joystick[] sticks = getSticks();
@@ -301,7 +301,8 @@ namespace TSW2_Controller
             }
         }
         #endregion
-        #region Form Close
+     
+        #region FormClose
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -309,7 +310,7 @@ namespace TSW2_Controller
         #endregion
         #endregion
 
-        #region General Functions
+        #region Allgemeine Funktionen
         public static bool ContainsWord(string stringToCheck, string word)
         {
             if (word != null)
@@ -524,7 +525,7 @@ namespace TSW2_Controller
         }
         #endregion
 
-        #region Version Check
+        #region Versions überprüfung
         public void checkVersion()
         {
             Log.Add("Check version of settings...");
@@ -544,7 +545,7 @@ namespace TSW2_Controller
                         #region Update besonderheiten
                         if (new Version(prevVersion.ToString()).CompareTo(new Version("1.0.9")) < 0)
                         {
-                            Localization.ShowMessageBox("Deine vorherige Version ist wahrscheinlich zu alt und lässt sich nicht mehr automatisch konvertieren. Du musst das Programm deinstallieren (komplett) und die neuste Version wieder installieren.", "Your previous version is probably too old and cannot be converted automatically. You need to uninstall the program (completely) and reinstall the latest version.");
+                            MessageBox.Show("Your previous version is probably too old and cannot be converted automatically. You need to uninstall the program (completely) and reinstall the latest version.");
                         }
                         else
                         {
@@ -555,7 +556,7 @@ namespace TSW2_Controller
                                 {
                                     //Backup
                                     File.Copy(Tcfg.configpfad, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\backupTrainConfig.csv", true);
-                                    Localization.ShowMessageBox("Ein Backup wurde auf dem Desktop erstellt", "Backup has been created on the Desktop");
+                                    MessageBox.Show("Backup has been created on the Desktop");
 
                                     //Neue Tastenbenennung
                                     string[] file = File.ReadAllLines(Tcfg.configpfad);
@@ -687,7 +688,7 @@ namespace TSW2_Controller
 
                                 CloneDirectory(Tcfg.configOrdnerPfad, folderPath + @"\backupTrainConfig.csv");
 
-                                Localization.ShowMessageBox("Ein Backup wurde auf dem Desktop erstellt", "Backup has been created on the Desktop");
+                                MessageBox.Show("Backup has been created on the Desktop");
 
                                 List<List<string>> tempTrainconfig = new List<List<string>>();
 
@@ -1030,8 +1031,8 @@ namespace TSW2_Controller
         {
             trainNames.Clear();
             comboBox_Zugauswahl.Items.Clear();
-            comboBox_Zugauswahl.Items.Add(Localization.Translate("_Zugauswahl", "_Select train"));
-            comboBox_Zugauswahl.SelectedItem = Localization.Translate("_Zugauswahl", "_Select train");
+            comboBox_Zugauswahl.Items.Add("_Select train");
+            comboBox_Zugauswahl.SelectedItem = "_Select train";
 
             foreach (string[] str in trainConfig)
             {
@@ -1338,7 +1339,7 @@ namespace TSW2_Controller
             {
                 Log.ErrorException(ex);
                 MainSticks = getSticks();
-                Localization.ShowMessageBox(stick.Information.InstanceName + " nicht mehr angeschlossen!", stick.Information.InstanceName + " not connected anymore!");
+                MessageBox.Show(stick.Information.InstanceName + " not connected anymore!");
             }
         }
 
@@ -1549,7 +1550,7 @@ namespace TSW2_Controller
                 else
                 {
                     check_active.Checked = false;
-                    Localization.ShowMessageBox("Kein Joystick angeschlossen!", "No joystick connected!");
+                    MessageBox.Show("No joystick connected!");
                 }
             }
 
@@ -1804,7 +1805,7 @@ namespace TSW2_Controller
 
                 lbl_originalResult.Invoke((MethodInvoker)delegate { lbl_originalResult.Text = result; });
                 groupBox_ScanErgebnisse.Invoke((MethodInvoker)delegate { groupBox_ScanErgebnisse.Show(); });
-                lbl_scantime.Invoke((MethodInvoker)delegate { lbl_scantime.Text = Localization.Translate("Scanzeit:", "Scantime:") + stopwatch.ElapsedMilliseconds + "ms"; });
+                lbl_scantime.Invoke((MethodInvoker)delegate { lbl_scantime.Text = "Scantime:" + stopwatch.ElapsedMilliseconds + "ms"; });
 
                 for (int i = 0; i < activeVControllers.Count; i++)
                 {
@@ -2069,5 +2070,8 @@ namespace TSW2_Controller
         }
         #endregion
 
+        private void FormMain_Load(object sender, EventArgs e) {
+
+        }
     }
 }

@@ -67,7 +67,7 @@ namespace TSW2_Controller
             }
             else
             {
-                Localization.ShowMessageBox("ERROR " + controller + " nicht gefunden!", "ERROR " + controller + " not found!");
+                MessageBox.Show("ERROR " + controller + " not found!");
                 DialogResult = DialogResult.Cancel;
                 Close();
             }
@@ -322,7 +322,7 @@ namespace TSW2_Controller
             }
             else
             {
-                lbl_ERROR.Text = Localization.Translate("Konnte keine Zahl lesen!","Could not get a number!");
+                lbl_ERROR.Text = "Could not get a number!";
                 btn_start.Text = "Start";
                 btn_start.Enabled = true;
                 timervalue = 7;
@@ -407,7 +407,7 @@ namespace TSW2_Controller
                 }
                 else
                 {
-                    lbl_ERROR.Text = Localization.Translate("Konnte keine Zahl lesen!", "Could not get a number!");
+                    lbl_ERROR.Text = "Could not get a number!";
                     btn_start.Text = "Start";
                     btn_start.Enabled = true;
                     timervalue = 7;
@@ -481,7 +481,7 @@ namespace TSW2_Controller
                 }
                 else
                 {
-                    lbl_ERROR.Text = Localization.Translate("Konnte keine Zahl lesen!", "Could not get a number!");
+                    lbl_ERROR.Text = "Could not get a number!";
                     btn_start.Text = "Start";
                     btn_start.Enabled = true;
                     timervalue = 7;
@@ -576,7 +576,7 @@ namespace TSW2_Controller
             }
             else
             {
-                lbl_ERROR.Text = Localization.Translate("Textindikator nicht gefunden!","No text indicator found!");
+                lbl_ERROR.Text = "No text indicator found!";
             }
         }
 
