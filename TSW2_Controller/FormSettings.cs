@@ -49,13 +49,13 @@ namespace TSW2_Controller {
 
                 checkBox_deleteLogsAutomatically.Checked = Settings.Default.DeleteLogsAutomatically;
 
-                string[] files = Directory.GetFiles(Tcfg.configOrdnerPfad);
+                string[] files = Directory.GetFiles(ConfigConsts.configFolderPath);
                 comboBox_TrainConfig.Items.Add("_Standard");
                 foreach (string file in files) {
                     comboBox_TrainConfig.Items.Add(Path.GetFileName(file).Replace(".csv", ""));
                 }
 
-                if (File.Exists(Tcfg.configOrdnerPfad + Settings.Default.selectedTrainConfig + ".csv")) {
+                if (File.Exists(ConfigConsts.configFolderPath + Settings.Default.selectedTrainConfig + ".csv")) {
                     comboBox_TrainConfig.SelectedItem = Settings.Default.selectedTrainConfig;
                 } else if (Settings.Default.selectedTrainConfig == "_Standard") {
                     comboBox_TrainConfig.SelectedItem = Settings.Default.selectedTrainConfig;
@@ -116,10 +116,10 @@ namespace TSW2_Controller {
                 if (!comboBox_TrainConfig.Items.Contains(comboBox_TrainConfig.Text)) {
                     //Hinzufügen
                     if (MessageBox.Show("Transfer the data of " + Settings.Default.selectedTrainConfig + "?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                        File.Copy(Tcfg.configpfad, Tcfg.configOrdnerPfad + comboBox_TrainConfig.Text + ".csv", true);
+                        File.Copy(ConfigConsts.configPath, ConfigConsts.configFolderPath + comboBox_TrainConfig.Text + ".csv", true);
                     } else {
-                        File.Create(Tcfg.configOrdnerPfad + comboBox_TrainConfig.Text + ".csv").Close();
-                        File.WriteAllText(Tcfg.configOrdnerPfad + comboBox_TrainConfig.Text + ".csv", "Zug,Beschreibung,ReglerName,JoystickNummer,JoystickInput,Invertieren,InputTyp,InputUmrechnen,Tastenkombination,Aktion,Art,Schritte,Specials,Zeitfaktor,Länger drücken");
+                        File.Create(ConfigConsts.configFolderPath + comboBox_TrainConfig.Text + ".csv").Close();
+                        File.WriteAllText(ConfigConsts.configFolderPath + comboBox_TrainConfig.Text + ".csv", "Zug,Beschreibung,ReglerName,JoystickNummer,JoystickInput,Invertieren,InputTyp,InputUmrechnen,Tastenkombination,Aktion,Art,Schritte,Specials,Zeitfaktor,Länger drücken");
                     }
                     changeConfig();
                     comboBox_TrainConfig.Items.Add(comboBox_TrainConfig.Text);
@@ -132,9 +132,9 @@ namespace TSW2_Controller {
 
         private void btn_trainconfigLoeschen_Click(object sender, EventArgs e) {
             if (comboBox_TrainConfig.Text != "_Standard") {
-                if (File.Exists(Tcfg.configOrdnerPfad + comboBox_TrainConfig.Text + ".csv")) {
+                if (File.Exists(ConfigConsts.configFolderPath + comboBox_TrainConfig.Text + ".csv")) {
                     if (MessageBox.Show("Do you want to remove \"" + comboBox_TrainConfig.Text + "\"?" + "\n" + "All trains will be deleted!", "", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                        File.Delete(Tcfg.configOrdnerPfad + comboBox_TrainConfig.Text + ".csv");
+                        File.Delete(ConfigConsts.configFolderPath + comboBox_TrainConfig.Text + ".csv");
                         Settings.Default.selectedTrainConfig = "_Standard";
                         Settings.Default.Save();
                         comboBox_TrainConfig.Items.Remove(comboBox_TrainConfig.Text);
@@ -148,12 +148,12 @@ namespace TSW2_Controller {
             try {
                 if (comboBox_TrainConfig.Text == "_Standard") {
                     if (Settings.Default.selectedTrainConfig != "_Standard") {
-                        File.Copy(Tcfg.configpfad, Tcfg.configOrdnerPfad + Settings.Default.selectedTrainConfig + ".csv", true);
+                        File.Copy(ConfigConsts.configPath, ConfigConsts.configFolderPath + Settings.Default.selectedTrainConfig + ".csv", true);
                     }
-                    File.Copy(Tcfg.configstandardpfad, Tcfg.configpfad, true);
+                    File.Copy(ConfigConsts.configStandardPath, ConfigConsts.configPath, true);
                     Settings.Default.selectedTrainConfig = "_Standard";
                 } else {
-                    File.Copy(Tcfg.configOrdnerPfad + comboBox_TrainConfig.Text + ".csv", Tcfg.configpfad, true);
+                    File.Copy(ConfigConsts.configFolderPath + comboBox_TrainConfig.Text + ".csv", ConfigConsts.configPath, true);
                     Settings.Default.selectedTrainConfig = comboBox_TrainConfig.Text;
                 }
             } catch (Exception ex) {
@@ -192,22 +192,22 @@ namespace TSW2_Controller {
             Log.Add("Leaving controls");
 
             if (Settings.Default.selectedTrainConfig == "_Standard") {
-                if (!File.ReadLines(Tcfg.configpfad).SequenceEqual(File.ReadLines(Tcfg.configstandardpfad))) {
+                if (!File.ReadLines(ConfigConsts.configPath).SequenceEqual(File.ReadLines(ConfigConsts.configStandardPath))) {
                     //Die Datei hat sich geändert
                     Log.Add("Config has changed, but standard selected");
                     string name = "yourConfig";
-                    if (!File.Exists(Tcfg.configOrdnerPfad + name + ".csv")) {
-                        File.Copy(Tcfg.configpfad, Tcfg.configOrdnerPfad + name + ".csv");
+                    if (!File.Exists(ConfigConsts.configFolderPath + name + ".csv")) {
+                        File.Copy(ConfigConsts.configPath, ConfigConsts.configFolderPath + name + ".csv");
                         Settings.Default.selectedTrainConfig = name;
                         Settings.Default.Save();
                         comboBox_TrainConfig.Items.Add(name);
                         comboBox_TrainConfig.SelectedItem = name;
                     } else {
                         int counter = 0;
-                        while (File.Exists(Tcfg.configOrdnerPfad + name + counter + ".csv")) { counter++; }
+                        while (File.Exists(ConfigConsts.configFolderPath + name + counter + ".csv")) { counter++; }
 
                         name = name + counter.ToString();
-                        File.Copy(Tcfg.configpfad, Tcfg.configOrdnerPfad + name + ".csv");
+                        File.Copy(ConfigConsts.configPath, ConfigConsts.configFolderPath + name + ".csv");
                         Settings.Default.selectedTrainConfig = name;
                         Settings.Default.Save();
                         comboBox_TrainConfig.Items.Add(name);
@@ -216,7 +216,7 @@ namespace TSW2_Controller {
                     Log.Add("Saved as " + name);
                 }
             } else {
-                File.Copy(Tcfg.configpfad, Tcfg.configOrdnerPfad + Settings.Default.selectedTrainConfig + ".csv", true);
+                File.Copy(ConfigConsts.configPath, ConfigConsts.configFolderPath + Settings.Default.selectedTrainConfig + ".csv", true);
             }
         }
 
@@ -245,11 +245,11 @@ namespace TSW2_Controller {
         }
 
         private void zurConfigGehenToolStripMenuItem_Click(object sender, EventArgs e) {
-            Process.Start(Tcfg.configpfad.Replace("Trainconfig.csv", ""));
+            Process.Start(ConfigConsts.configPath.Replace("Trainconfig.csv", ""));
         }
 
         private void btn_export_Click(object sender, EventArgs e) {
-            string path = Tcfg.configOrdnerPfad + comboBox_TrainConfig.Text + ".csv";
+            string path = ConfigConsts.configFolderPath + comboBox_TrainConfig.Text + ".csv";
             if (File.Exists(path)) {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "(*.csv)|*.csv";
@@ -277,31 +277,31 @@ namespace TSW2_Controller {
                     while (!reader.EndOfStream) {
                         var line = reader.ReadLine();
                         string[] values = line.Split(',');
-                        if (values.Count() != Tcfg.arrayLength) {
+                        if (values.Count() != ConfigConsts.arrayLength) {
                             isOK = false;
                         }
                     }
                 }
                 if (isOK) {
-                    if (File.Exists(Tcfg.configOrdnerPfad + openFileDialog.SafeFileName)) {
+                    if (File.Exists(ConfigConsts.configFolderPath + openFileDialog.SafeFileName)) {
                         if (MessageBox.Show("Overwrite?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                            File.Copy(openFileDialog.FileName, Tcfg.configOrdnerPfad + openFileDialog.SafeFileName, true);
+                            File.Copy(openFileDialog.FileName, ConfigConsts.configFolderPath + openFileDialog.SafeFileName, true);
                         } else {
                             isOK = false;
                         }
                     } else {
-                        File.Copy(openFileDialog.FileName, Tcfg.configOrdnerPfad + openFileDialog.SafeFileName, true);
+                        File.Copy(openFileDialog.FileName, ConfigConsts.configFolderPath + openFileDialog.SafeFileName, true);
                     }
 
                     if (isOK) {
                         comboBox_TrainConfig.Items.Clear();
-                        string[] files = Directory.GetFiles(Tcfg.configOrdnerPfad);
+                        string[] files = Directory.GetFiles(ConfigConsts.configFolderPath);
                         comboBox_TrainConfig.Items.Add("_Standard");
                         foreach (string file in files) {
                             comboBox_TrainConfig.Items.Add(Path.GetFileName(file).Replace(".csv", ""));
                         }
 
-                        if (File.Exists(Tcfg.configOrdnerPfad + openFileDialog.SafeFileName)) {
+                        if (File.Exists(ConfigConsts.configFolderPath + openFileDialog.SafeFileName)) {
                             comboBox_TrainConfig.SelectedItem = openFileDialog.SafeFileName.Replace(".csv", "");
                         }
                     }

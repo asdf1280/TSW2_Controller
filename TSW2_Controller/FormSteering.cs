@@ -27,9 +27,9 @@ namespace TSW2_Controller
             FormMain formMain = new FormMain();
             trainConfig = formMain.trainConfig;
 
-            comboBoxT0_Zugauswahl.Items.Add(Tcfg.nameForGlobal);
+            comboBoxT0_Zugauswahl.Items.Add(ConfigConsts.nameForGlobal);
             comboBoxT0_Zugauswahl.Items.AddRange(formMain.trainNames.ToArray());
-            comboBoxT0_Zugauswahl.SelectedItem = Tcfg.nameForGlobal;
+            comboBoxT0_Zugauswahl.SelectedItem = ConfigConsts.nameForGlobal;
 
             lblT1_KnopfNr.Text = "Button no.";
             lblT3_AnzahlStufen.Hide();
@@ -74,7 +74,7 @@ namespace TSW2_Controller
         #region T0
         private void comboBoxT0_Zugauswahl_TextChanged(object sender, EventArgs e)
         {
-            if (comboBoxT0_Zugauswahl.Text == Tcfg.nameForGlobal)
+            if (comboBoxT0_Zugauswahl.Text == ConfigConsts.nameForGlobal)
             {
                 btnT0_editRegler.Enabled = false;
             }
@@ -92,9 +92,9 @@ namespace TSW2_Controller
                 comboBoxT1_KnopfAuswahl.Items.Clear();
                 foreach (string[] cfg in trainConfig)
                 {
-                    if ((cfg[Tcfg.zug] == selectedTrain && cfg[Tcfg.inputTyp] == "Button") || (cfg[Tcfg.zug] == selectedTrain && cfg[Tcfg.inputTyp].Contains("[")))
+                    if ((cfg[ConfigConsts.train] == selectedTrain && cfg[ConfigConsts.inputType] == "Button") || (cfg[ConfigConsts.train] == selectedTrain && cfg[ConfigConsts.inputType].Contains("[")))
                     {
-                        comboBoxT1_KnopfAuswahl.Items.Add(cfg[Tcfg.beschreibung]);
+                        comboBoxT1_KnopfAuswahl.Items.Add(cfg[ConfigConsts.description]);
                     }
                 }
                 tabControl_Anzeige.SelectedIndex = 1;
@@ -133,7 +133,7 @@ namespace TSW2_Controller
             {
                 if (MessageBox.Show("Do you really want to remove \"" + selectedTrain + "?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    if (selectedTrain != Tcfg.nameForGlobal)
+                    if (selectedTrain != ConfigConsts.nameForGlobal)
                     {
                         comboBoxT0_Zugauswahl.Items.Remove(selectedTrain);
                     }
@@ -141,7 +141,7 @@ namespace TSW2_Controller
                     int counter = 0;
                     for (int i = 0; i < trainConfig.Count; i++)
                     {
-                        if (trainConfig[i][Tcfg.zug] == selectedTrain)
+                        if (trainConfig[i][ConfigConsts.train] == selectedTrain)
                         {
                             trainConfig.RemoveAt(i);
                             i--;
@@ -161,7 +161,7 @@ namespace TSW2_Controller
                         combined = combined.Remove(combined.Length - 1);
                         line[i] = combined;
                     }
-                    File.WriteAllLines(Tcfg.configpfad, line);
+                    File.WriteAllLines(ConfigConsts.configPath, line);
 
                     MessageBox.Show(counter + " entries deleted!");
                 }
@@ -263,9 +263,9 @@ namespace TSW2_Controller
             //Wenn ich die Auswahl vom Knopfnamen ändere
             foreach (string[] singleTrain in trainConfig)
             {
-                if (singleTrain[Tcfg.zug] == selectedTrain && singleTrain[Tcfg.beschreibung] == comboBoxT1_KnopfAuswahl.Text)
+                if (singleTrain[ConfigConsts.train] == selectedTrain && singleTrain[ConfigConsts.description] == comboBoxT1_KnopfAuswahl.Text)
                 {
-                    if (singleTrain[Tcfg.inputTyp].Contains("["))
+                    if (singleTrain[ConfigConsts.inputType].Contains("["))
                     {
                         //Ist ein Joy als Knopf
                         t1IsJoyButton = true;
@@ -285,13 +285,13 @@ namespace TSW2_Controller
                     }
 
                     //Alle Informationen einfügen
-                    txtT1_JoystickNr.Text = singleTrain[Tcfg.joystickNummer];
-                    txtT1_JoystickKnopf.Text = singleTrain[Tcfg.joystickInput].Replace("B", "");
-                    txtT1_Aktion.Text = singleTrain[Tcfg.aktion];
-                    txtT1_Tastenkombination.Text = singleTrain[Tcfg.tastenKombination];
+                    txtT1_JoystickNr.Text = singleTrain[ConfigConsts.joystickNumber];
+                    txtT1_JoystickKnopf.Text = singleTrain[ConfigConsts.joystickInput].Replace("B", "");
+                    txtT1_Aktion.Text = singleTrain[ConfigConsts.action];
+                    txtT1_Tastenkombination.Text = singleTrain[ConfigConsts.keyCombination];
                     if (t1IsJoyButton)
                     {
-                        txtT1_Bedingung.Text = singleTrain[Tcfg.inputTyp].Replace("Button", "").Replace("[", "").Replace("]", " ").TrimEnd(' ');
+                        txtT1_Bedingung.Text = singleTrain[ConfigConsts.inputType].Replace("Button", "").Replace("[", "").Replace("]", " ").TrimEnd(' ');
                     }
                     else
                     {
@@ -351,13 +351,13 @@ namespace TSW2_Controller
                 for (int i = 0; i < trainConfig.Count; i++)
                 {
                     string[] singleTrain = trainConfig[i];
-                    if (singleTrain[Tcfg.zug] == selectedTrain && singleTrain[Tcfg.beschreibung] == comboBoxT1_KnopfAuswahl.Text)
+                    if (singleTrain[ConfigConsts.train] == selectedTrain && singleTrain[ConfigConsts.description] == comboBoxT1_KnopfAuswahl.Text)
                     {
-                        singleTrain[Tcfg.joystickNummer] = txtT1_JoystickNr.Text;
-                        if (!t1IsJoyButton) { singleTrain[Tcfg.inputTyp] = "Button"; } else { singleTrain[Tcfg.inputTyp] = "Button[" + txtT1_Bedingung.Text.Replace(" ", "][") + "]"; }
-                        if (!t1IsJoyButton) { singleTrain[Tcfg.joystickInput] = "B" + txtT1_JoystickKnopf.Text; } else { singleTrain[Tcfg.joystickInput] = txtT1_JoystickKnopf.Text; }
-                        singleTrain[Tcfg.aktion] = txtT1_Aktion.Text;
-                        singleTrain[Tcfg.tastenKombination] = txtT1_Tastenkombination.Text;
+                        singleTrain[ConfigConsts.joystickNumber] = txtT1_JoystickNr.Text;
+                        if (!t1IsJoyButton) { singleTrain[ConfigConsts.inputType] = "Button"; } else { singleTrain[ConfigConsts.inputType] = "Button[" + txtT1_Bedingung.Text.Replace(" ", "][") + "]"; }
+                        if (!t1IsJoyButton) { singleTrain[ConfigConsts.joystickInput] = "B" + txtT1_JoystickKnopf.Text; } else { singleTrain[ConfigConsts.joystickInput] = txtT1_JoystickKnopf.Text; }
+                        singleTrain[ConfigConsts.action] = txtT1_Aktion.Text;
+                        singleTrain[ConfigConsts.keyCombination] = txtT1_Tastenkombination.Text;
                         trainConfig[i] = singleTrain;
                         ersetzt = true;
                         MessageBox.Show("Relpaced");
@@ -367,13 +367,13 @@ namespace TSW2_Controller
                 {
                     string[] singleTrain = new string[trainConfig[0].Length];
 
-                    singleTrain[Tcfg.zug] = selectedTrain;
-                    singleTrain[Tcfg.beschreibung] = comboBoxT1_KnopfAuswahl.Text;
-                    singleTrain[Tcfg.joystickNummer] = txtT1_JoystickNr.Text;
-                    if (!t1IsJoyButton) { singleTrain[Tcfg.inputTyp] = "Button"; } else { singleTrain[Tcfg.inputTyp] = "Button[" + txtT1_Bedingung.Text.Replace(" ", "][") + "]"; }
-                    if (!t1IsJoyButton) { singleTrain[Tcfg.joystickInput] = "B" + txtT1_JoystickKnopf.Text; } else { singleTrain[Tcfg.joystickInput] = txtT1_JoystickKnopf.Text; }
-                    singleTrain[Tcfg.aktion] = txtT1_Aktion.Text;
-                    singleTrain[Tcfg.tastenKombination] = txtT1_Tastenkombination.Text;
+                    singleTrain[ConfigConsts.train] = selectedTrain;
+                    singleTrain[ConfigConsts.description] = comboBoxT1_KnopfAuswahl.Text;
+                    singleTrain[ConfigConsts.joystickNumber] = txtT1_JoystickNr.Text;
+                    if (!t1IsJoyButton) { singleTrain[ConfigConsts.inputType] = "Button"; } else { singleTrain[ConfigConsts.inputType] = "Button[" + txtT1_Bedingung.Text.Replace(" ", "][") + "]"; }
+                    if (!t1IsJoyButton) { singleTrain[ConfigConsts.joystickInput] = "B" + txtT1_JoystickKnopf.Text; } else { singleTrain[ConfigConsts.joystickInput] = txtT1_JoystickKnopf.Text; }
+                    singleTrain[ConfigConsts.action] = txtT1_Aktion.Text;
+                    singleTrain[ConfigConsts.keyCombination] = txtT1_Tastenkombination.Text;
                     trainConfig.Add(singleTrain);
                     comboBoxT1_KnopfAuswahl.Items.Add(comboBoxT1_KnopfAuswahl.Text);
                     MessageBox.Show("Added");
@@ -392,7 +392,7 @@ namespace TSW2_Controller
                     line[i] = combined;
                 }
 
-                File.WriteAllLines(Tcfg.configpfad, line);
+                File.WriteAllLines(ConfigConsts.configPath, line);
             }
         }
         private void btnT1_Erkennen_Click(object sender, EventArgs e)
@@ -498,7 +498,7 @@ namespace TSW2_Controller
             for (int i = 0; i < trainConfig.Count; i++)
             {
                 string[] singleTrain = trainConfig[i];
-                if (singleTrain[Tcfg.zug] == selectedTrain && singleTrain[Tcfg.beschreibung] == comboBoxT1_KnopfAuswahl.Text)
+                if (singleTrain[ConfigConsts.train] == selectedTrain && singleTrain[ConfigConsts.description] == comboBoxT1_KnopfAuswahl.Text)
                 {
                     trainConfig.RemoveAt(i);
                     comboBoxT1_KnopfAuswahl.Items.Remove(comboBoxT1_KnopfAuswahl.Text);
@@ -521,7 +521,7 @@ namespace TSW2_Controller
                 line[i] = combined;
             }
 
-            File.WriteAllLines(Tcfg.configpfad, line);
+            File.WriteAllLines(ConfigConsts.configPath, line);
         }
         private void btnT1_Back_Click(object sender, EventArgs e)
         {
@@ -660,20 +660,20 @@ namespace TSW2_Controller
 
             foreach (string[] singleTrain in trainConfig)
             {
-                if (singleTrain[Tcfg.zug] == selectedTrain)
+                if (singleTrain[ConfigConsts.train] == selectedTrain)
                 {
-                    if ((singleTrain[Tcfg.tastenKombination] == "Schub" && radioT3_Schub.Checked) || (singleTrain[Tcfg.tastenKombination] == "Bremse" && radioT3_Bremse.Checked) || (singleTrain[Tcfg.tastenKombination] == "Kombihebel" && radioT3_Kombihebel.Checked))
+                    if ((singleTrain[ConfigConsts.keyCombination] == "Schub" && radioT3_Schub.Checked) || (singleTrain[ConfigConsts.keyCombination] == "Bremse" && radioT3_Bremse.Checked) || (singleTrain[ConfigConsts.keyCombination] == "Kombihebel" && radioT3_Kombihebel.Checked))
                     {
-                        txtT3_JoyNr.Text = singleTrain[Tcfg.joystickNummer];
-                        txtT3_JoyAchse.Text = singleTrain[Tcfg.joystickInput];
-                        txtT3_JoyUmrechnen.Text = singleTrain[Tcfg.inputUmrechnen].Replace("[", "").Replace("]", " ").TrimEnd(' ');
-                        txtT3_AnzahlStufen.Text = singleTrain[Tcfg.schritte];
-                        txtT3_Sonderfaelle.Text = singleTrain[Tcfg.specials].Replace(" ", "_").Replace("[", "").Replace("]", " ").TrimEnd(' ');
-                        txtT3_Zeitfaktor.Text = singleTrain[Tcfg.zeitfaktor];
-                        txtT3_LongPress.Text = singleTrain[Tcfg.laengerDruecken].Replace("[", "").Replace("]", " ").TrimEnd(' ');
-                        if (singleTrain[Tcfg.art] == "Stufen") { radioT3_Stufen.Checked = true; } else if (singleTrain[Tcfg.art] == "Stufenlos") { radioT3_Stufenlos.Checked = true; }
-                        if (singleTrain[Tcfg.invertieren] == "1") { checkT3_Invertiert.Checked = true; } else { checkT3_Invertiert.Checked = false; }
-                        if (singleTrain[Tcfg.inputTyp] == "1") { checkT3_andererJoyModus.Checked = true; } else { checkT3_andererJoyModus.Checked = false; }
+                        txtT3_JoyNr.Text = singleTrain[ConfigConsts.joystickNumber];
+                        txtT3_JoyAchse.Text = singleTrain[ConfigConsts.joystickInput];
+                        txtT3_JoyUmrechnen.Text = singleTrain[ConfigConsts.inputConvert].Replace("[", "").Replace("]", " ").TrimEnd(' ');
+                        txtT3_AnzahlStufen.Text = singleTrain[ConfigConsts.steps];
+                        txtT3_Sonderfaelle.Text = singleTrain[ConfigConsts.specials].Replace(" ", "_").Replace("[", "").Replace("]", " ").TrimEnd(' ');
+                        txtT3_Zeitfaktor.Text = singleTrain[ConfigConsts.timeFactor];
+                        txtT3_LongPress.Text = singleTrain[ConfigConsts.longPress].Replace("[", "").Replace("]", " ").TrimEnd(' ');
+                        if (singleTrain[ConfigConsts.type] == "Stufen") { radioT3_Stufen.Checked = true; } else if (singleTrain[ConfigConsts.type] == "Stufenlos") { radioT3_Stufenlos.Checked = true; }
+                        if (singleTrain[ConfigConsts.invert] == "1") { checkT3_Invertiert.Checked = true; } else { checkT3_Invertiert.Checked = false; }
+                        if (singleTrain[ConfigConsts.inputType] == "1") { checkT3_andererJoyModus.Checked = true; } else { checkT3_andererJoyModus.Checked = false; }
 
                         foundData = true;
 
@@ -779,7 +779,7 @@ namespace TSW2_Controller
                 for (int i = 0; i < trainConfig.Count; i++)
                 {
                     string[] singleTrain = trainConfig[i];
-                    if (singleTrain[Tcfg.zug] == selectedTrain && ((singleTrain[Tcfg.tastenKombination] == "Schub" && radioT3_Schub.Checked) || (singleTrain[Tcfg.tastenKombination] == "Bremse" && radioT3_Bremse.Checked) || (singleTrain[Tcfg.tastenKombination] == "Kombihebel" && radioT3_Kombihebel.Checked)))
+                    if (singleTrain[ConfigConsts.train] == selectedTrain && ((singleTrain[ConfigConsts.keyCombination] == "Schub" && radioT3_Schub.Checked) || (singleTrain[ConfigConsts.keyCombination] == "Bremse" && radioT3_Bremse.Checked) || (singleTrain[ConfigConsts.keyCombination] == "Kombihebel" && radioT3_Kombihebel.Checked)))
                     {
                         if (txtT3_JoyAchse.Text == "" && txtT3_JoyNr.Text == "" && txtT3_AnzahlStufen.Text == "" && txtT3_JoyUmrechnen.Text == "" && txtT3_Zeitfaktor.Text == "" && txtT3_LongPress.Text == "" && txtT3_Sonderfaelle.Text == "")
                         {
@@ -788,17 +788,17 @@ namespace TSW2_Controller
                         }
                         else if (ok)
                         {
-                            singleTrain[Tcfg.zug] = selectedTrain;
-                            singleTrain[Tcfg.joystickNummer] = txtT3_JoyNr.Text;
-                            singleTrain[Tcfg.joystickInput] = txtT3_JoyAchse.Text;
-                            singleTrain[Tcfg.schritte] = txtT3_AnzahlStufen.Text;
-                            singleTrain[Tcfg.zeitfaktor] = txtT3_Zeitfaktor.Text;
-                            if (txtT3_JoyUmrechnen.Text.Length >= 3) { singleTrain[Tcfg.inputUmrechnen] = "[" + txtT3_JoyUmrechnen.Text.Replace(" ", "][") + "]"; } else { singleTrain[Tcfg.inputUmrechnen] = ""; }
-                            if (txtT3_Sonderfaelle.Text.Length >= 3) { singleTrain[Tcfg.specials] = "[" + txtT3_Sonderfaelle.Text.Replace(" ", "][").Replace("_", " ") + "]"; } else { singleTrain[Tcfg.specials] = ""; }
-                            if (txtT3_LongPress.Text.Length >= 3) { singleTrain[Tcfg.laengerDruecken] = "[" + txtT3_LongPress.Text.Replace(" ", "][") + "]"; } else { singleTrain[Tcfg.laengerDruecken] = ""; }
-                            if (radioT3_Stufen.Checked) { singleTrain[Tcfg.art] = "Stufen"; } else { singleTrain[Tcfg.art] = "Stufenlos"; }
-                            if (checkT3_Invertiert.Checked) { singleTrain[Tcfg.invertieren] = "1"; } else { singleTrain[Tcfg.invertieren] = "0"; }
-                            if (checkT3_andererJoyModus.Checked) { singleTrain[Tcfg.inputTyp] = "1"; } else { singleTrain[Tcfg.inputTyp] = "0"; }
+                            singleTrain[ConfigConsts.train] = selectedTrain;
+                            singleTrain[ConfigConsts.joystickNumber] = txtT3_JoyNr.Text;
+                            singleTrain[ConfigConsts.joystickInput] = txtT3_JoyAchse.Text;
+                            singleTrain[ConfigConsts.steps] = txtT3_AnzahlStufen.Text;
+                            singleTrain[ConfigConsts.timeFactor] = txtT3_Zeitfaktor.Text;
+                            if (txtT3_JoyUmrechnen.Text.Length >= 3) { singleTrain[ConfigConsts.inputConvert] = "[" + txtT3_JoyUmrechnen.Text.Replace(" ", "][") + "]"; } else { singleTrain[ConfigConsts.inputConvert] = ""; }
+                            if (txtT3_Sonderfaelle.Text.Length >= 3) { singleTrain[ConfigConsts.specials] = "[" + txtT3_Sonderfaelle.Text.Replace(" ", "][").Replace("_", " ") + "]"; } else { singleTrain[ConfigConsts.specials] = ""; }
+                            if (txtT3_LongPress.Text.Length >= 3) { singleTrain[ConfigConsts.longPress] = "[" + txtT3_LongPress.Text.Replace(" ", "][") + "]"; } else { singleTrain[ConfigConsts.longPress] = ""; }
+                            if (radioT3_Stufen.Checked) { singleTrain[ConfigConsts.type] = "Stufen"; } else { singleTrain[ConfigConsts.type] = "Stufenlos"; }
+                            if (checkT3_Invertiert.Checked) { singleTrain[ConfigConsts.invert] = "1"; } else { singleTrain[ConfigConsts.invert] = "0"; }
+                            if (checkT3_andererJoyModus.Checked) { singleTrain[ConfigConsts.inputType] = "1"; } else { singleTrain[ConfigConsts.inputType] = "0"; }
 
                             trainConfig[i] = singleTrain;
 
@@ -810,19 +810,19 @@ namespace TSW2_Controller
                 if (!ersetzt && ok)
                 {
                     string[] singleTrain = new string[trainConfig[0].Length];
-                    singleTrain[Tcfg.zug] = selectedTrain;
-                    singleTrain[Tcfg.joystickNummer] = txtT3_JoyNr.Text;
-                    singleTrain[Tcfg.joystickInput] = txtT3_JoyAchse.Text;
-                    singleTrain[Tcfg.schritte] = txtT3_AnzahlStufen.Text;
-                    singleTrain[Tcfg.zeitfaktor] = txtT3_Zeitfaktor.Text;
-                    if (txtT3_JoyUmrechnen.Text.Length >= 3) { singleTrain[Tcfg.inputUmrechnen] = "[" + txtT3_JoyUmrechnen.Text.Replace(" ", "][") + "]"; }
-                    if (txtT3_Sonderfaelle.Text.Length >= 3) { singleTrain[Tcfg.specials] = "[" + txtT3_Sonderfaelle.Text.Replace(" ", "][").Replace("_", " ") + "]"; }
-                    if (txtT3_LongPress.Text.Length >= 3) { singleTrain[Tcfg.laengerDruecken] = "[" + txtT3_LongPress.Text.Replace(" ", "][") + "]"; }
-                    if (radioT3_Stufen.Checked) { singleTrain[Tcfg.art] = "Stufen"; } else { singleTrain[Tcfg.art] = "Stufenlos"; }
-                    if (checkT3_Invertiert.Checked) { singleTrain[Tcfg.invertieren] = "1"; } else { singleTrain[Tcfg.invertieren] = "0"; }
-                    if (checkT3_andererJoyModus.Checked) { singleTrain[Tcfg.inputTyp] = "1"; } else { singleTrain[Tcfg.inputTyp] = "0"; }
+                    singleTrain[ConfigConsts.train] = selectedTrain;
+                    singleTrain[ConfigConsts.joystickNumber] = txtT3_JoyNr.Text;
+                    singleTrain[ConfigConsts.joystickInput] = txtT3_JoyAchse.Text;
+                    singleTrain[ConfigConsts.steps] = txtT3_AnzahlStufen.Text;
+                    singleTrain[ConfigConsts.timeFactor] = txtT3_Zeitfaktor.Text;
+                    if (txtT3_JoyUmrechnen.Text.Length >= 3) { singleTrain[ConfigConsts.inputConvert] = "[" + txtT3_JoyUmrechnen.Text.Replace(" ", "][") + "]"; }
+                    if (txtT3_Sonderfaelle.Text.Length >= 3) { singleTrain[ConfigConsts.specials] = "[" + txtT3_Sonderfaelle.Text.Replace(" ", "][").Replace("_", " ") + "]"; }
+                    if (txtT3_LongPress.Text.Length >= 3) { singleTrain[ConfigConsts.longPress] = "[" + txtT3_LongPress.Text.Replace(" ", "][") + "]"; }
+                    if (radioT3_Stufen.Checked) { singleTrain[ConfigConsts.type] = "Stufen"; } else { singleTrain[ConfigConsts.type] = "Stufenlos"; }
+                    if (checkT3_Invertiert.Checked) { singleTrain[ConfigConsts.invert] = "1"; } else { singleTrain[ConfigConsts.invert] = "0"; }
+                    if (checkT3_andererJoyModus.Checked) { singleTrain[ConfigConsts.inputType] = "1"; } else { singleTrain[ConfigConsts.inputType] = "0"; }
 
-                    if (radioT3_Schub.Checked) { singleTrain[Tcfg.tastenKombination] = "Schub"; } else if (radioT3_Bremse.Checked) { singleTrain[Tcfg.tastenKombination] = "Bremse"; } else { singleTrain[Tcfg.tastenKombination] = "Kombihebel"; }
+                    if (radioT3_Schub.Checked) { singleTrain[ConfigConsts.keyCombination] = "Schub"; } else if (radioT3_Bremse.Checked) { singleTrain[ConfigConsts.keyCombination] = "Bremse"; } else { singleTrain[ConfigConsts.keyCombination] = "Kombihebel"; }
 
                     trainConfig.Add(singleTrain);
 
@@ -841,7 +841,7 @@ namespace TSW2_Controller
                     line[i] = combined;
                 }
 
-                File.WriteAllLines(Tcfg.configpfad, line);
+                File.WriteAllLines(ConfigConsts.configPath, line);
             }
             else
             {

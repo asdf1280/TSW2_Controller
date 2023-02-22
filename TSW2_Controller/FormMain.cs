@@ -63,46 +63,46 @@ namespace TSW2_Controller
             #region File structure checking
             try
             {
-                if (!File.Exists(Tcfg.configpfad))
+                if (!File.Exists(ConfigConsts.configPath))
                 {
-                    if (!Directory.Exists(Tcfg.configpfad.Replace(@"\Trainconfig.csv", "")))
+                    if (!Directory.Exists(ConfigConsts.configPath.Replace(@"\Trainconfig.csv", "")))
                     {
-                        Log.Add("Create Dir:" + Tcfg.configpfad.Replace(@"\Trainconfig.csv", ""));
-                        Directory.CreateDirectory(Tcfg.configpfad.Replace(@"\Trainconfig.csv", ""));
+                        Log.Add("Create Dir:" + ConfigConsts.configPath.Replace(@"\Trainconfig.csv", ""));
+                        Directory.CreateDirectory(ConfigConsts.configPath.Replace(@"\Trainconfig.csv", ""));
                     }
-                    if (File.Exists(Tcfg.configstandardpfad))
+                    if (File.Exists(ConfigConsts.configStandardPath))
                     {
                         Log.Add("No TrainConfig.csv");
-                        Log.Add("Copy :" + Tcfg.configstandardpfad + " to " + Tcfg.configpfad);
-                        File.Copy(Tcfg.configstandardpfad, Tcfg.configpfad, false);
+                        Log.Add("Copy :" + ConfigConsts.configStandardPath + " to " + ConfigConsts.configPath);
+                        File.Copy(ConfigConsts.configStandardPath, ConfigConsts.configPath, false);
                     }
                 }
-                if (!File.Exists(Tcfg.controllersConfigPfad))
+                if (!File.Exists(ConfigConsts.controllersConfigPath))
                 {
-                    Log.Add("Copy :" + Tcfg.controllersstandardpfad_EN + " to " + Tcfg.controllersConfigPfad);
-                    File.Copy(Tcfg.controllersstandardpfad_EN, Tcfg.controllersConfigPfad, false);
+                    Log.Add("Copy :" + ConfigConsts.controllersStandardPath + " to " + ConfigConsts.controllersConfigPath);
+                    File.Copy(ConfigConsts.controllersStandardPath, ConfigConsts.controllersConfigPath, false);
                 }
-                if (!Directory.Exists(Tcfg.configOrdnerPfad))
+                if (!Directory.Exists(ConfigConsts.configFolderPath))
                 {
-                    Log.Add("Create Dir:" + Tcfg.configOrdnerPfad);
-                    Directory.CreateDirectory(Tcfg.configOrdnerPfad);
+                    Log.Add("Create Dir:" + ConfigConsts.configFolderPath);
+                    Directory.CreateDirectory(ConfigConsts.configFolderPath);
                 }
                 if (Settings.Default.selectedTrainConfig == "_Standard")
                 {
-                    Log.Add("Copy:" + Tcfg.configstandardpfad + " to " + Tcfg.configpfad);
-                    File.Copy(Tcfg.configstandardpfad, Tcfg.configpfad, true);
+                    Log.Add("Copy:" + ConfigConsts.configStandardPath + " to " + ConfigConsts.configPath);
+                    File.Copy(ConfigConsts.configStandardPath, ConfigConsts.configPath, true);
                 }
                 else
                 {
-                    if (File.Exists(Tcfg.configOrdnerPfad + Settings.Default.selectedTrainConfig + ".csv"))
+                    if (File.Exists(ConfigConsts.configFolderPath + Settings.Default.selectedTrainConfig + ".csv"))
                     {
-                        Log.Add("Copy:" + Tcfg.configOrdnerPfad + Settings.Default.selectedTrainConfig + ".csv" + " to " + Tcfg.configpfad);
-                        File.Copy(Tcfg.configOrdnerPfad + Settings.Default.selectedTrainConfig + ".csv", Tcfg.configpfad, true);
+                        Log.Add("Copy:" + ConfigConsts.configFolderPath + Settings.Default.selectedTrainConfig + ".csv" + " to " + ConfigConsts.configPath);
+                        File.Copy(ConfigConsts.configFolderPath + Settings.Default.selectedTrainConfig + ".csv", ConfigConsts.configPath, true);
                     }
                     else
                     {
-                        Log.Add("Copy:" + Tcfg.configpfad + " to " + Tcfg.configOrdnerPfad + Settings.Default.selectedTrainConfig + ".csv");
-                        File.Copy(Tcfg.configpfad, Tcfg.configOrdnerPfad + Settings.Default.selectedTrainConfig + ".csv", true);
+                        Log.Add("Copy:" + ConfigConsts.configPath + " to " + ConfigConsts.configFolderPath + Settings.Default.selectedTrainConfig + ".csv");
+                        File.Copy(ConfigConsts.configPath, ConfigConsts.configFolderPath + Settings.Default.selectedTrainConfig + ".csv", true);
                     }
                 }
             }
@@ -552,14 +552,14 @@ namespace TSW2_Controller
                             if (new Version(prevVersion.ToString()).CompareTo(new Version("1.1.0")) < 0)
                             {
                                 Log.Add("1.1.0", false, 1);
-                                if (File.Exists(Tcfg.configpfad))
+                                if (File.Exists(ConfigConsts.configPath))
                                 {
                                     //Backup
-                                    File.Copy(Tcfg.configpfad, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\backupTrainConfig.csv", true);
+                                    File.Copy(ConfigConsts.configPath, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\backupTrainConfig.csv", true);
                                     MessageBox.Show("Backup has been created on the Desktop");
 
                                     //Neue Tastenbenennung
-                                    string[] file = File.ReadAllLines(Tcfg.configpfad);
+                                    string[] file = File.ReadAllLines(ConfigConsts.configPath);
                                     for (int i = 0; i < file.Count(); i++)
                                     {
                                         //Veränderungen
@@ -646,15 +646,15 @@ namespace TSW2_Controller
                                         file[i] = String.Join(",", single);
                                     }
 
-                                    File.WriteAllLines(Tcfg.configpfad, file);
+                                    File.WriteAllLines(ConfigConsts.configPath, file);
                                 }
 
 
-                                bool areEqual = File.ReadLines(Tcfg.configpfad).SequenceEqual(File.ReadLines(Tcfg.configstandardpfad));
+                                bool areEqual = File.ReadLines(ConfigConsts.configPath).SequenceEqual(File.ReadLines(ConfigConsts.configStandardPath));
                                 if (!areEqual)
                                 {
-                                    Directory.CreateDirectory(Tcfg.configOrdnerPfad);
-                                    File.Copy(Tcfg.configpfad, Tcfg.configOrdnerPfad + "yourConfig.csv", true);
+                                    Directory.CreateDirectory(ConfigConsts.configFolderPath);
+                                    File.Copy(ConfigConsts.configPath, ConfigConsts.configFolderPath + "yourConfig.csv", true);
                                     Settings.Default.selectedTrainConfig = "yourConfig";
                                 }
 
@@ -686,16 +686,16 @@ namespace TSW2_Controller
                                 Directory.CreateDirectory(folderPath);
                                 Directory.CreateDirectory(folderPath + @"\backupTrainConfig.csv");
 
-                                CloneDirectory(Tcfg.configOrdnerPfad, folderPath + @"\backupTrainConfig.csv");
+                                CloneDirectory(ConfigConsts.configFolderPath, folderPath + @"\backupTrainConfig.csv");
 
                                 MessageBox.Show("Backup has been created on the Desktop");
 
                                 List<List<string>> tempTrainconfig = new List<List<string>>();
 
-                                if (Directory.Exists(Tcfg.configOrdnerPfad) && Directory.GetFiles(Tcfg.configOrdnerPfad).Length > 0)
+                                if (Directory.Exists(ConfigConsts.configFolderPath) && Directory.GetFiles(ConfigConsts.configFolderPath).Length > 0)
                                 {
                                     bool alreadyConverted = false;
-                                    foreach (string filePath in Directory.GetFiles(Tcfg.configOrdnerPfad))
+                                    foreach (string filePath in Directory.GetFiles(ConfigConsts.configFolderPath))
                                     {
                                         tempTrainconfig.Clear();
                                         using (var reader = new StreamReader(filePath))
@@ -716,7 +716,7 @@ namespace TSW2_Controller
                                             {
                                                 if (singleRow[2] == "JoystickNummer")
                                                 {
-                                                    singleRow.Insert(Tcfg.reglerName, "ReglerName");
+                                                    singleRow.Insert(ConfigConsts.controllerName, "ReglerName");
                                                 }
                                                 else
                                                 {
@@ -745,25 +745,25 @@ namespace TSW2_Controller
 
                                                     if (singleRow[7] == "Schub")
                                                     {
-                                                        singleRow.Insert(Tcfg.reglerName, "Throttle");
+                                                        singleRow.Insert(ConfigConsts.controllerName, "Throttle");
                                                         singleRow[1] = "";
                                                         singleRow[8] = "";
                                                     }
                                                     else if (singleRow[7] == "Bremse")
                                                     {
-                                                        singleRow.Insert(Tcfg.reglerName, "Brake");
+                                                        singleRow.Insert(ConfigConsts.controllerName, "Brake");
                                                         singleRow[1] = "";
                                                         singleRow[8] = "";
                                                     }
                                                     else if (singleRow[7] == "Kombihebel")
                                                     {
-                                                        singleRow.Insert(Tcfg.reglerName, "Master Controller");
+                                                        singleRow.Insert(ConfigConsts.controllerName, "Master Controller");
                                                         singleRow[1] = "";
                                                         singleRow[8] = "";
                                                     }
                                                     else
                                                     {
-                                                        singleRow.Insert(Tcfg.reglerName, "");
+                                                        singleRow.Insert(ConfigConsts.controllerName, "");
                                                     }
                                                     if (singleRow[5] == "0")
                                                     {
@@ -866,10 +866,10 @@ namespace TSW2_Controller
                     }
                     else
                     {
-                        if (!File.Exists(Tcfg.controllersConfigPfad))
+                        if (!File.Exists(ConfigConsts.controllersConfigPath))
                         {
-                            File.Copy(Tcfg.controllersstandardpfad_EN, Tcfg.controllersConfigPfad, false);
-                            Log.Add("Copy :" + Tcfg.controllersstandardpfad_EN + " to " + Tcfg.controllersConfigPfad);
+                            File.Copy(ConfigConsts.controllersStandardPath, ConfigConsts.controllersConfigPath, false);
+                            Log.Add("Copy :" + ConfigConsts.controllersStandardPath + " to " + ConfigConsts.controllersConfigPath);
                         }
                     }
 
@@ -969,10 +969,10 @@ namespace TSW2_Controller
         {
             Log.Add("Read TrainConfig");
             groupBox_ScanErgebnisse.Hide();
-            if (File.Exists(Tcfg.configpfad))
+            if (File.Exists(ConfigConsts.configPath))
             {
                 trainConfig.Clear();
-                using (var reader = new StreamReader(Tcfg.configpfad))
+                using (var reader = new StreamReader(ConfigConsts.configPath))
                 {
                     while (!reader.EndOfStream)
                     {
@@ -982,16 +982,16 @@ namespace TSW2_Controller
                         bool found = false;
                         foreach (VirtualController vc in vControllerList)
                         {
-                            if (vc.name == values[Tcfg.reglerName])
+                            if (vc.name == values[ConfigConsts.controllerName])
                             {
                                 found = true;
                                 break;
                             }
                         }
-                        if (!found && values[Tcfg.reglerName] != "" && values[Tcfg.zug] != "Zug")
+                        if (!found && values[ConfigConsts.controllerName] != "" && values[ConfigConsts.train] != "Zug")
                         {
                             groupBox_ScanErgebnisse.Show();
-                            lbl_originalResult.Text = values[Tcfg.zug] + ":\"" + values[Tcfg.reglerName] + "\" not found!";
+                            lbl_originalResult.Text = values[ConfigConsts.train] + ":\"" + values[ConfigConsts.controllerName] + "\" not found!";
                         }
 
                         trainConfig.Add(values);
@@ -1004,10 +1004,10 @@ namespace TSW2_Controller
         public void ReadVControllers()
         {
             Log.Add("Read Controllers");
-            if (File.Exists(Tcfg.controllersConfigPfad))
+            if (File.Exists(ConfigConsts.controllersConfigPath))
             {
                 vControllerList.Clear();
-                using (var reader = new StreamReader(Tcfg.controllersConfigPfad))
+                using (var reader = new StreamReader(ConfigConsts.controllersConfigPath))
                 {
                     int counter = 0;
                     while (!reader.EndOfStream)
@@ -1045,7 +1045,7 @@ namespace TSW2_Controller
                     }
                 }
 
-                if (!alreadyExists && str[0] != "Zug" && str[0] != Tcfg.nameForGlobal)
+                if (!alreadyExists && str[0] != "Zug" && str[0] != ConfigConsts.nameForGlobal)
                 {
                     trainNames.Add(str[0]);
                 }
@@ -1062,7 +1062,7 @@ namespace TSW2_Controller
 
             foreach (string[] str in trainConfig)
             {
-                if (str[Tcfg.zug] == selection || (str[Tcfg.zug] == Tcfg.nameForGlobal && !globalIsDeactivated))
+                if (str[ConfigConsts.train] == selection || (str[ConfigConsts.train] == ConfigConsts.nameForGlobal && !globalIsDeactivated))
                 {
                     //Alle Infos zum Ausgewählten Zug speichern
                     activeTrain.Add(str);
@@ -1117,29 +1117,29 @@ namespace TSW2_Controller
 
             foreach (string[] singleTrain in trainConfig)
             {
-                if (singleTrain[Tcfg.zug] == selection)
+                if (singleTrain[ConfigConsts.train] == selection)
                 {
-                    string selected_vControllername = singleTrain[Tcfg.reglerName];
+                    string selected_vControllername = singleTrain[ConfigConsts.controllerName];
                     if (selected_vControllername != "")
                     {
                         foreach (VirtualController vc in vControllerList.ToList())
                         {
                             if (vc.name == selected_vControllername)
                             {
-                                if (singleTrain[Tcfg.zeitfaktor].Contains("|"))
+                                if (singleTrain[ConfigConsts.timeFactor].Contains("|"))
                                 {
-                                    vc.timefactor = new int[] { Convert.ToInt32(singleTrain[Tcfg.zeitfaktor].Split('|')[0]), Convert.ToInt32(singleTrain[Tcfg.zeitfaktor].Split('|')[1]) };
+                                    vc.timefactor = new int[] { Convert.ToInt32(singleTrain[ConfigConsts.timeFactor].Split('|')[0]), Convert.ToInt32(singleTrain[ConfigConsts.timeFactor].Split('|')[1]) };
                                 }
                                 else
                                 {
-                                    vc.timefactor = new int[] { Convert.ToInt32(singleTrain[Tcfg.zeitfaktor]), Convert.ToInt32(singleTrain[Tcfg.zeitfaktor]) };
+                                    vc.timefactor = new int[] { Convert.ToInt32(singleTrain[ConfigConsts.timeFactor]), Convert.ToInt32(singleTrain[ConfigConsts.timeFactor]) };
                                 }
 
-                                if (singleTrain[Tcfg.schritte] != "")
+                                if (singleTrain[ConfigConsts.steps] != "")
                                 {
-                                    vc.stufen = Convert.ToInt32(singleTrain[Tcfg.schritte]);
+                                    vc.stufen = Convert.ToInt32(singleTrain[ConfigConsts.steps]);
                                 }
-                                if (singleTrain[Tcfg.art] == "Stufenlos")
+                                if (singleTrain[ConfigConsts.type] == "Stufenlos")
                                 {
                                     vc.istStufenlos = true;
                                 }
@@ -1148,9 +1148,9 @@ namespace TSW2_Controller
                                     vc.istStufenlos = false;
                                 }
 
-                                if (singleTrain[Tcfg.specials].Contains("=") && singleTrain[Tcfg.specials] != "")
+                                if (singleTrain[ConfigConsts.specials].Contains("=") && singleTrain[ConfigConsts.specials] != "")
                                 {
-                                    string[] specialCases = singleTrain[Tcfg.specials].Remove(singleTrain[Tcfg.specials].Length - 1, 1).Replace("[", "").Split(']');
+                                    string[] specialCases = singleTrain[ConfigConsts.specials].Remove(singleTrain[ConfigConsts.specials].Length - 1, 1).Replace("[", "").Split(']');
                                     foreach (string specialCase in specialCases)
                                     {
                                         int index = specialCase.IndexOf("=");
@@ -1160,9 +1160,9 @@ namespace TSW2_Controller
                                     }
                                 }
 
-                                if (singleTrain[Tcfg.laengerDruecken].Contains(":") && singleTrain[Tcfg.laengerDruecken] != "")
+                                if (singleTrain[ConfigConsts.longPress].Contains(":") && singleTrain[ConfigConsts.longPress] != "")
                                 {
-                                    string[] longPressArray = singleTrain[Tcfg.laengerDruecken].Remove(singleTrain[Tcfg.laengerDruecken].Length - 1, 1).Replace("[", "").Split(']');
+                                    string[] longPressArray = singleTrain[ConfigConsts.longPress].Remove(singleTrain[ConfigConsts.longPress].Length - 1, 1).Replace("[", "").Split(']');
                                     foreach (string singleLongPress in longPressArray)
                                     {
                                         int index_Gerade = singleLongPress.IndexOf("|");
@@ -1246,10 +1246,10 @@ namespace TSW2_Controller
                     foreach (string[] strActiveTrain in activeTrain)
                     {
                         //In der Trainconfig kommt ein bekannter Achsen-Name vor
-                        if (strActiveTrain[Tcfg.joystickInput] == inputNames[i] && Convert.ToInt32(strActiveTrain[Tcfg.joystickNummer]) == id && strActiveTrain[Tcfg.reglerName] != "")
+                        if (strActiveTrain[ConfigConsts.joystickInput] == inputNames[i] && Convert.ToInt32(strActiveTrain[ConfigConsts.joystickNumber]) == id && strActiveTrain[ConfigConsts.controllerName] != "")
                         {
                             List<string[]> customController = new List<string[]>();
-                            string[] split = strActiveTrain[Tcfg.invertieren].Split('|');
+                            string[] split = strActiveTrain[ConfigConsts.invert].Split('|');
                             for (int j = 0; j < split.Count() - 1; j += 2)
                             {
                                 customController.Add(new string[] { split[j], split[j + 1] });
@@ -1276,9 +1276,9 @@ namespace TSW2_Controller
 
 
                             //Bestimmt Inputwerte sollen in andere Umgerechnet werden
-                            if (strActiveTrain[Tcfg.inputUmrechnen].Length > 5)
+                            if (strActiveTrain[ConfigConsts.inputConvert].Length > 5)
                             {
-                                string[] umrechnen = strActiveTrain[Tcfg.inputUmrechnen].Remove(strActiveTrain[Tcfg.inputUmrechnen].Length - 1).Replace("[", "").Split(']');
+                                string[] umrechnen = strActiveTrain[ConfigConsts.inputConvert].Remove(strActiveTrain[ConfigConsts.inputConvert].Length - 1).Replace("[", "").Split(']');
 
                                 foreach (string single_umrechnen in umrechnen)
                                 {
@@ -1319,7 +1319,7 @@ namespace TSW2_Controller
 
                             for (int j = 0; j < activeVControllers.Count; j++)
                             {
-                                if (strActiveTrain[Tcfg.reglerName] == activeVControllers[j].name)
+                                if (strActiveTrain[ConfigConsts.controllerName] == activeVControllers[j].name)
                                 {
                                     activeVControllers[j].currentJoystickValue = joyInputs[i];
                                 }
@@ -1366,23 +1366,23 @@ namespace TSW2_Controller
             for (int i = 0; i < activeTrain.Count; i++)
             {
                 //Wenn es ein Normaler Knopf vom Joystick ist
-                if (activeTrain[i][Tcfg.inputTyp] == "Button")
+                if (activeTrain[i][ConfigConsts.inputType] == "Button")
                 {
-                    int buttonNumber = Convert.ToInt32(activeTrain[i][Tcfg.joystickInput].Replace("B", ""));
-                    if (Convert.ToInt32(activeTrain[i][Tcfg.joystickNummer]) <= MainSticks.Count())
+                    int buttonNumber = Convert.ToInt32(activeTrain[i][ConfigConsts.joystickInput].Replace("B", ""));
+                    if (Convert.ToInt32(activeTrain[i][ConfigConsts.joystickNumber]) <= MainSticks.Count())
                     {
-                        currentlyPressedButtons[i] = ((bool[])((object[])joystickStates[Convert.ToInt32(activeTrain[i][Tcfg.joystickNummer])])[3])[buttonNumber];
+                        currentlyPressedButtons[i] = ((bool[])((object[])joystickStates[Convert.ToInt32(activeTrain[i][ConfigConsts.joystickNumber])])[3])[buttonNumber];
                     }
                 }
-                else if (activeTrain[i][Tcfg.inputTyp].Contains("Button"))
+                else if (activeTrain[i][ConfigConsts.inputType].Contains("Button"))
                 {
                     //Wenn ein Analoger Input zum Knopf werden soll
                     for (int o = 0; o < inputNames.Count(); o++)
                     {
-                        if (activeTrain[i][Tcfg.joystickInput] == inputNames[o])
+                        if (activeTrain[i][ConfigConsts.joystickInput] == inputNames[o])
                         {
-                            int joyButtonValue = GetJoystickStateByName(activeTrain[i][Tcfg.joystickNummer], inputNames[o]);
-                            string[] convert = activeTrain[i][Tcfg.inputTyp].Replace("Button", "").Replace("[", "").Split(']');
+                            int joyButtonValue = GetJoystickStateByName(activeTrain[i][ConfigConsts.joystickNumber], inputNames[o]);
+                            string[] convert = activeTrain[i][ConfigConsts.inputType].Replace("Button", "").Replace("[", "").Split(']');
 
 
                             currentlyPressedButtons[i] = false;
@@ -1439,15 +1439,15 @@ namespace TSW2_Controller
                     if (currentlyPressedButtons[i] == true)
                     {
                         //on Press
-                        Log.Add("\"" + activeTrain[i][Tcfg.beschreibung] + "\" is getting pressed", true);
-                        if (activeTrain[i][Tcfg.tastenKombination] != "") { Keyboard.ProcessAktion(activeTrain[i][Tcfg.tastenKombination]); }
-                        if (activeTrain[i][Tcfg.aktion] != "") { Keyboard.KeyDown(Keyboard.ConvertStringToKey(activeTrain[i][Tcfg.aktion])); }
+                        Log.Add("\"" + activeTrain[i][ConfigConsts.description] + "\" is getting pressed", true);
+                        if (activeTrain[i][ConfigConsts.keyCombination] != "") { Keyboard.ProcessAktion(activeTrain[i][ConfigConsts.keyCombination]); }
+                        if (activeTrain[i][ConfigConsts.action] != "") { Keyboard.KeyDown(Keyboard.ConvertStringToKey(activeTrain[i][ConfigConsts.action])); }
                     }
                     else
                     {
                         //on release
-                        Log.Add("\"" + activeTrain[i][Tcfg.beschreibung] + "\" is getting released", true);
-                        if (activeTrain[i][Tcfg.aktion] != "") { Keyboard.KeyUp(Keyboard.ConvertStringToKey(activeTrain[i][Tcfg.aktion])); }
+                        Log.Add("\"" + activeTrain[i][ConfigConsts.description] + "\" is getting released", true);
+                        if (activeTrain[i][ConfigConsts.action] != "") { Keyboard.KeyUp(Keyboard.ConvertStringToKey(activeTrain[i][ConfigConsts.action])); }
                     }
                     previouslyPressedButtons[i] = currentlyPressedButtons[i];
                 }

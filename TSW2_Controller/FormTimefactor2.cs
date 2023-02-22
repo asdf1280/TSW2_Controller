@@ -36,9 +36,9 @@ namespace TSW2_Controller
             controller = selectedController;
             istStufenlos = isContinuouslyVariable;
 
-            if (File.Exists(Tcfg.controllersConfigPfad))
+            if (File.Exists(ConfigConsts.controllersConfigPath))
             {
-                using (var reader = new StreamReader(Tcfg.controllersConfigPfad))
+                using (var reader = new StreamReader(ConfigConsts.controllersConfigPath))
                 {
                     int counter = 0;
                     while (!reader.EndOfStream)
