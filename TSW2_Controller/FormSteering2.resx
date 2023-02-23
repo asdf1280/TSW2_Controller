@@ -123,12 +123,18 @@
   <data name="&gt;&gt;btnT0_back.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;timer_CheckJoysticks.Name" xml:space="preserve">
+    <value>timer_CheckJoysticks</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtB_Tastenkombination.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
   <data name="&gt;&gt;label15.Name" xml:space="preserve">
     <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="txtT2_increase.Size" type="System.Drawing.Size, System.Drawing">
@@ -151,6 +157,10 @@
   </data>
   <data name="&gt;&gt;btnT1_Controller_Add.Parent" xml:space="preserve">
     <value>groupBoxT1_Regler</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;btnR_0.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -182,7 +192,6 @@
   <data name="&gt;&gt;txtT3_Haltezeit.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="radioB_regler.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -200,6 +209,9 @@
   </data>
   <data name="&gt;&gt;tabPage5.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnT1_Controller_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;btnT1_Controller_Remove.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -286,7 +298,7 @@
     <value>639, 322</value>
   </data>
   <data name="&gt;&gt;txtR_InputUmrechnen.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>4</value>
   </data>
   <data name="radioT3_einmalDruecken.Location" type="System.Drawing.Point, System.Drawing">
     <value>269, 61</value>
@@ -319,10 +331,13 @@
     <value>label2</value>
   </data>
   <data name="&gt;&gt;txtR_Sonderfaelle.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>10</value>
   </data>
   <data name="lblR_KnopfNr.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
   </data>
   <data name="&gt;&gt;radioB_regler.Name" xml:space="preserve">
     <value>radioB_regler</value>
@@ -339,8 +354,14 @@
   <data name="comboBoxT2_mainIndicator.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 21</value>
   </data>
+  <data name="&gt;&gt;radioT3_einmalDruecken.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="&gt;&gt;txtB_JoystickKnopf.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioB_regler.Parent" xml:space="preserve">
+    <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;btnT2_Save.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -375,9 +396,6 @@
   <data name="&gt;&gt;btnT1_back.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnT2_defaultSettings.Text" xml:space="preserve">
-    <value>Standard Einstellungen</value>
-  </data>
   <data name="txtB_JoystickNr.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 20</value>
   </data>
@@ -387,7 +405,7 @@
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 13</value>
   </data>
-  <data name="txtT3_Wartezeit.Text" xml:space="preserve">
+  <data name="&gt;&gt;comboBoxB_KnopfAuswahl.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="&gt;&gt;btnT0_Add.ZOrder" xml:space="preserve">
@@ -395,9 +413,6 @@
   </data>
   <data name="btn_R_eigenes.Text" xml:space="preserve">
     <value>Bearb.</value>
-  </data>
-  <data name="&gt;&gt;txtR_Sonderfaelle.Parent" xml:space="preserve">
-    <value>panel_Regler</value>
   </data>
   <data name="&gt;&gt;tabPage4.Name" xml:space="preserve">
     <value>tabPage4</value>
@@ -477,8 +492,8 @@
   <data name="label19.Text" xml:space="preserve">
     <value>Taste</value>
   </data>
-  <data name="&gt;&gt;txtT2_decrease.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="txtB_JoystickNr.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 132</value>
@@ -516,6 +531,9 @@
   <data name="txtB_JoystickKnopf.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
+  <data name="&gt;&gt;comboBoxT2_throttlearea.Name" xml:space="preserve">
+    <value>comboBoxT2_throttlearea</value>
+  </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
     <value>426, 287</value>
   </data>
@@ -540,12 +558,6 @@
   <data name="&gt;&gt;tabControl_main.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="checkboxT2_Kombihebel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnT3_Fertig.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="txtR_LongPress.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 231</value>
   </data>
@@ -557,6 +569,9 @@
   </data>
   <data name="&gt;&gt;comboBoxT2_Reglerauswahl.Parent" xml:space="preserve">
     <value>tabPage5</value>
+  </data>
+  <data name="btnR_m100.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 42</value>
   </data>
   <data name="&gt;&gt;btnT2_defaultSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -570,17 +585,11 @@
   <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
     <value>tabControl_ReglerKnopf</value>
   </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;txtT3_Taste.Parent" xml:space="preserve">
     <value>tabPage6</value>
   </data>
   <data name="&gt;&gt;pictureBox2.Parent" xml:space="preserve">
     <value>panel_Regler</value>
-  </data>
-  <data name="&gt;&gt;btnT1_Controller_Add.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 13</value>
@@ -594,17 +603,14 @@
   <data name="&gt;&gt;radioT3_Halten.Name" xml:space="preserve">
     <value>radioT3_Halten</value>
   </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnR_100.Text" xml:space="preserve">
-    <value>100</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormSteering2</value>
   </data>
   <data name="&gt;&gt;btnT2_defaultSettings.Name" xml:space="preserve">
     <value>btnT2_defaultSettings</value>
+  </data>
+  <data name="tabPage5.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -642,6 +648,9 @@
   <data name="btnT0_back.Text" xml:space="preserve">
     <value>Zurück</value>
   </data>
+  <data name="&gt;&gt;comboBoxT2_Reglerauswahl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="radioR_Stufen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -666,9 +675,6 @@
   <data name="&gt;&gt;lblT1_TrainName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 13</value>
-  </data>
   <data name="txtT3_Taste.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
@@ -690,17 +696,14 @@
   <data name="btnT0_globalKeybinds.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="lblT3_haltezeit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 13</value>
-  </data>
   <data name="&gt;&gt;btnR_100.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="&gt;&gt;btnT2_remove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtB_JoystickKnopf.ZOrder" xml:space="preserve">
+    <value>14</value>
   </data>
   <data name="radioR_Stufenlos.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -738,17 +741,11 @@
   <data name="&gt;&gt;label6.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="btnT1_Controller_Remove.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <data name="btnR_0.Location" type="System.Drawing.Point, System.Drawing">
     <value>257, 43</value>
   </data>
   <data name="&gt;&gt;radioR_Stufen.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>3</value>
   </data>
   <data name="btnB_Speichern.Location" type="System.Drawing.Point, System.Drawing">
     <value>345, 258</value>
@@ -771,9 +768,6 @@
   <data name="txtT3_Taste.Location" type="System.Drawing.Point, System.Drawing">
     <value>269, 35</value>
   </data>
-  <data name="tabPage4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Tastenkombination</value>
   </data>
@@ -782,6 +776,9 @@
   </data>
   <data name="&gt;&gt;label10.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnR_m100.Name" xml:space="preserve">
+    <value>btnR_m100</value>
   </data>
   <data name="lblR_KnopfNr.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 13</value>
@@ -803,9 +800,6 @@
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Zug Auswählen</value>
-  </data>
-  <data name="&gt;&gt;btnT2_defaultSettings.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="btnR_Speichern.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -839,9 +833,6 @@
   </data>
   <data name="&gt;&gt;btnT1_back.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnT0_globalKeybinds.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="lblT3_haltezeit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -879,11 +870,11 @@
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 22</value>
   </data>
-  <data name="&gt;&gt;tabControl_main.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
   <data name="&gt;&gt;listBox_ShowJoystickStates.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="btnT3_Hinzufügen.Text" xml:space="preserve">
+    <value>Hinzufügen</value>
   </data>
   <data name="radioR_Stufenlos.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -909,20 +900,11 @@
   <data name="txtR_AnzahlStufen.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 20</value>
   </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="radioT3_Loslassen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="radioT3_Druecken.Text" xml:space="preserve">
     <value>Gedrückt halten</value>
   </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Sonderfälle umrechnen</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;btnT0_back.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 28</value>
@@ -945,9 +927,6 @@
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>tabPage1</value>
   </data>
-  <data name="btnT0_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -957,17 +936,17 @@
   <data name="txtR_AnzahlStufen.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Bremsbereich</value>
-  </data>
   <data name="&gt;&gt;dataGridView1.Name" xml:space="preserve">
     <value>dataGridView1</value>
   </data>
   <data name="lblT1_TrainName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="&gt;&gt;txtB_Tastenkombination.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>2</value>
   </data>
   <data name="txtT3_Wartezeit.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -987,9 +966,6 @@
   <data name="&gt;&gt;btnT0_Delete.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnT3_Fertig.Parent" xml:space="preserve">
-    <value>tabPage6</value>
-  </data>
   <data name="pictureBox2.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
   </data>
@@ -999,8 +975,8 @@
   <data name="btnT2_back.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="btnT1_Controller_Remove.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="btnT1_Controller_Remove.Text" xml:space="preserve">
+    <value>🗑</value>
   </data>
   <data name="&gt;&gt;comboBoxT1_Controllers.Name" xml:space="preserve">
     <value>comboBoxT1_Controllers</value>
@@ -1023,6 +999,9 @@
   <data name="&gt;&gt;btnT1_editController.Name" xml:space="preserve">
     <value>btnT1_editController</value>
   </data>
+  <data name="groupBox_kombihebel.Text" xml:space="preserve">
+    <value>Kombihebel (Stufenlos)</value>
+  </data>
   <data name="&gt;&gt;btnT0_edit.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -1030,19 +1009,16 @@
     <value>4, 22</value>
   </data>
   <data name="&gt;&gt;lblR_AnzahlStufen.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;lblT1_TrainName.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="btnT0_Delete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="&gt;&gt;txtT3_Wartezeit.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tabControl_main.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;btnR_Erkennen.Name" xml:space="preserve">
+    <value>btnR_Erkennen</value>
   </data>
   <data name="&gt;&gt;groupBox_kombihebel.Name" xml:space="preserve">
     <value>groupBox_kombihebel</value>
@@ -1062,7 +1038,7 @@
   <data name="btnT2_add.Text" xml:space="preserve">
     <value>Hinzufügen</value>
   </data>
-  <data name="btn_R_eigenes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnT3_Fertig.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
@@ -1080,11 +1056,20 @@
   <data name="&gt;&gt;label18.Parent" xml:space="preserve">
     <value>tabPage6</value>
   </data>
-  <data name="&gt;&gt;txtB_Tastenkombination.Name" xml:space="preserve">
-    <value>txtB_Tastenkombination</value>
+  <data name="txtT3_Haltezeit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 20</value>
   </data>
   <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
     <value>panel_Regler</value>
+  </data>
+  <data name="btn_R_eigenes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn_R_eigenes.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.Parent" xml:space="preserve">
+    <value>tabControl_main</value>
   </data>
   <data name="&gt;&gt;btnB_Editor.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1093,10 +1078,13 @@
     <value>6</value>
   </data>
   <data name="&gt;&gt;dataGridView1.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>9</value>
   </data>
   <data name="btnT1_editController.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 13</value>
   </data>
   <data name="lblR_ReglerStand.Text" xml:space="preserve">
     <value>100 -&gt; 200</value>
@@ -1131,11 +1119,11 @@
   <data name="&gt;&gt;label14.Name" xml:space="preserve">
     <value>label14</value>
   </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
   <data name="btnR_0.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="btnT0_back.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 80</value>
   </data>
   <data name="radioR_Stufenlos.Text" xml:space="preserve">
     <value>Stufenlos</value>
@@ -1146,14 +1134,26 @@
   <data name="&gt;&gt;comboBoxT2_Reglerauswahl.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnT3_Fertig.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 23</value>
+  </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 13</value>
   </data>
   <data name="&gt;&gt;txtR_AnzahlStufen.Name" xml:space="preserve">
     <value>txtR_AnzahlStufen</value>
   </data>
+  <data name="checkboxT2_Kombihebel.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
   <data name="comboBoxT0_Zugauswahl.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>panel_Regler</value>
   </data>
   <data name="listBoxT1_ControllerList.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 46</value>
@@ -1188,14 +1188,17 @@
   <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="&gt;&gt;panel_main.Name" xml:space="preserve">
+    <value>panel_main</value>
+  </data>
   <data name="btnR_Speichern.Text" xml:space="preserve">
     <value>Speichern</value>
   </data>
   <data name="&gt;&gt;comboBoxB_KnopfAuswahl.Name" xml:space="preserve">
     <value>comboBoxB_KnopfAuswahl</value>
   </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;btnB_entfernen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -1215,8 +1218,8 @@
   <data name="&gt;&gt;btnT0_back.Name" xml:space="preserve">
     <value>btnT0_back</value>
   </data>
-  <data name="&gt;&gt;comboBoxT1_Controllers.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;btn_R_eigenes.Parent" xml:space="preserve">
+    <value>panel_Regler</value>
   </data>
   <data name="btnT2_Save.Location" type="System.Drawing.Point, System.Drawing">
     <value>154, 272</value>
@@ -1275,11 +1278,8 @@
   <data name="&gt;&gt;txtR_AnzahlStufen.Parent" xml:space="preserve">
     <value>panel_Regler</value>
   </data>
-  <data name="&gt;&gt;btnR_100.Name" xml:space="preserve">
-    <value>btnR_100</value>
-  </data>
-  <data name="&gt;&gt;btnT2_add.Name" xml:space="preserve">
-    <value>btnT2_add</value>
+  <data name="pictureBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;txtR_LongPress.Name" xml:space="preserve">
     <value>txtR_LongPress</value>
@@ -1289,6 +1289,9 @@
   </data>
   <data name="&gt;&gt;btnT0_Delete.Name" xml:space="preserve">
     <value>btnT0_Delete</value>
+  </data>
+  <data name="&gt;&gt;btnR_100.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;btnT0_edit.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -1311,8 +1314,14 @@
   <data name="&gt;&gt;radioT3_Druecken.Name" xml:space="preserve">
     <value>radioT3_Druecken</value>
   </data>
+  <data name="btnB_Editor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>279, 158</value>
+  </data>
   <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
     <value>tabPage3</value>
+  </data>
+  <data name="comboBoxT2_Reglerauswahl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="txtB_Tastenkombination.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 20</value>
@@ -1377,16 +1386,19 @@
   <data name="label15.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="btnT3_Hinzufügen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="btnT1_Controller_Remove.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;comboBoxB_KnopfAuswahl.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;btnT2_back.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="&gt;&gt;groupBox_kombihebel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="btnT1_Controller_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="radioT3_Loslassen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;tabControl_ReglerKnopf.Parent" xml:space="preserve">
@@ -1404,9 +1416,6 @@
   <data name="&gt;&gt;btnT1_Controller_Remove.Parent" xml:space="preserve">
     <value>groupBoxT1_Regler</value>
   </data>
-  <data name="&gt;&gt;txtT2_decrease.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
     <value>269, 19</value>
   </data>
@@ -1418,9 +1427,6 @@
   </data>
   <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;radioR_Stufenlos.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="btnB_Erkennen.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 158</value>
@@ -1446,9 +1452,6 @@
   <data name="&gt;&gt;txtB_Tastenkombination.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;txtB_JoystickKnopf.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
   <data name="&gt;&gt;btnR_GetTimeFactor.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -1470,6 +1473,9 @@
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>
   </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value> </value>
+  </data>
   <data name="listBox_ShowJoystickStates.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
@@ -1479,8 +1485,8 @@
   <data name="&gt;&gt;txtB_Aktion.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;btn_R_eigenes.Name" xml:space="preserve">
-    <value>btn_R_eigenes</value>
+  <data name="btnT2_add.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
   </data>
   <data name="&gt;&gt;btnT2_Save.Parent" xml:space="preserve">
     <value>tabPage5</value>
@@ -1521,17 +1527,14 @@
   <data name="radioT3_Halten.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="btnT0_globalKeybinds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 23</value>
-  </data>
   <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 28</value>
   </data>
   <data name="&gt;&gt;groupBoxT1_Regler.Parent" xml:space="preserve">
     <value>tabPage2</value>
   </data>
-  <data name="lblR_AnzahlStufen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 13</value>
+  <data name="txtT3_Haltezeit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>269, 133</value>
   </data>
   <data name="comboBoxT1_Controllers.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1550,9 +1553,6 @@
   </data>
   <data name="btnT0_globalKeybinds.Text" xml:space="preserve">
     <value>Globale Tastenbelegung</value>
-  </data>
-  <data name="&gt;&gt;btnT2_defaultSettings.Parent" xml:space="preserve">
-    <value>tabPage5</value>
   </data>
   <data name="comboBoxT2_mainIndicator.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1579,7 +1579,7 @@
     <value>47, 132</value>
   </data>
   <data name="&gt;&gt;radioR_Stufenlos.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>5</value>
   </data>
   <data name="btnT1_editController.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1599,6 +1599,9 @@
   <data name="&gt;&gt;comboBoxT2_mainIndicator.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="txtR_Zeitfaktor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 20</value>
+  </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
@@ -1614,17 +1617,11 @@
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="txtR_Zeitfaktor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 231</value>
-  </data>
   <data name="&gt;&gt;lblR_AnzahlStufen.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtT3_Haltezeit.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 13</value>
   </data>
   <data name="&gt;&gt;lblT3_haltezeit.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -1647,11 +1644,14 @@
   <data name="&gt;&gt;txtB_Aktion.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="lblR_ReglerStand.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
   </data>
   <data name="&gt;&gt;btnR_Speichern.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>6</value>
   </data>
   <data name="listBoxT3_Output.Size" type="System.Drawing.Size, System.Drawing">
     <value>260, 225</value>
@@ -1671,6 +1671,9 @@
   <data name="lblB_Bedingung.Text" xml:space="preserve">
     <value>Bedingung</value>
   </data>
+  <data name="&gt;&gt;lblT3_haltezeit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;comboBoxT2_mainIndicator.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
@@ -1689,20 +1692,20 @@
   <data name="btnT2_back.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 272</value>
   </data>
-  <data name="btnR_GetTimeFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>64</value>
+  <data name="btnT2_Save.Text" xml:space="preserve">
+    <value>Speichern</value>
   </data>
   <data name="&gt;&gt;txtR_LongPress.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboBoxT2_throttlearea.Parent" xml:space="preserve">
-    <value>groupBox_kombihebel</value>
+  <data name="&gt;&gt;txtT2_increase.Name" xml:space="preserve">
+    <value>txtT2_increase</value>
   </data>
   <data name="txtT2_decrease.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 20</value>
   </data>
-  <data name="&gt;&gt;radioT3_einmalDruecken.Parent" xml:space="preserve">
-    <value>tabPage6</value>
+  <data name="btnR_GetTimeFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>64</value>
   </data>
   <data name="txtB_Aktion.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -1716,6 +1719,9 @@
   <data name="label16.Text" xml:space="preserve">
     <value>Länger drücken</value>
   </data>
+  <data name="&gt;&gt;tabPage5.Name" xml:space="preserve">
+    <value>tabPage5</value>
+  </data>
   <data name="&gt;&gt;btnR_Speichern.Name" xml:space="preserve">
     <value>btnR_Speichern</value>
   </data>
@@ -1725,14 +1731,20 @@
   <data name="&gt;&gt;txtT2_increase.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;txtT2_decrease.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label15.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
   <data name="txtR_AnzahlStufen.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 109</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Wartezeit [ms]</value>
   </data>
   <data name="&gt;&gt;btnR_Erkennen.Parent" xml:space="preserve">
     <value>panel_Regler</value>
@@ -1742,9 +1754,6 @@
   </data>
   <data name="btnT3_Hinzufügen.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
   </data>
   <data name="radioT3_einmalDruecken.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1760,9 +1769,6 @@
   </data>
   <data name="btnT0_edit.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;btnT0_edit.Name" xml:space="preserve">
-    <value>btnT0_edit</value>
   </data>
   <data name="&gt;&gt;listBoxT3_Output.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1794,14 +1800,14 @@
   <data name="listBoxT3_Output.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
   <data name="&gt;&gt;lblR_AnzahlStufen.Name" xml:space="preserve">
     <value>lblR_AnzahlStufen</value>
   </data>
   <data name="&gt;&gt;radioT3_Loslassen.Parent" xml:space="preserve">
     <value>tabPage6</value>
-  </data>
-  <data name="btnT1_Controller_Add.Text" xml:space="preserve">
-    <value>+</value>
   </data>
   <data name="btnR_100.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 23</value>
@@ -1851,9 +1857,6 @@
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pictureBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="txtT3_Taste.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
   </data>
@@ -1877,12 +1880,6 @@
   </data>
   <data name="radioR_Stufen.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 17</value>
-  </data>
-  <data name="lblT3_haltezeit.Text" xml:space="preserve">
-    <value>Dauer Halten [ms]</value>
-  </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
   </data>
   <data name="groupBox_kombihebel.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -1911,6 +1908,9 @@
   <data name="txtR_JoyAchse.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 20</value>
   </data>
+  <data name="&gt;&gt;btnT2_add.Name" xml:space="preserve">
+    <value>btnT2_add</value>
+  </data>
   <data name="btnT1_Controller_Remove.Location" type="System.Drawing.Point, System.Drawing">
     <value>127, 77</value>
   </data>
@@ -1922,9 +1922,6 @@
   </data>
   <data name="&gt;&gt;btnR_Speichern.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnT2_add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;tabControl_main.Name" xml:space="preserve">
     <value>tabControl_main</value>
@@ -1944,6 +1941,9 @@
   <data name="&gt;&gt;listBoxT1_ControllerList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;btnT2_remove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
   </data>
@@ -1953,17 +1953,20 @@
   <data name="&gt;&gt;lblT1_TrainName.Name" xml:space="preserve">
     <value>lblT1_TrainName</value>
   </data>
-  <data name="txtR_Zeitfaktor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 20</value>
+  <data name="btnT0_globalKeybinds.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label3.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="&gt;&gt;txtR_Sonderfaelle.Name" xml:space="preserve">
-    <value>txtR_Sonderfaelle</value>
+  <data name="lblT3_haltezeit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 13</value>
   </data>
   <data name="tabControl_ReglerKnopf.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
     <value>tabControl_main</value>
@@ -1976,9 +1979,6 @@
   </data>
   <data name="radioR_Stufenlos.Location" type="System.Drawing.Point, System.Drawing">
     <value>65, 86</value>
-  </data>
-  <data name="&gt;&gt;txtT2_increase.Name" xml:space="preserve">
-    <value>txtT2_increase</value>
   </data>
   <data name="&gt;&gt;txtR_LongPress.Parent" xml:space="preserve">
     <value>panel_Regler</value>
@@ -2001,11 +2001,14 @@
   <data name="&gt;&gt;btnT1_back.Name" xml:space="preserve">
     <value>btnT1_back</value>
   </data>
-  <data name="txtT3_Haltezeit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>269, 133</value>
+  <data name="txtT3_Wartezeit.Text" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;panel_main.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 13</value>
@@ -2037,8 +2040,11 @@
   <data name="comboBoxT2_throttlearea.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
   </data>
+  <data name="&gt;&gt;txtT2_decrease.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
   <data name="&gt;&gt;txtR_LongPress.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>14</value>
   </data>
   <data name="&gt;&gt;radioT3_Druecken.Parent" xml:space="preserve">
     <value>tabPage6</value>
@@ -2048,9 +2054,6 @@
   </data>
   <data name="btnR_GetTimeFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 23</value>
-  </data>
-  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="btnT1_Controller_Add.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2064,14 +2067,17 @@
   <data name="&gt;&gt;label8.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;radioT3_Halten.Parent" xml:space="preserve">
+    <value>tabPage6</value>
+  </data>
   <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="&gt;&gt;panel_Regler.Parent" xml:space="preserve">
     <value>tabPage4</value>
   </data>
-  <data name="btnR_100.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Tastenbelegung</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>panel_Regler</value>
@@ -2085,8 +2091,11 @@
   <data name="&gt;&gt;radioR_Stufen.Parent" xml:space="preserve">
     <value>panel_Regler</value>
   </data>
-  <data name="&gt;&gt;btnT2_back.Parent" xml:space="preserve">
-    <value>tabPage5</value>
+  <data name="&gt;&gt;radioT3_einmalDruecken.Name" xml:space="preserve">
+    <value>radioT3_einmalDruecken</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 13</value>
   </data>
   <data name="btnT2_back.Text" xml:space="preserve">
     <value>Zurück</value>
@@ -2095,7 +2104,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtR_JoyAchse.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>19</value>
   </data>
   <data name="lblT3_haltezeit.Location" type="System.Drawing.Point, System.Drawing">
     <value>269, 117</value>
@@ -2121,8 +2130,8 @@
   <data name="lblT3_haltezeit.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
-  <data name="&gt;&gt;btnT0_back.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;txtB_Bedingung.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -2137,25 +2146,13 @@
     <value>Regler bearbeiten</value>
   </data>
   <data name="&gt;&gt;txtR_AnzahlStufen.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;comboBoxB_KnopfAuswahl.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>18</value>
   </data>
   <data name="&gt;&gt;txtT3_Taste.Name" xml:space="preserve">
     <value>txtT3_Taste</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;btnB_entfernen.Name" xml:space="preserve">
-    <value>btnB_entfernen</value>
   </data>
   <data name="&gt;&gt;lblT3_haltezeit.Name" xml:space="preserve">
     <value>lblT3_haltezeit</value>
@@ -2166,8 +2163,8 @@
   <data name="btnB_Erkennen.Text" xml:space="preserve">
     <value>Erkennen</value>
   </data>
-  <data name="btnT1_Controller_Remove.Text" xml:space="preserve">
-    <value>🗑</value>
+  <data name="lblT3_haltezeit.Text" xml:space="preserve">
+    <value>Dauer Halten [ms]</value>
   </data>
   <data name="&gt;&gt;comboBoxT0_Zugauswahl.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -2178,17 +2175,11 @@
   <data name="&gt;&gt;label11.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 215</value>
   </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="&gt;&gt;comboBoxT2_throttlearea.Name" xml:space="preserve">
-    <value>comboBoxT2_throttlearea</value>
+  <data name="&gt;&gt;tabControl_main.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;txtR_InputUmrechnen.Name" xml:space="preserve">
     <value>txtR_InputUmrechnen</value>
@@ -2197,7 +2188,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>11</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
     <value>639, 322</value>
@@ -2214,8 +2205,8 @@
   <data name="btnB_Erkennen.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
   </data>
-  <data name="&gt;&gt;radioT3_einmalDruecken.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="&gt;&gt;comboBoxT2_throttlearea.Parent" xml:space="preserve">
+    <value>groupBox_kombihebel</value>
   </data>
   <data name="&gt;&gt;label17.Name" xml:space="preserve">
     <value>label17</value>
@@ -2235,8 +2226,11 @@
   <data name="checkboxT2_Kombihebel.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 46</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 13</value>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblR_ReglerStand.ZOrder" xml:space="preserve">
     <value>11</value>
@@ -2246,6 +2240,9 @@
   </data>
   <data name="txtB_Bedingung.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 20</value>
+  </data>
+  <data name="&gt;&gt;btnT2_back.Parent" xml:space="preserve">
+    <value>tabPage5</value>
   </data>
   <data name="lblB_Bedingung.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -2262,11 +2259,11 @@
   <data name="&gt;&gt;btnT3_Fertig.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnB_Editor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>279, 158</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;btnR_m100.Name" xml:space="preserve">
-    <value>btnR_m100</value>
+  <data name="&gt;&gt;btn_R_eigenes.Name" xml:space="preserve">
+    <value>btn_R_eigenes</value>
   </data>
   <data name="btnB_Speichern.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -2277,8 +2274,8 @@
   <data name="&gt;&gt;txtB_JoystickNr.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="&gt;&gt;radioT3_einmalDruecken.Name" xml:space="preserve">
-    <value>radioT3_einmalDruecken</value>
+  <data name="&gt;&gt;btnT3_Fertig.Parent" xml:space="preserve">
+    <value>tabPage6</value>
   </data>
   <data name="lblR_KnopfNr.Text" xml:space="preserve">
     <value>KnopfNr.</value>
@@ -2292,8 +2289,8 @@
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 119</value>
   </data>
-  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;btnT0_back.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -2304,14 +2301,17 @@
   <data name="&gt;&gt;radioR_Stufenlos.Parent" xml:space="preserve">
     <value>panel_Regler</value>
   </data>
-  <data name="btnT1_editController.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 19</value>
+  <data name="btnT2_add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
   </data>
-  <data name="&gt;&gt;lblT3_haltezeit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtR_Sonderfaelle.Parent" xml:space="preserve">
+    <value>panel_Regler</value>
   </data>
   <data name="&gt;&gt;panel_Regler.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="label19.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2322,8 +2322,8 @@
   <data name="&gt;&gt;radioB_normal.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;tabPage5.Parent" xml:space="preserve">
-    <value>tabControl_main</value>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tabPage3</value>
   </data>
   <data name="panel_Regler.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
@@ -2364,8 +2364,8 @@
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 22</value>
   </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Wartezeit [ms]</value>
+  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="btnT0_back.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 23</value>
@@ -2373,8 +2373,8 @@
   <data name="&gt;&gt;label19.Parent" xml:space="preserve">
     <value>tabPage6</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value> </value>
+  <data name="btnR_100.Text" xml:space="preserve">
+    <value>100</value>
   </data>
   <data name="btnR_GetTimeFactor.Text" xml:space="preserve">
     <value>Finden</value>
@@ -2382,20 +2382,23 @@
   <data name="&gt;&gt;label16.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnR_Speichern.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnT2_add.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
+  <data name="btnT1_Controller_Add.Text" xml:space="preserve">
+    <value>+</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Tastenbelegung</value>
+  <data name="btnT1_editController.Location" type="System.Drawing.Point, System.Drawing">
+    <value>151, 19</value>
   </data>
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;txtR_Zeitfaktor.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>17</value>
   </data>
   <data name="comboBoxB_KnopfAuswahl.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -2418,17 +2421,14 @@
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>247, 119</value>
   </data>
-  <data name="btnT1_Controller_Remove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 21</value>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;radioT3_Halten.Parent" xml:space="preserve">
-    <value>tabPage6</value>
+  <data name="&gt;&gt;btnT2_defaultSettings.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="label19.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="btnT2_add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="btnT0_Add.Location" type="System.Drawing.Point, System.Drawing">
     <value>143, 22</value>
@@ -2445,8 +2445,8 @@
   <data name="&gt;&gt;lblR_KnopfNr.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioB_regler.Parent" xml:space="preserve">
-    <value>tabPage3</value>
+  <data name="btnT2_add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2472,8 +2472,8 @@
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>138, 13</value>
   </data>
-  <data name="&gt;&gt;btnT2_back.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;btnT2_defaultSettings.Parent" xml:space="preserve">
+    <value>tabPage5</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>JoyNr</value>
@@ -2487,9 +2487,6 @@
   <data name="&gt;&gt;btnT1_Controller_Remove.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnR_GetTimeFactor.Name" xml:space="preserve">
-    <value>btnR_GetTimeFactor</value>
-  </data>
   <data name="radioT3_einmalDruecken.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2499,8 +2496,8 @@
   <data name="btnT2_defaultSettings.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 303</value>
   </data>
-  <data name="btnT0_back.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 80</value>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
   </data>
   <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2523,8 +2520,8 @@
   <data name="btnR_Erkennen.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
   </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkboxT2_Kombihebel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="progressBar_Joystick.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -2562,14 +2559,17 @@
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
-  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblB_Bedingung.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Sonderfälle umrechnen</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;tabPage5.Name" xml:space="preserve">
-    <value>tabPage5</value>
-  </data>
-  <data name="btnT3_Hinzufügen.Text" xml:space="preserve">
-    <value>Hinzufügen</value>
+  <data name="&gt;&gt;comboBoxT1_Controllers.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="txtT2_increase.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -2592,23 +2592,23 @@
   <data name="txtR_JoyNr.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
   </data>
-  <data name="&gt;&gt;btnR_100.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="txtT2_increase.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
-  <data name="&gt;&gt;btnT2_Save.Name" xml:space="preserve">
-    <value>btnT2_Save</value>
+  <data name="txtR_Zeitfaktor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 231</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
   </data>
   <data name="&gt;&gt;label6.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btn_R_eigenes.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
-  </data>
-  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;txtR_Sonderfaelle.Name" xml:space="preserve">
+    <value>txtR_Sonderfaelle</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;panel_Regler.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2619,8 +2619,8 @@
   <data name="panel_main.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
-  <data name="&gt;&gt;btnB_entfernen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 13</value>
   </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2640,6 +2640,9 @@
   <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
     <value>pictureBox1</value>
   </data>
+  <data name="radioT3_Druecken.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="radioT3_einmalDruecken.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2649,8 +2652,8 @@
   <data name="btnB_entfernen.Text" xml:space="preserve">
     <value>Entfernen</value>
   </data>
-  <data name="lblB_Bedingung.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
+  <data name="lblR_AnzahlStufen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 13</value>
   </data>
   <data name="&gt;&gt;comboBoxT1_Controllers.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2661,8 +2664,8 @@
   <data name="&gt;&gt;dataGridView1.Parent" xml:space="preserve">
     <value>panel_Regler</value>
   </data>
-  <data name="&gt;&gt;timer_CheckJoysticks.Name" xml:space="preserve">
-    <value>timer_CheckJoysticks</value>
+  <data name="&gt;&gt;txtB_Tastenkombination.Name" xml:space="preserve">
+    <value>txtB_Tastenkombination</value>
   </data>
   <data name="&gt;&gt;lblR_AnzahlStufen.Parent" xml:space="preserve">
     <value>panel_Regler</value>
@@ -2686,10 +2689,10 @@
     <value>6</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;txtR_JoyNr.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>15</value>
   </data>
   <data name="btnB_entfernen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2700,8 +2703,8 @@
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;radioT3_einmalDruecken.Parent" xml:space="preserve">
+    <value>tabPage6</value>
   </data>
   <data name="txtR_InputUmrechnen.Size" type="System.Drawing.Size, System.Drawing">
     <value>414, 20</value>
@@ -2715,20 +2718,20 @@
   <data name="&gt;&gt;listBoxT3_Output.Parent" xml:space="preserve">
     <value>tabPage6</value>
   </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnT1_Controller_Add.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="&gt;&gt;lblT3_haltezeit.Parent" xml:space="preserve">
     <value>tabPage6</value>
   </data>
-  <data name="checkboxT2_Kombihebel.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
+  <data name="btnT0_Delete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;Joystick.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="comboBoxT2_Reglerauswahl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;radioR_Stufenlos.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2742,14 +2745,11 @@
   <data name="&gt;&gt;tabControl_ReglerKnopf.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lblT1_TrainName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="&gt;&gt;progressBar_Joystick.Parent" xml:space="preserve">
     <value>panel_Regler</value>
   </data>
-  <data name="btnT2_defaultSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;radioR_Stufen.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2763,26 +2763,26 @@
   <data name="&gt;&gt;progressBar_Joystick.Type" xml:space="preserve">
     <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="lblT1_TrainName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Zugauswahl</value>
   </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnT0_edit.Name" xml:space="preserve">
+    <value>btnT0_edit</value>
   </data>
-  <data name="btnT2_Save.Text" xml:space="preserve">
-    <value>Speichern</value>
+  <data name="&gt;&gt;btnB_entfernen.Name" xml:space="preserve">
+    <value>btnB_entfernen</value>
   </data>
   <data name="&gt;&gt;btnT3_Fertig.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>panel_Regler</value>
+  <data name="btnT3_Hinzufügen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;btnR_Erkennen.Name" xml:space="preserve">
-    <value>btnR_Erkennen</value>
+  <data name="tabPage4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="panel_main.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2802,14 +2802,14 @@
   <data name="radioT3_Druecken.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;txtB_Tastenkombination.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tabControl_main.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;btnT0_globalKeybinds.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
+  <data name="btnT2_defaultSettings.Text" xml:space="preserve">
+    <value>Standard Einstellungen</value>
   </data>
   <data name="listBoxT3_Output.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -2823,20 +2823,20 @@
   <data name="label16.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="radioT3_Druecken.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnT0_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 13</value>
   </data>
-  <data name="&gt;&gt;comboBoxT2_Reglerauswahl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnT1_Controller_Remove.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="&gt;&gt;btnR_0.Name" xml:space="preserve">
     <value>btnR_0</value>
   </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Bremsbereich</value>
   </data>
   <data name="dataGridView1.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -2845,10 +2845,10 @@
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>16</value>
   </data>
-  <data name="txtT3_Haltezeit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 20</value>
+  <data name="btnT0_globalKeybinds.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 23</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
@@ -2877,14 +2877,14 @@
   <data name="&gt;&gt;txtR_JoyAchse.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="txtT2_increase.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
+  <data name="btnT1_Controller_Remove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 21</value>
   </data>
   <data name="btnT1_back.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 23</value>
   </data>
-  <data name="groupBox_kombihebel.Text" xml:space="preserve">
-    <value>Kombihebel (Stufenlos)</value>
+  <data name="btnT2_defaultSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
   </data>
   <data name="checkboxT2_Kombihebel.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
@@ -2896,7 +2896,7 @@
     <value>7</value>
   </data>
   <data name="&gt;&gt;btn_R_eigenes.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
     <value>panel_main</value>
@@ -2907,29 +2907,29 @@
   <data name="&gt;&gt;label18.Name" xml:space="preserve">
     <value>label18</value>
   </data>
-  <data name="&gt;&gt;btn_R_eigenes.Parent" xml:space="preserve">
-    <value>panel_Regler</value>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
   </data>
   <data name="progressBar_Joystick.Size" type="System.Drawing.Size, System.Drawing">
     <value>254, 20</value>
   </data>
-  <data name="btnR_m100.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 42</value>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tabPage3</value>
   </data>
-  <data name="tabPage5.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;btnR_GetTimeFactor.Name" xml:space="preserve">
+    <value>btnR_GetTimeFactor</value>
   </data>
-  <data name="btnT3_Fertig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 23</value>
+  <data name="&gt;&gt;btnT2_Save.Name" xml:space="preserve">
+    <value>btnT2_Save</value>
   </data>
   <data name="radioB_normal.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
-  <data name="&gt;&gt;panel_main.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnR_100.Name" xml:space="preserve">
+    <value>btnR_100</value>
   </data>
-  <data name="&gt;&gt;panel_main.Name" xml:space="preserve">
-    <value>panel_main</value>
+  <data name="btnR_100.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
   </data>
   <data name="dataGridView1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>

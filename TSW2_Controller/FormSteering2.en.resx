@@ -157,6 +157,9 @@
   <data name="btnR_Speichern.Text" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="btn_R_eigenes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 14</value>
+  </data>
   <data name="btn_R_eigenes.Text" xml:space="preserve">
     <value>Edit</value>
   </data>

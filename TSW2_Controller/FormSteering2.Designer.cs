@@ -42,17 +42,10 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel_Regler = new System.Windows.Forms.Panel();
             this.btnR_GetTimeFactor = new System.Windows.Forms.Button();
-            this.progressBar_Joystick = new System.Windows.Forms.ProgressBar();
             this.label11 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnR_100 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnR_0 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.radioR_Stufen = new System.Windows.Forms.RadioButton();
             this.txtR_InputUmrechnen = new System.Windows.Forms.TextBox();
-            this.btnR_m100 = new System.Windows.Forms.Button();
-            this.lblR_ReglerStand = new System.Windows.Forms.Label();
             this.radioR_Stufenlos = new System.Windows.Forms.RadioButton();
             this.btnR_Speichern = new System.Windows.Forms.Button();
             this.btn_R_eigenes = new System.Windows.Forms.Button();
@@ -140,8 +133,6 @@
             this.tabControl_ReglerKnopf.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.panel_Regler.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -246,17 +237,10 @@
             // 
             resources.ApplyResources(this.panel_Regler, "panel_Regler");
             this.panel_Regler.Controls.Add(this.btnR_GetTimeFactor);
-            this.panel_Regler.Controls.Add(this.progressBar_Joystick);
             this.panel_Regler.Controls.Add(this.label11);
-            this.panel_Regler.Controls.Add(this.pictureBox2);
-            this.panel_Regler.Controls.Add(this.btnR_100);
-            this.panel_Regler.Controls.Add(this.pictureBox1);
-            this.panel_Regler.Controls.Add(this.btnR_0);
             this.panel_Regler.Controls.Add(this.label2);
             this.panel_Regler.Controls.Add(this.radioR_Stufen);
             this.panel_Regler.Controls.Add(this.txtR_InputUmrechnen);
-            this.panel_Regler.Controls.Add(this.btnR_m100);
-            this.panel_Regler.Controls.Add(this.lblR_ReglerStand);
             this.panel_Regler.Controls.Add(this.radioR_Stufenlos);
             this.panel_Regler.Controls.Add(this.btnR_Speichern);
             this.panel_Regler.Controls.Add(this.btn_R_eigenes);
@@ -281,47 +265,10 @@
             this.btnR_GetTimeFactor.UseVisualStyleBackColor = true;
             this.btnR_GetTimeFactor.Click += new System.EventHandler(this.btnR_GetTimeFactor_Click);
             // 
-            // progressBar_Joystick
-            // 
-            resources.ApplyResources(this.progressBar_Joystick, "progressBar_Joystick");
-            this.progressBar_Joystick.BackColor = System.Drawing.SystemColors.Control;
-            this.progressBar_Joystick.Cursor = System.Windows.Forms.Cursors.Default;
-            this.progressBar_Joystick.Maximum = 200;
-            this.progressBar_Joystick.Name = "progressBar_Joystick";
-            this.progressBar_Joystick.Value = 50;
-            // 
             // label11
             // 
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
-            // 
-            // pictureBox2
-            // 
-            resources.ApplyResources(this.pictureBox2, "pictureBox2");
-            this.pictureBox2.BackColor = System.Drawing.Color.DodgerBlue;
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.TabStop = false;
-            // 
-            // btnR_100
-            // 
-            resources.ApplyResources(this.btnR_100, "btnR_100");
-            this.btnR_100.Name = "btnR_100";
-            this.btnR_100.UseVisualStyleBackColor = true;
-            this.btnR_100.Click += new System.EventHandler(this.btnR_ControllerValues_Click);
-            // 
-            // pictureBox1
-            // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnR_0
-            // 
-            resources.ApplyResources(this.btnR_0, "btnR_0");
-            this.btnR_0.Name = "btnR_0";
-            this.btnR_0.UseVisualStyleBackColor = true;
-            this.btnR_0.Click += new System.EventHandler(this.btnR_ControllerValues_Click);
             // 
             // label2
             // 
@@ -341,18 +288,6 @@
             // 
             resources.ApplyResources(this.txtR_InputUmrechnen, "txtR_InputUmrechnen");
             this.txtR_InputUmrechnen.Name = "txtR_InputUmrechnen";
-            // 
-            // btnR_m100
-            // 
-            resources.ApplyResources(this.btnR_m100, "btnR_m100");
-            this.btnR_m100.Name = "btnR_m100";
-            this.btnR_m100.UseVisualStyleBackColor = true;
-            this.btnR_m100.Click += new System.EventHandler(this.btnR_ControllerValues_Click);
-            // 
-            // lblR_ReglerStand
-            // 
-            resources.ApplyResources(this.lblR_ReglerStand, "lblR_ReglerStand");
-            this.lblR_ReglerStand.Name = "lblR_ReglerStand";
             // 
             // radioR_Stufenlos
             // 
@@ -948,8 +883,6 @@
             this.tabPage4.ResumeLayout(false);
             this.panel_Regler.ResumeLayout(false);
             this.panel_Regler.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
@@ -979,12 +912,8 @@
         private System.Windows.Forms.ListBox listBox_ShowJoystickStates;
         private System.Windows.Forms.TabControl tabControl_ReglerKnopf;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.ProgressBar progressBar_Joystick;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtR_InputUmrechnen;
-        private System.Windows.Forms.Label lblR_ReglerStand;
         private System.Windows.Forms.Button btnR_Speichern;
         private System.Windows.Forms.Button btn_R_eigenes;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -1003,10 +932,7 @@
         private System.Windows.Forms.TextBox txtR_Sonderfaelle;
         private System.Windows.Forms.TextBox txtR_AnzahlStufen;
         private System.Windows.Forms.RadioButton radioR_Stufenlos;
-        private System.Windows.Forms.Button btnR_m100;
         private System.Windows.Forms.RadioButton radioR_Stufen;
-        private System.Windows.Forms.Button btnR_0;
-        private System.Windows.Forms.Button btnR_100;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnB_Speichern;
         private System.Windows.Forms.Button btnB_entfernen;

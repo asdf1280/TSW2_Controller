@@ -36,9 +36,10 @@ namespace TSW2_Controller {
         public string selectedTrain = "";
 
         // TSWOCR Values
-        public bool controlHoldNeeded = true;
-        public int desiredThrustPercent = 0;
-        public int desiredBrakePercent = 0;
+        public static TcpListener server;
+        public static bool controlHoldNeeded = true;
+        public static int desiredThrustPercent = 0;
+        public static int desiredBrakePercent = 0;
 
         public FormMain() {
             checkVersion();
@@ -105,11 +106,12 @@ namespace TSW2_Controller {
 
             // TSWOCR Server Socket
             var t = new Thread(() => {
-                var listener = new TcpListener(IPAddress.Loopback, 4776);
-                listener.Start();
+                if (server != null) return;
+                server = new TcpListener(IPAddress.Loopback, 4776);
+                server.Start();
 
                 while (true) {
-                    var c = listener.AcceptTcpClient();
+                    var c = server.AcceptTcpClient();
 
                     var t2 = new Thread(() => {
                         var r = new BinaryReader(c.GetStream());
@@ -375,7 +377,7 @@ namespace TSW2_Controller {
             int height = ConvertHeight(30);
             //Starting position from the top frame
             int x1 = ConvertWidth(2560) - ConvertHeight(513) - ConvertHeight(127); //=1920
-            int y1 = ConvertHeight(458);
+            int y1 = ConvertHeight(457);
             //Adjusted height for bottom frame
             int y2 = ConvertHeight(530);
 
@@ -1071,7 +1073,7 @@ namespace TSW2_Controller {
 
 
             //When active
-            if (check_active.Checked) {
+            if (check_active.Checked && !controlHoldNeeded) {
                 //Check the individual controls
                 handleVControllers();
 

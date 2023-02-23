@@ -442,47 +442,6 @@ namespace TSW2_Controller
                 lblR_AnzahlStufen.Visible = true;
             }
         }
-        private void btnR_ControllerValues_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                bool didSomething = false;
-                int realJoyState = Convert.ToInt32(lblR_ReglerStand.Text.Remove(lblR_ReglerStand.Text.IndexOf(" "), lblR_ReglerStand.Text.Length - (lblR_ReglerStand.Text.IndexOf(" "))));
-                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                {
-                    if (dataGridView1.Rows[i].Cells[1].Value.ToString() != "100" && dataGridView1.Rows[i].Cells[1].Value.ToString() != "-100" && dataGridView1.Rows[i].Cells[1].Value.ToString() != "0")
-                    {
-                        dataGridView1.Rows.RemoveAt(i);
-                    }
-                    else
-                    {
-                        if (dataGridView1.Rows[i].Cells[1].Value.ToString() == ((Button)sender).Text)
-                        {
-                            dataGridView1.Rows[i].Cells[0].Value = realJoyState;
-                            didSomething = true;
-                            break;
-                        }
-                    }
-                }
-                if (!didSomething)
-                {
-                    dataGridView1.Rows.Add(realJoyState, ((Button)sender).Text);
-                }
-
-                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                {
-                    if (dataGridView1.Rows[i].Cells[0].Value.ToString() == realJoyState.ToString() && dataGridView1.Rows[i].Cells[1].Value.ToString() != ((Button)sender).Text)
-                    {
-                        dataGridView1.Rows.RemoveAt(i);
-                    }
-                }
-                ReadDataGrid();
-            }
-            catch (Exception ex)
-            {
-                Log.ErrorException(ex);
-            }
-        }
         private void btnR_GetTimeFactor_Click(object sender, EventArgs e)
         {
             FormTimefactor2 formZeitfaktor2 = new FormTimefactor2(listBoxT1_ControllerList.SelectedItem.ToString(), radioR_Stufenlos.Checked);
