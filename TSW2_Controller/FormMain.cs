@@ -27,7 +27,7 @@ namespace TSW2_Controller {
 
         public List<string> trainNames = new List<string>();
 
-        static TesseractEngine OCREngine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
+        static TesseractEngine OCREngine = new TesseractEngine(@"./tessdata", "deu", EngineMode.Default);
 
         public static string[] axisNames = { "JoyX", "JoyY", "JoyZ", "pov", "RotX", "RotY", "RotZ", "Sldr" };
 
@@ -131,7 +131,7 @@ namespace TSW2_Controller {
                                     desiredThrustPercent = 0;
                                     desiredBrakePercent = int.Parse(input.Substring(1));
                                 } else if (input == "y") {
-                                    Keyboard.HoldKey(Keys.A, 100);
+                                    Keyboard.HoldKey(Keys.Y, 100);
                                 } else if (input == "u") {
                                     Keyboard.HoldKey(Keys.U, 100);
                                 }
