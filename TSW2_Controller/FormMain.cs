@@ -398,7 +398,7 @@ namespace TSW2_Controller {
                     Color inv = bmpScreenshot.GetPixel(x, y);
 
                     //Color adjustment to recognize only the writing if possible
-                    if (inv.R + inv.G + inv.G < 500) {
+                    if (inv.R + inv.G + inv.G < 650) {
                         inv = Color.FromArgb(0, 0, 0, 0);
                     }
 
@@ -963,84 +963,68 @@ namespace TSW2_Controller {
         void fakeStickHandle() {
             foreach (string[] strActiveTrain in activeTrain) {
                 // Controller names taken from default csv file
+                // -> AP only changes controllers named among these three
                 var controllerName = strActiveTrain[ConfigConsts.controllerName];
-                if (controllerName == "Throttle" || controllerName == "Brake" || controllerName == "Master Controller") {
-                    List<string[]> customController = new List<string[]>();
-                    string[] split = strActiveTrain[ConfigConsts.invert].Split('|');
-                    for (int j = 0; j < split.Count() - 1; j += 2) {
-                        customController.Add(new string[] { split[j], split[j + 1] });
-                    }
+                if (controllerName != "Throttle" && controllerName != "Brake" && controllerName != "Master Controller") continue;
 
-                    // AUTOPILOT JOYSTICK VALUE FAKE INJECTION STARTS HERE ==================================
+                for (int j = 0; j < activeVControllers.Count; j++) {
+                    var controller = activeVControllers[j];
+                    if (strActiveTrain[ConfigConsts.controllerName] != controller.name) continue;
+
+                    // Determine emulated input value based on AP inputs
                     int inputValue = 0;
                     if (controllerName == "Master Controller") {
                         if (desiredBrakePercent > 0) {
                             inputValue = desiredBrakePercent * -1;
                         } else if (desiredThrustPercent > 0) {
                             inputValue = desiredThrustPercent;
+                            if (controller.currentSimValue < 0) { // Wait for lever to move to 0 first
+                                inputValue = 0;
+                            }
                         }
                     } else if (controllerName == "Throttle") {
                         inputValue = desiredThrustPercent;
                     } else if (controllerName == "Brake") {
                         inputValue = desiredBrakePercent;
                     }
-                    // AUTOPILOT CODE END
 
-                    for (int j = 0; j < customController.Count; j++) {
-                        if (j + 1 > customController.Count - 1) {
-                            inputValue = Convert.ToInt32(customController[j][1]);
-                            break;
-                        } else {
-                            if (inputValue >= Convert.ToInt32(customController[j][0]) && inputValue < Convert.ToInt32(customController[j + 1][0])) {
-                                double steigung = (Convert.ToDouble(customController[j + 1][1]) - Convert.ToDouble(customController[j][1])) / (Convert.ToDouble(customController[j + 1][0]) - Convert.ToDouble(customController[j][0]));
+                    // 'Reassign Joy States' settings
+                    inputValue = calculateReassignedJoyStates(strActiveTrain[ConfigConsts.reassignJoyStates], inputValue);
 
-                                inputValue = Convert.ToInt32(Math.Round(((inputValue - Convert.ToDouble(customController[j + 1][0])) * steigung) + Convert.ToDouble(customController[j + 1][1]), 0));
-                                break;
-                            }
-                        }
-                    }
-
-
-                    //Certain input values are to be converted into others
-                    if (strActiveTrain[ConfigConsts.inputConvert].Length > 5) {
-                        string[] umrechnen = strActiveTrain[ConfigConsts.inputConvert].Remove(strActiveTrain[ConfigConsts.inputConvert].Length - 1).Replace("[", "").Split(']');
-
-                        foreach (string single_umrechnen in umrechnen) {
-                            if (single_umrechnen.Contains("|")) {
-                                int von = Convert.ToInt32(single_umrechnen.Remove(single_umrechnen.IndexOf("|"), single_umrechnen.Length - single_umrechnen.IndexOf("|")));
-
-                                string temp_bis = single_umrechnen.Remove(0, single_umrechnen.IndexOf("|") + 1);
-                                int index = temp_bis.IndexOf("=");
-                                int bis = Convert.ToInt32(temp_bis.Remove(index, temp_bis.Length - index));
-                                int entsprechendeNummer = Convert.ToInt32(single_umrechnen.Remove(0, single_umrechnen.IndexOf("=") + 1));
-
-                                if (von <= inputValue && inputValue <= bis) {
-                                    inputValue = entsprechendeNummer;
-                                    break;
-                                } else if (von >= inputValue && inputValue >= bis) {
-                                    inputValue = entsprechendeNummer;
-                                    break;
-                                }
-                            } else {
-                                int index = single_umrechnen.IndexOf("=");
-                                int gesuchteNummer = Convert.ToInt32(single_umrechnen.Remove(index, single_umrechnen.Length - index));
-                                int entsprechendeNummer = Convert.ToInt32(single_umrechnen.Remove(0, index + 1));
-
-                                if (inputValue == gesuchteNummer) {
-                                    inputValue = entsprechendeNummer;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                    for (int j = 0; j < activeVControllers.Count; j++) {
-                        if (strActiveTrain[ConfigConsts.controllerName] == activeVControllers[j].name) {
-                            activeVControllers[j].currentJoystickValue = inputValue;
-                        }
-                    }
-
+                    controller.currentJoystickValue = inputValue;
                 }
+            }
+
+            int calculateReassignedJoyStates(string reassignConfig, int rawInputValue) {
+                if (reassignConfig.Length <= 5) return rawInputValue;
+                string[] reassignValues = reassignConfig.Remove(reassignConfig.Length - 1).Replace("[", "").Split(']');
+
+                foreach (string reassignValue in reassignValues) {
+                    if (reassignValue.Contains("|")) {
+                        int von = Convert.ToInt32(reassignValue.Remove(reassignValue.IndexOf("|"), reassignValue.Length - reassignValue.IndexOf("|")));
+
+                        string temp_bis = reassignValue.Remove(0, reassignValue.IndexOf("|") + 1);
+                        int index = temp_bis.IndexOf("=");
+                        int bis = Convert.ToInt32(temp_bis.Remove(index, temp_bis.Length - index));
+                        int entsprechendeNummer = Convert.ToInt32(reassignValue.Remove(0, reassignValue.IndexOf("=") + 1));
+
+                        if (von <= rawInputValue && rawInputValue <= bis) {
+                            return entsprechendeNummer;
+                        } else if (von >= rawInputValue && rawInputValue >= bis) {
+                            return entsprechendeNummer;
+                        }
+                    } else {
+                        int index = reassignValue.IndexOf("=");
+                        int gesuchteNummer = Convert.ToInt32(reassignValue.Remove(index, reassignValue.Length - index));
+                        int entsprechendeNummer = Convert.ToInt32(reassignValue.Remove(0, index + 1));
+
+                        if (rawInputValue == gesuchteNummer) {
+                            return entsprechendeNummer;
+                        }
+                    }
+                }
+
+                return rawInputValue;
             }
         }
 

@@ -315,7 +315,7 @@ namespace TSW2_Controller
                             txtR_LongPress.Text = singleTrain[ConfigConsts.longPress].Replace("[", "").Replace("]", " ").TrimEnd(' ');
                             txtR_Sonderfaelle.Text = singleTrain[ConfigConsts.specials].Replace(" ", "_").Replace("[", "").Replace("]", " ").TrimEnd(' '); ;
                             txtR_Zeitfaktor.Text = singleTrain[ConfigConsts.timeFactor];
-                            txtR_InputUmrechnen.Text = singleTrain[ConfigConsts.inputConvert].Replace("[", "").Replace("]", " ").TrimEnd(' '); ;
+                            txtR_InputUmrechnen.Text = singleTrain[ConfigConsts.reassignJoyStates].Replace("[", "").Replace("]", " ").TrimEnd(' '); ;
 
                             if (singleTrain[ConfigConsts.type] == "Stufenlos")
                             {
@@ -563,7 +563,7 @@ namespace TSW2_Controller
                             singleTrain[ConfigConsts.joystickInput] = txtR_JoyAchse.Text;
                             singleTrain[ConfigConsts.steps] = txtR_AnzahlStufen.Text;
                             singleTrain[ConfigConsts.timeFactor] = txtR_Zeitfaktor.Text;
-                            if (txtR_InputUmrechnen.Text.Length >= 3) { singleTrain[ConfigConsts.inputConvert] = "[" + txtR_InputUmrechnen.Text.Replace(" ", "][") + "]"; } else { singleTrain[ConfigConsts.inputConvert] = ""; }
+                            if (txtR_InputUmrechnen.Text.Length >= 3) { singleTrain[ConfigConsts.reassignJoyStates] = "[" + txtR_InputUmrechnen.Text.Replace(" ", "][") + "]"; } else { singleTrain[ConfigConsts.reassignJoyStates] = ""; }
                             if (txtR_Sonderfaelle.Text.Length >= 3) { singleTrain[ConfigConsts.specials] = "[" + txtR_Sonderfaelle.Text.Replace(" ", "][").Replace("_", " ") + "]"; } else { singleTrain[ConfigConsts.specials] = ""; }
                             if (txtR_LongPress.Text.Length >= 3) { singleTrain[ConfigConsts.longPress] = "[" + txtR_LongPress.Text.Replace(" ", "][") + "]"; } else { singleTrain[ConfigConsts.longPress] = ""; }
                             if (radioR_Stufen.Checked) { singleTrain[ConfigConsts.type] = "Stufen"; } else { singleTrain[ConfigConsts.type] = "Stufenlos"; }
@@ -596,7 +596,7 @@ namespace TSW2_Controller
                         singleTrain[ConfigConsts.joystickInput] = txtR_JoyAchse.Text;
                         singleTrain[ConfigConsts.steps] = txtR_AnzahlStufen.Text;
                         singleTrain[ConfigConsts.timeFactor] = txtR_Zeitfaktor.Text;
-                        if (txtR_InputUmrechnen.Text.Length >= 3) { singleTrain[ConfigConsts.inputConvert] = "[" + txtR_InputUmrechnen.Text.Replace(" ", "][") + "]"; } else { singleTrain[ConfigConsts.inputConvert] = ""; }
+                        if (txtR_InputUmrechnen.Text.Length >= 3) { singleTrain[ConfigConsts.reassignJoyStates] = "[" + txtR_InputUmrechnen.Text.Replace(" ", "][") + "]"; } else { singleTrain[ConfigConsts.reassignJoyStates] = ""; }
                         if (txtR_Sonderfaelle.Text.Length >= 3) { singleTrain[ConfigConsts.specials] = "[" + txtR_Sonderfaelle.Text.Replace(" ", "][").Replace("_", " ") + "]"; } else { singleTrain[ConfigConsts.specials] = ""; }
                         if (txtR_LongPress.Text.Length >= 3) { singleTrain[ConfigConsts.longPress] = "[" + txtR_LongPress.Text.Replace(" ", "][") + "]"; } else { singleTrain[ConfigConsts.longPress] = ""; }
                         if (radioR_Stufen.Checked) { singleTrain[ConfigConsts.type] = "Stufen"; } else { singleTrain[ConfigConsts.type] = "Stufenlos"; }

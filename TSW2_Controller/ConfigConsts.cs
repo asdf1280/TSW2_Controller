@@ -17,7 +17,7 @@ namespace TSW2_Controller
         public static int joystickInput = 4;
         public static int invert = 5;
         public static int inputType = 6;
-        public static int inputConvert = 7;
+        public static int reassignJoyStates = 7;
         public static int keyCombination = 8;
         public static int action = 9;
         public static int type = 10;
