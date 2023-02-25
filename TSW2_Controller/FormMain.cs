@@ -130,6 +130,10 @@ namespace TSW2_Controller {
                                     controlHoldNeeded = false;
                                     desiredThrustPercent = 0;
                                     desiredBrakePercent = int.Parse(input.Substring(1));
+                                } else if (input == "y") {
+                                    Keyboard.HoldKey(Keys.A, 100);
+                                } else if (input == "u") {
+                                    Keyboard.HoldKey(Keys.U, 100);
                                 }
                             }
                         } catch {
@@ -960,15 +964,20 @@ namespace TSW2_Controller {
         #endregion
 
         #region Joystick und Buttons
+        private Stopwatch masterControllerZeroWait;
+
         void fakeStickHandle() {
+            if (masterControllerZeroWait == null) {
+                masterControllerZeroWait = new Stopwatch();
+                masterControllerZeroWait.Stop();
+            }
             foreach (string[] strActiveTrain in activeTrain) {
                 // Controller names taken from default csv file
                 // -> AP only changes controllers named among these three
                 var controllerName = strActiveTrain[ConfigConsts.controllerName];
                 if (controllerName != "Throttle" && controllerName != "Brake" && controllerName != "Master Controller") continue;
 
-                for (int j = 0; j < activeVControllers.Count; j++) {
-                    var controller = activeVControllers[j];
+                foreach (var controller in activeVControllers) {
                     if (strActiveTrain[ConfigConsts.controllerName] != controller.name) continue;
 
                     // Determine emulated input value based on AP inputs
@@ -980,10 +989,21 @@ namespace TSW2_Controller {
                             inputValue = desiredThrustPercent;
                             if (controller.currentSimValue < 0) { // Wait for lever to move to 0 first
                                 inputValue = 0;
+                                masterControllerZeroWait.Restart();
+                            } else if (masterControllerZeroWait.ElapsedMilliseconds < 300 && masterControllerZeroWait.IsRunning) { // Do not apply throttle within 300ms after braking
+                                inputValue = 0;
+                            } else {
+                                masterControllerZeroWait.Stop();
                             }
                         }
                     } else if (controllerName == "Throttle") {
                         inputValue = desiredThrustPercent;
+                        // Don't apply throttle if any brake lever is active
+                        foreach (var c2 in activeVControllers) {
+                            if (c2.name == "Brake" && c2.currentSimValue > 0) {
+                                inputValue = 0;
+                            }
+                        }
                     } else if (controllerName == "Brake") {
                         inputValue = desiredBrakePercent;
                     }
