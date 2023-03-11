@@ -245,13 +245,13 @@ namespace TSW2_Controller
                         listBoxT1_ControllerList.Items.Add(singleTrain[ConfigConsts.controllerName]);
                     }
                 }
-                foreach (string[] singleTrain in trainConfig)
-                {
-                    if (singleTrain[ConfigConsts.trainName] == selectedTrain && singleTrain[ConfigConsts.inputType].Contains("Button") && !comboBoxB_KnopfAuswahl.Items.Equals(singleTrain[ConfigConsts.description]))
-                    {
-                        comboBoxB_KnopfAuswahl.Items.Add(singleTrain[ConfigConsts.description]);
-                    }
-                }
+                //foreach (string[] singleTrain in trainConfig)
+                //{
+                //    if (singleTrain[ConfigConsts.trainName] == selectedTrain && singleTrain[ConfigConsts.inputType].Contains("Button") && !comboBoxB_KnopfAuswahl.Items.Equals(singleTrain[ConfigConsts.description]))
+                //    {
+                //        comboBoxB_KnopfAuswahl.Items.Add(singleTrain[ConfigConsts.description]);
+                //    }
+                //}
             }
         }
         private void btnT1_Controller_Add_Click(object sender, EventArgs e)
