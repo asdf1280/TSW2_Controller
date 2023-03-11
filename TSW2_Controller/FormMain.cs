@@ -134,6 +134,8 @@ namespace TSW2_Controller {
                                     Keyboard.HoldKey(Keys.Y, 100);
                                 } else if (input == "u") {
                                     Keyboard.HoldKey(Keys.U, 100);
+                                } else if (input == "eb_toggle") {
+                                    Keyboard.HoldKey(Keys.Back, 100);
                                 }
                             }
                         } catch {
