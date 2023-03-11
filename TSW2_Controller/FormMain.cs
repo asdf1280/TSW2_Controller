@@ -402,12 +402,12 @@ namespace TSW2_Controller {
                     Color inv = bmpScreenshot.GetPixel(x, y);
 
                     //Color adjustment to recognize only the writing if possible
-                    if (inv.R + inv.G + inv.G < 650) {
+                    if (inv.R + inv.G + inv.G < 500 || !(Math.Abs(inv.R - inv.G) <= 2 && Math.Abs(inv.G - inv.B) <= 2)) {
                         inv = Color.FromArgb(0, 0, 0, 0);
                     }
 
                     //invert the image
-                    inv = Color.FromArgb(255, (255 - inv.R), (255 - inv.G), (255 - inv.B));
+                    inv = Color.FromArgb(inv.ToArgb() ^ 0xffffff);
                     bmpScreenshot.SetPixel(x, y, inv);
                 }
             }
@@ -1005,16 +1005,16 @@ namespace TSW2_Controller {
                             }
                         }
 
-                        if(masterControllerZeroWait.ElapsedMilliseconds < 2000) {
+                        if (masterControllerZeroWait.ElapsedMilliseconds < 2000) {
                             inputValue = 0;
-                            if(!masterControllerZeroWait.IsRunning)
+                            if (!masterControllerZeroWait.IsRunning)
                                 masterControllerZeroWait.Start();
                         }
                     } else if (controllerName == "Brake") {
                         inputValue = desiredBrakePercent;
-                        if(controller.currentSimValue > 0) {
+                        if (controller.currentSimValue > 0) {
                             masterControllerZeroWait.Restart();
-                        } else if(masterControllerZeroWait.ElapsedMilliseconds > 10000) {
+                        } else if (masterControllerZeroWait.ElapsedMilliseconds > 10000) {
                             masterControllerZeroWait.Stop();
                         }
                     }
