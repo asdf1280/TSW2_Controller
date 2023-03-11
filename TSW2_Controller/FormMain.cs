@@ -1004,8 +1004,19 @@ namespace TSW2_Controller {
                                 inputValue = 0;
                             }
                         }
+
+                        if(masterControllerZeroWait.ElapsedMilliseconds < 2000) {
+                            inputValue = 0;
+                            if(!masterControllerZeroWait.IsRunning)
+                                masterControllerZeroWait.Start();
+                        }
                     } else if (controllerName == "Brake") {
                         inputValue = desiredBrakePercent;
+                        if(controller.currentSimValue > 0) {
+                            masterControllerZeroWait.Restart();
+                        } else if(masterControllerZeroWait.ElapsedMilliseconds > 10000) {
+                            masterControllerZeroWait.Stop();
+                        }
                     }
 
                     // 'Reassign Joy States' settings
