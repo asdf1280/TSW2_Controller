@@ -137,7 +137,7 @@ namespace TSW2_Controller {
                                 } else if (input == "eb_toggle") {
                                     Keyboard.HoldKey(Keys.Back, 100);
                                 } else if (input == "pzb") {
-                                    Keyboard.HoldKey(Keys.PageDown, 100);
+                                    Keyboard.HoldKey(Keys.PageDown, 1000);
                                 }
                             }
                         } catch {
